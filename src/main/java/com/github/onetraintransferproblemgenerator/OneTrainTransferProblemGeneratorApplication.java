@@ -1,5 +1,6 @@
 package com.github.onetraintransferproblemgenerator;
 
+import com.github.onetraintransferproblemgenerator.generation.SimpleGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
