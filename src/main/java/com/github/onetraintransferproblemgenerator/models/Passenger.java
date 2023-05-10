@@ -24,4 +24,8 @@ public class Passenger {
      * position at which passenger arrives
      */
     private int inPosition;
+    /**
+     * target position at target platform where passenger want to leave station/transfer to other train
+     */
+    private int targetPosition;
 }
