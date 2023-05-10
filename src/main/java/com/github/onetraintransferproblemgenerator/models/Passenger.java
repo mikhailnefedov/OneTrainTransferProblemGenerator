@@ -15,11 +15,11 @@ public class Passenger {
     /**
      * platform at which passenger arrives
      */
-    private int inPlatform = 0;
+    private int inPlatform = 1;
     /**
      * platform at which passenger alights
      */
-    private int outPlatform = 0;
+    private int outPlatform = 1;
     /**
      * position at which passenger arrives
      */

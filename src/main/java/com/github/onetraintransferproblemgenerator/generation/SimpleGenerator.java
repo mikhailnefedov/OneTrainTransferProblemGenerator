@@ -3,8 +3,6 @@ package com.github.onetraintransferproblemgenerator.generation;
 import com.github.onetraintransferproblemgenerator.models.*;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.IntStream;
 
 public class SimpleGenerator {
 
@@ -19,15 +17,15 @@ public class SimpleGenerator {
         int railCarriageMaxCapacity = 10;
 
         ArrayList<Station> stations = new ArrayList<>();
-        for (int i = 0; i < stationCount; i++) {
+        for (int i = 1; i <= stationCount; i++) {
             Station station = new Station();
             station.setId(i);
-            station.getPlatforms().add(new Platform(0, positionCount));
+            station.getPlatforms().add(new Platform(1, positionCount));
             stations.add(station);
         }
 
         Train train = new Train();
-        for (int i = 0; i < railCarriageCount; i++) {
+        for (int i = 1; i <= railCarriageCount; i++) {
             RailCarriage railCarriage = new RailCarriage();
             railCarriage.setSequenceNumber(i);
             railCarriage.setCapacity(railCarriageMaxCapacity);
@@ -39,7 +37,7 @@ public class SimpleGenerator {
             tuple.setLeft(station.getId());
 
             StationOperation stationOperation = new StationOperation();
-            stationOperation.setPlatformId(0);
+            stationOperation.setPlatformId(1);
             stationOperation.setPosition(1);
             stationOperation.setTravelDirection(DirectionOfTravel.ascending);
 
@@ -51,7 +49,4 @@ public class SimpleGenerator {
 
     }
 
-    private static List<Integer> generatePlatforms(int platformCount) {
-        return IntStream.range(0, platformCount).boxed().toList();
-    }
 }
