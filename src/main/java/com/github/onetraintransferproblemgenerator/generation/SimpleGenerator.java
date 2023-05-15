@@ -11,12 +11,7 @@ public class SimpleGenerator {
 
     private static final int POSITION_COUNT = 10;
 
-    public static void main(String[] args) {
 
-        OneTrainTransferProblem problem = generateSimpleScenario();
-        System.out.println(problem.toString());
-        FeatureExtractor.extract(problem);
-    }
 
     public static OneTrainTransferProblem generateSimpleScenario() {
 
