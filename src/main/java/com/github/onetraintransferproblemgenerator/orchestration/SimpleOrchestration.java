@@ -32,9 +32,7 @@ public class SimpleOrchestration {
     private static InstanceFeatureDescription generateInstance(int generationId) {
         String instanceId = String.format("auto_%d", generationId);
         OneTrainTransferProblem problem = SimpleGenerator.generateSimpleScenario();
-        InstanceFeatureDescription description = FeatureExtractor.extract("auto_1", problem);
-
-        description.setInstanceId(instanceId);
+        InstanceFeatureDescription description = FeatureExtractor.extract(instanceId, problem);
 
         Random random = new Random();
         description.setGreedyResult(random.nextDouble(9, 20));
