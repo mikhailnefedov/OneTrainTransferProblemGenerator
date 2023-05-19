@@ -39,6 +39,9 @@ public class FeatureExtractor {
     }
 
     private static int getMaxTargetPosition(OneTrainTransferProblem problem) {
+        if (problem.getPassengers().size() == 0) {
+            return 0;
+        }
         return problem.getPassengers().stream()
             .max((p1, p2) -> Integer.compare(p1.getTargetPosition(), p2.getTargetPosition()))
             .get()

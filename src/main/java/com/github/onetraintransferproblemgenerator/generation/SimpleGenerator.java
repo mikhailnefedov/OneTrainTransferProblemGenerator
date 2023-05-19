@@ -6,35 +6,37 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class SimpleGenerator {
+public class SimpleGenerator extends OneTrainTransferProblemGenerator {
 
-    private static final int POSITION_COUNT = 10;
+    private final int POSITION_COUNT = 10;
+    private Random random;
 
+    public SimpleGenerator() {
+        random = new Random();
+    }
 
-    public static OneTrainTransferProblem generateSimpleScenario() {
-
+    @Override
+    public OneTrainTransferProblem generate() {
         int minStationCount = 4;
         int maxStationCount = 6;
 
-        int minRailCarriages = 0;
+        int minRailCarriages = 1;
         int maxRailCarriages = 5;
         int maxRailCarriageCapacity = 10;
-
-        int passengerCount = 6;
 
         List<Station> stations = generateStations(minStationCount, maxStationCount, POSITION_COUNT);
 
         Train train = generateTrain(minRailCarriages, maxRailCarriages, maxRailCarriageCapacity);
 
         train = generateRoute(stations, train);
+        int passengerCount = train.getTotalCapacity() > 0 ? random.nextInt(train.getTotalCapacity()) : 0;
         List<Passenger> passengers = generatePassengers(stations, passengerCount);
 
         return new OneTrainTransferProblem(train, passengers);
     }
 
-    private static List<Station> generateStations(int minStationCount, int maxStationCount, int positionCount) {
+    private List<Station> generateStations(int minStationCount, int maxStationCount, int positionCount) {
         ArrayList<Station> stations = new ArrayList<>();
-        Random random = new Random();
         int stationCount = random.nextInt(minStationCount, maxStationCount + 1);
         for (int i = 1; i <= stationCount; i++) {
             Station station = new Station();
@@ -45,9 +47,8 @@ public class SimpleGenerator {
         return stations;
     }
 
-    private static Train generateTrain(int minRailCarriages, int maxRailCarriages, int maxCapicity) {
+    private Train generateTrain(int minRailCarriages, int maxRailCarriages, int maxCapicity) {
         Train train = new Train();
-        Random random = new Random();
         int railCarriageCount = random.nextInt(minRailCarriages, maxRailCarriages + 1);
         int capacity = random.nextInt(maxCapicity);
         for (int i = 1; i <= railCarriageCount; i++) {
@@ -59,7 +60,7 @@ public class SimpleGenerator {
         return train;
     }
 
-    private static Train generateRoute(List<Station> stations, Train train) {
+    private Train generateRoute(List<Station> stations, Train train) {
         for (Station station : stations) {
             Tuple<Integer, StationOperation> tuple = new Tuple<>();
             tuple.setLeft(station.getId());
@@ -76,8 +77,7 @@ public class SimpleGenerator {
         return train;
     }
 
-    private static List<Passenger> generatePassengers(List<Station> stations, int passengerCount) {
-        Random random = new Random();
+    private List<Passenger> generatePassengers(List<Station> stations, int passengerCount) {
         int stationCount = stations.size();
         List<Passenger> passengers = new ArrayList<>();
         for (int i = 0; i < passengerCount; i++) {
@@ -97,5 +97,6 @@ public class SimpleGenerator {
 
         return passengers;
     }
+
 
 }

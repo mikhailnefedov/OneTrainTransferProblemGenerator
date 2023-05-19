@@ -5,11 +5,11 @@ import com.github.onetraintransferproblemgenerator.models.*;
 import java.util.List;
 
 /**
- * Checks that problem can be solved (example: not to more passengers than seats, ...)
+ * Checks that instance can be solved (example: not to more passengers than seats, ...)
  */
-public class ProblemValidator {
+public class InstanceValidator {
 
-    public boolean validateProblem(OneTrainTransferProblem problem) {
+    public boolean validateInstance(OneTrainTransferProblem problem) {
         return validatePassengersAndCapacity(problem);
     }
 
