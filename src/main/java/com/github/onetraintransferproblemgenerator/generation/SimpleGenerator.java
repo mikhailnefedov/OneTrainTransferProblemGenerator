@@ -1,6 +1,5 @@
 package com.github.onetraintransferproblemgenerator.generation;
 
-import com.github.onetraintransferproblemgenerator.features.FeatureExtractor;
 import com.github.onetraintransferproblemgenerator.models.*;
 
 import java.util.ArrayList;
@@ -10,7 +9,6 @@ import java.util.Random;
 public class SimpleGenerator {
 
     private static final int POSITION_COUNT = 10;
-
 
 
     public static OneTrainTransferProblem generateSimpleScenario() {

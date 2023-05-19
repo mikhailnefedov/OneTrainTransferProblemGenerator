@@ -16,5 +16,7 @@ public class InstanceFeatureDescription {
     @CsvBindByName(column = "feature_maxTargetPosition")
     private int maxTargetPosition;
     @CsvBindByName(column = "algo_greedy")
-    private double greedyResult = 1.0;
+    private double greedyResult;
+    @CsvBindByName(column = "algo_test")
+    private double testResult;
 }

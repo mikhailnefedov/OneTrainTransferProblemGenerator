@@ -9,8 +9,11 @@ import com.github.onetraintransferproblemgenerator.serialization.InstanceToCSVWr
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class SimpleOrchestration {
+
+    private static final int INSTANCE_COUNT = 150;
 
     public static void main(String[] args) {
 
@@ -20,11 +23,23 @@ public class SimpleOrchestration {
 
     private static List<InstanceFeatureDescription> generateInstances() {
         List<InstanceFeatureDescription> descriptions = new ArrayList<>();
-        OneTrainTransferProblem problem = SimpleGenerator.generateSimpleScenario();
-        descriptions.add(FeatureExtractor.extract("auto_1", problem));
-        problem = SimpleGenerator.generateSimpleScenario();
-        descriptions.add(FeatureExtractor.extract("auto_2", problem));
+        for (int i = 0; i < INSTANCE_COUNT; i++) {
+            descriptions.add(generateInstance(i));
+        }
         return descriptions;
+    }
+
+    private static InstanceFeatureDescription generateInstance(int generationId) {
+        String instanceId = String.format("auto_%d", generationId);
+        OneTrainTransferProblem problem = SimpleGenerator.generateSimpleScenario();
+        InstanceFeatureDescription description = FeatureExtractor.extract("auto_1", problem);
+
+        description.setInstanceId(instanceId);
+
+        Random random = new Random();
+        description.setGreedyResult(random.nextDouble(9, 20));
+        description.setTestResult(random.nextDouble(0, 13));
+        return description;
     }
 
     private static void serialize(List<InstanceFeatureDescription> descriptions) {

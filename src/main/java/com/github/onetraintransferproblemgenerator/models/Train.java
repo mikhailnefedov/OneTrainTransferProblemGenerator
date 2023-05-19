@@ -11,4 +11,8 @@ public class Train {
      * left: station id, right: platform position
      */
     private ArrayList<Tuple<Integer, StationOperation>> stations = new ArrayList<>();
+
+    public int getTotalCapacity() {
+        return railCarriages.stream().map(RailCarriage::getCapacity).reduce(0, Integer::sum);
+    }
 }
