@@ -17,10 +17,11 @@ import java.util.Random;
 public class SimpleOrchestration {
 
     private final int INSTANCE_COUNT = 150;
-    private OneTrainTransferProblemGenerator generator = new SimpleGenerator();
+    private OneTrainTransferProblemGenerator generator;
     private InstanceValidator validator;
 
-    public SimpleOrchestration() {
+    public SimpleOrchestration(OneTrainTransferProblemGenerator generator) {
+        this.generator = generator;
         validator = new InstanceValidator();
     }
 

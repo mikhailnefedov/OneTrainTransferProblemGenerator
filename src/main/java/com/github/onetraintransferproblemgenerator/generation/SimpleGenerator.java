@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class SimpleGenerator extends OneTrainTransferProblemGenerator {
+public class SimpleGenerator implements OneTrainTransferProblemGenerator {
 
     private final int POSITION_COUNT = 10;
     private Random random;

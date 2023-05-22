@@ -1,5 +1,6 @@
 package com.github.onetraintransferproblemgenerator;
 
+import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
 import com.github.onetraintransferproblemgenerator.generation.SimpleGenerator;
 import com.github.onetraintransferproblemgenerator.orchestration.SimpleOrchestration;
 import org.springframework.boot.SpringApplication;
@@ -10,7 +11,11 @@ public class OneTrainTransferProblemGeneratorApplication {
 
     public static void main(String[] args) {
         //SpringApplication.run(OneTrainTransferProblemGeneratorApplication.class, args);
-        SimpleOrchestration orchestration = new SimpleOrchestration();
+
+        OneTrainTransferProblemGenerator problemGenerator = new SimpleGenerator();
+
+        SimpleOrchestration orchestration = new SimpleOrchestration(problemGenerator);
+
         orchestration.runOrchestration();
     }
 
