@@ -17,12 +17,10 @@ public class InstanceValidator {
         Train train = problem.getTrain();
         int trainCapacity = train.getTotalCapacity();
 
-        List<Passenger> passengers = problem.getPassengers();
-
         int freeCapacity = trainCapacity;
         for (Tuple<Integer, StationOperation> station: train.getStations()) {
-            int inPassengerCount = getInPassengersOfStation(passengers, station.getLeft()).size();
-            int outPassengerCount = getOutPassengersOfStation(passengers, station.getLeft()).size();
+            int inPassengerCount = problem.getInPassengersOfStation(station.getLeft()).size();
+            int outPassengerCount = problem.getOutPassengersOfStation(station.getLeft()).size();
             freeCapacity = freeCapacity - inPassengerCount + outPassengerCount;
             if (freeCapacity < 0) {
                 return false;
@@ -31,11 +29,4 @@ public class InstanceValidator {
         return true;
     }
 
-    private List<Passenger> getInPassengersOfStation(List<Passenger> passengers, int stationId) {
-        return passengers.stream().filter(p -> p.getInStation() == stationId).toList();
-    }
-
-    private List<Passenger> getOutPassengersOfStation(List<Passenger> passengers, int stationId) {
-        return passengers.stream().filter(p -> p.getOutStation() == stationId).toList();
-    }
 }
