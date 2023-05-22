@@ -4,6 +4,8 @@ import lombok.Data;
 
 @Data
 public class Passenger {
+
+    private int id;
     /**
      * station at which passenger arrives
      */
@@ -27,5 +29,5 @@ public class Passenger {
     /**
      * target position at target platform where passenger want to leave station/transfer to other train
      */
-    private int targetPosition;
+    private int outPosition;
 }

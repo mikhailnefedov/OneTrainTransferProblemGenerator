@@ -82,6 +82,7 @@ public class SimpleGenerator implements OneTrainTransferProblemGenerator {
         List<Passenger> passengers = new ArrayList<>();
         for (int i = 0; i < passengerCount; i++) {
             Passenger passenger = new Passenger();
+            passenger.setId(i);
 
             int startStation = random.nextInt(1, stationCount);
             int endStation = random.nextInt(startStation + 1, stationCount + 1);
@@ -90,7 +91,7 @@ public class SimpleGenerator implements OneTrainTransferProblemGenerator {
             passenger.setOutStation(endStation);
 
             passenger.setInPosition(random.nextInt(POSITION_COUNT));
-            passenger.setTargetPosition(random.nextInt(POSITION_COUNT));
+            passenger.setOutPosition(random.nextInt(POSITION_COUNT));
 
             passengers.add(passenger);
         }

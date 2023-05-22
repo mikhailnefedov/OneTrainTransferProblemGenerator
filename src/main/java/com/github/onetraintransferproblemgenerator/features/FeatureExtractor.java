@@ -43,8 +43,8 @@ public class FeatureExtractor {
             return 0;
         }
         return problem.getPassengers().stream()
-            .max((p1, p2) -> Integer.compare(p1.getTargetPosition(), p2.getTargetPosition()))
+            .max((p1, p2) -> Integer.compare(p1.getOutPosition(), p2.getOutPosition()))
             .get()
-            .getTargetPosition();
+            .getOutPosition();
     }
 }

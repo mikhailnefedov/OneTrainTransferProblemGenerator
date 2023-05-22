@@ -4,9 +4,10 @@ import com.github.onetraintransferproblemgenerator.exceptions.NotEnoughTrainCapa
 import com.github.onetraintransferproblemgenerator.features.FeatureExtractor;
 import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
 import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
-import com.github.onetraintransferproblemgenerator.generation.SimpleGenerator;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
 import com.github.onetraintransferproblemgenerator.serialization.InstanceToCSVWriter;
+import com.github.onetraintransferproblemgenerator.solvers.FirstAvailableCarriageSolver;
+import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import com.github.onetraintransferproblemgenerator.validation.InstanceValidator;
 import lombok.SneakyThrows;
 
@@ -19,6 +20,7 @@ public class SimpleOrchestration {
     private final int INSTANCE_COUNT = 150;
     private OneTrainTransferProblemGenerator generator;
     private InstanceValidator validator;
+    private List<OneTrainTransferSolver> solvers;
 
     public SimpleOrchestration(OneTrainTransferProblemGenerator generator) {
         this.generator = generator;
@@ -29,7 +31,8 @@ public class SimpleOrchestration {
         List<OneTrainTransferProblem> instances = generateInstances();
         validateInstances(instances);
         List<InstanceFeatureDescription> featureDescriptions = generateFeatureDescriptions(instances);
-        serializeToCsv(featureDescriptions);
+        featureDescriptions = solveInstances(instances, featureDescriptions);
+        //serializeToCsv(featureDescriptions);
     }
 
     public List<OneTrainTransferProblem> generateInstances() {
@@ -63,6 +66,16 @@ public class SimpleOrchestration {
             descriptions.add(description);
         }
         return descriptions;
+    }
+
+    //TODO: Refactor to better use of multiple solvers
+    public List<InstanceFeatureDescription> solveInstances(List<OneTrainTransferProblem> instances, List<InstanceFeatureDescription> featureDescriptions) {
+        for (int i = 0; i < instances.size(); i++) {
+            OneTrainTransferSolver solver = new FirstAvailableCarriageSolver(instances.get(i));
+            double greedyCost = solver.solve();
+            featureDescriptions.get(i).setGreedyResult(greedyCost);
+        }
+        return featureDescriptions;
     }
 
     public void serializeToCsv(List<InstanceFeatureDescription> descriptions) {
