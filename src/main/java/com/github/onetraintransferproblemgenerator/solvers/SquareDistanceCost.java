@@ -1,4 +1,4 @@
-package com.github.onetraintransferproblemgenerator.computation;
+package com.github.onetraintransferproblemgenerator.solvers;
 
 public class SquareDistanceCost implements CostComputer {
 
