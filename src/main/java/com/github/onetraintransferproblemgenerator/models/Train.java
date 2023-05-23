@@ -11,14 +11,14 @@ public class Train {
     /**
      * left: station id, right: platform position
      */
-    private ArrayList<Tuple<Integer, StationOperation>> stations = new ArrayList<>();
+    private ArrayList<StationTuple> stations = new ArrayList<>();
 
     public int getTotalCapacity() {
         return railCarriages.stream().map(RailCarriage::getCapacity).reduce(0, Integer::sum);
     }
 
     public List<Integer> getStationIds() {
-        return stations.stream().map(Tuple::getLeft).toList();
+        return stations.stream().map(StationTuple::getStationId).toList();
     }
 
     public int getTrainLength() {
@@ -31,10 +31,10 @@ public class Train {
 
     public int getCarriagePosition(int stationId, int carriageId) {
         StationOperation stationOperation = stations.stream()
-            .filter(t -> t.getLeft().equals(stationId))
+            .filter(t -> t.getStationId().equals(stationId))
             .findFirst()
             .get()
-            .getRight();
+            .getStationOperation();
 
         if (stationOperation.getTravelDirection().equals(DirectionOfTravel.ascending)) {
             return stationOperation.getPosition() + carriageId - 1;

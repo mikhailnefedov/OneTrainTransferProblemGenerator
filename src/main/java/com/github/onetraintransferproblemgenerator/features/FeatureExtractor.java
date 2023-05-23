@@ -20,7 +20,7 @@ public class FeatureExtractor {
         DirectionOfTravel tmpDirection = null;
         int directionChangeCount = 0;
         for (DirectionOfTravel travelDirection : problem.getTrain().getStations().stream()
-            .map(t -> t.getRight().getTravelDirection()).toList()) {
+            .map(t -> t.getStationOperation().getTravelDirection()).toList()) {
             if (tmpDirection == null) {
                 tmpDirection = travelDirection;
             } else if (!travelDirection.equals(tmpDirection)) {

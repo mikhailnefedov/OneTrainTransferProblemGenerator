@@ -2,8 +2,6 @@ package com.github.onetraintransferproblemgenerator.validation;
 
 import com.github.onetraintransferproblemgenerator.models.*;
 
-import java.util.List;
-
 /**
  * Checks that instance can be solved (example: not to more passengers than seats, ...)
  */
@@ -18,9 +16,9 @@ public class InstanceValidator {
         int trainCapacity = train.getTotalCapacity();
 
         int freeCapacity = trainCapacity;
-        for (Tuple<Integer, StationOperation> station: train.getStations()) {
-            int inPassengerCount = problem.getInPassengersOfStation(station.getLeft()).size();
-            int outPassengerCount = problem.getOutPassengersOfStation(station.getLeft()).size();
+        for (StationTuple station: train.getStations()) {
+            int inPassengerCount = problem.getInPassengersOfStation(station.getStationId()).size();
+            int outPassengerCount = problem.getOutPassengersOfStation(station.getStationId()).size();
             freeCapacity = freeCapacity - inPassengerCount + outPassengerCount;
             if (freeCapacity < 0) {
                 return false;

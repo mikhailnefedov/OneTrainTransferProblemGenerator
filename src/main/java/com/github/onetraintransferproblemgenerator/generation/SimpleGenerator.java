@@ -1,7 +1,6 @@
 package com.github.onetraintransferproblemgenerator.generation;
 
 import com.github.onetraintransferproblemgenerator.models.*;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,8 +62,8 @@ public class SimpleGenerator implements OneTrainTransferProblemGenerator {
 
     private Train generateRoute(List<Station> stations, Train train) {
         for (Station station : stations) {
-            Tuple<Integer, StationOperation> tuple = new Tuple<>();
-            tuple.setLeft(station.getId());
+            StationTuple stationTuple = new StationTuple();
+            stationTuple.setStationId(station.getId());
 
             StationOperation stationOperation = new StationOperation();
             stationOperation.setPlatformId(1);
@@ -72,8 +71,8 @@ public class SimpleGenerator implements OneTrainTransferProblemGenerator {
             DirectionOfTravel travelDirection = DirectionOfTravel.values()[new Random().nextInt(DirectionOfTravel.values().length)];
             stationOperation.setTravelDirection(travelDirection);
 
-            tuple.setRight(stationOperation);
-            train.getStations().add(tuple);
+            stationTuple.setStationOperation(stationOperation);
+            train.getStations().add(stationTuple);
         }
         return train;
     }

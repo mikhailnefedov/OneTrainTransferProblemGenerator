@@ -3,7 +3,6 @@ package com.github.onetraintransferproblemgenerator.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.util.Comparator;
 import java.util.List;
 
 @AllArgsConstructor
