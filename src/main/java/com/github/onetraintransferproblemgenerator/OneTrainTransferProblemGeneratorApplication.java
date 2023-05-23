@@ -19,6 +19,4 @@ public class OneTrainTransferProblemGeneratorApplication {
         orchestration.runOrchestration();
     }
 
-
-
 }

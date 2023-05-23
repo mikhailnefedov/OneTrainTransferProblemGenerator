@@ -1,6 +1,7 @@
 package com.github.onetraintransferproblemgenerator.generation;
 
 import com.github.onetraintransferproblemgenerator.models.*;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;

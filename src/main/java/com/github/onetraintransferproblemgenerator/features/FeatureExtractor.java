@@ -2,6 +2,7 @@ package com.github.onetraintransferproblemgenerator.features;
 
 import com.github.onetraintransferproblemgenerator.models.DirectionOfTravel;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
+import com.github.onetraintransferproblemgenerator.models.RailCarriage;
 
 public class FeatureExtractor {
 
@@ -11,7 +12,7 @@ public class FeatureExtractor {
         description.setStationCount(getStationCount(problem));
         description.setPassengerCount(getPassengerCount(problem));
         description.setDirectionChangeCount(getDirectionChangeCount(problem));
-        description.setMaxTargetPosition(getMaxTargetPosition(problem));
+        description.setAverageRailCarriageCapacity(getAverageRailCarriageCapacity(problem));
         return description;
     }
 
@@ -38,13 +39,11 @@ public class FeatureExtractor {
         return problem.getTrain().getStations().size();
     }
 
-    private static int getMaxTargetPosition(OneTrainTransferProblem problem) {
-        if (problem.getPassengers().size() == 0) {
-            return 0;
-        }
-        return problem.getPassengers().stream()
-            .max((p1, p2) -> Integer.compare(p1.getOutPosition(), p2.getOutPosition()))
-            .get()
-            .getOutPosition();
+    private static double getAverageRailCarriageCapacity(OneTrainTransferProblem problem) {
+        return problem.getTrain().getRailCarriages().stream()
+            .map(RailCarriage::getCapacity)
+            .mapToInt(Integer::intValue)
+            .average()
+            .orElse(0.0);
     }
 }

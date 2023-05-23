@@ -13,8 +13,8 @@ public class InstanceFeatureDescription {
     private int directionChangeCount;
     @CsvBindByName(column = "feature_passengerCount")
     private int passengerCount;
-    @CsvBindByName(column = "feature_maxTargetPosition")
-    private int maxTargetPosition;
+    @CsvBindByName(column = "feature_averageRailCarriageCapacity")
+    private double averageRailCarriageCapacity;
     @CsvBindByName(column = "algo_firstAvailableCarriage")
     private double firstAvailableCarriageCost;
 }
