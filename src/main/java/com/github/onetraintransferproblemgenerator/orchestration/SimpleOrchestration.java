@@ -13,7 +13,6 @@ import lombok.SneakyThrows;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class SimpleOrchestration {
 
@@ -32,7 +31,7 @@ public class SimpleOrchestration {
         validateInstances(instances);
         List<InstanceFeatureDescription> featureDescriptions = generateFeatureDescriptions(instances);
         featureDescriptions = solveInstances(instances, featureDescriptions);
-        //serializeToCsv(featureDescriptions);
+        serializeToCsv(featureDescriptions);
     }
 
     public List<OneTrainTransferProblem> generateInstances() {
@@ -55,13 +54,9 @@ public class SimpleOrchestration {
 
     public List<InstanceFeatureDescription> generateFeatureDescriptions(List<OneTrainTransferProblem> instances) {
         List<InstanceFeatureDescription> descriptions = new ArrayList<>();
-        Random random = new Random();
         for (int i = 0; i < instances.size(); i++) {
             String instanceId = String.format("auto_%d", i);
             InstanceFeatureDescription description = FeatureExtractor.extract(instanceId, instances.get(i));
-
-            description.setGreedyResult(random.nextDouble(9, 20));
-            description.setTestResult(random.nextDouble(0, 13));
 
             descriptions.add(description);
         }
@@ -73,7 +68,7 @@ public class SimpleOrchestration {
         for (int i = 0; i < instances.size(); i++) {
             OneTrainTransferSolver solver = new FirstAvailableCarriageSolver(instances.get(i));
             double greedyCost = solver.solve();
-            featureDescriptions.get(i).setGreedyResult(greedyCost);
+            featureDescriptions.get(i).setFirstAvailableCarriageCost(greedyCost);
         }
         return featureDescriptions;
     }

@@ -15,8 +15,6 @@ public class InstanceFeatureDescription {
     private int passengerCount;
     @CsvBindByName(column = "feature_maxTargetPosition")
     private int maxTargetPosition;
-    @CsvBindByName(column = "algo_greedy")
-    private double greedyResult;
-    @CsvBindByName(column = "algo_test")
-    private double testResult;
+    @CsvBindByName(column = "algo_firstAvailableCarriage")
+    private double firstAvailableCarriageCost;
 }
