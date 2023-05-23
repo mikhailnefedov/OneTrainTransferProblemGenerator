@@ -1,6 +1,9 @@
 package com.github.onetraintransferproblemgenerator.solvers;
 
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
+import com.github.onetraintransferproblemgenerator.models.Passenger;
+
+import java.util.List;
 
 public abstract class OneTrainTransferSolver {
 
@@ -16,4 +19,10 @@ public abstract class OneTrainTransferSolver {
     }
 
     public abstract double solve();
+
+    protected void addToSolutionCost(int stationId, int railCarriageId, int passengerPosition) {
+        int distance = problem.getTrain()
+            .getDistanceBetweenPositionAndCarriagePosition(stationId, railCarriageId, passengerPosition);
+        solutionCost += costComputer.computeCost(distance);
+    }
 }

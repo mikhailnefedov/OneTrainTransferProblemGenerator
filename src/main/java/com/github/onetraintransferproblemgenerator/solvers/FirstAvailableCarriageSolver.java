@@ -28,7 +28,8 @@ public class FirstAvailableCarriageSolver extends OneTrainTransferSolver {
         for (Passenger passenger : passengers) {
             for (RailCarriage railCarriage : problem.getTrain().getRailCarriages()) {
                 if (capacityStorage.isBoardingPossible(railCarriage.getSequenceNumber())) {
-                    capacityStorage.inPassenger(railCarriage.getSequenceNumber(), passenger);
+                    int railCarriageId = capacityStorage.inPassenger(railCarriage.getSequenceNumber(), passenger);
+                    addToSolutionCost(stationId, railCarriageId, passenger.getInPosition());
                     break;
                 }
             }
@@ -38,9 +39,7 @@ public class FirstAvailableCarriageSolver extends OneTrainTransferSolver {
     private void letPassengersOutOfTrain(int stationId, List<Passenger> passengers) {
         passengers.forEach(p -> {
             int railCarriageId = capacityStorage.outPassenger(p);
-            int distance = problem.getTrain()
-                .getDistanceBetweenPositionAndCarriagePosition(stationId, railCarriageId, p.getOutPosition());
-            solutionCost += costComputer.computeCost(distance);
+            addToSolutionCost(stationId, railCarriageId, p.getOutPosition());
         });
     }
 
