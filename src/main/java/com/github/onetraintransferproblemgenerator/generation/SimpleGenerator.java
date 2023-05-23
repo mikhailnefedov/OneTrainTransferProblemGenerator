@@ -90,8 +90,8 @@ public class SimpleGenerator implements OneTrainTransferProblemGenerator {
             passenger.setInStation(startStation);
             passenger.setOutStation(endStation);
 
-            passenger.setInPosition(random.nextInt(POSITION_COUNT));
-            passenger.setOutPosition(random.nextInt(POSITION_COUNT));
+            passenger.setInPosition(random.nextInt(1, POSITION_COUNT));
+            passenger.setOutPosition(random.nextInt(1, POSITION_COUNT));
 
             passengers.add(passenger);
         }
