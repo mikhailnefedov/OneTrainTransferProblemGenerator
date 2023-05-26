@@ -61,7 +61,6 @@ public class FeatureExtractor {
         return congestions.stream().mapToDouble(d -> d).average().orElse(0.0);
     }
 
-    //TODO: Refactor method to call both avg and max and then setting it
     private static double getMaxCongestion(List<Double> congestions) {
         return congestions.stream().max(Double::compare).orElse(0.0);
     }
@@ -72,7 +71,9 @@ public class FeatureExtractor {
         List<Double> congestions = new ArrayList<>();
 
         for (Integer stationId : problem.getTrain().getStationIds()) {
-            congestions.add(currentPassengerCount / trainCapacity);
+            double congestion = currentPassengerCount / trainCapacity;
+            congestion = Double.isNaN(congestion) ? 0.0 : congestion;
+            congestions.add(congestion);
             currentPassengerCount += problem.getInPassengersOfStation(stationId).size();
             currentPassengerCount -= problem.getOutPassengersOfStation(stationId).size();
         }
