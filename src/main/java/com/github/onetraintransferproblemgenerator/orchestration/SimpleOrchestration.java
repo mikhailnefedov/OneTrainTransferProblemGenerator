@@ -11,6 +11,7 @@ import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRepository;
 import com.github.onetraintransferproblemgenerator.serialization.InstanceToCSVWriter;
 import com.github.onetraintransferproblemgenerator.solvers.FirstAvailableCarriageSolver;
+import com.github.onetraintransferproblemgenerator.solvers.GreedySolver;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import com.github.onetraintransferproblemgenerator.validation.InstanceValidator;
 import com.mongodb.ConnectionString;
@@ -82,8 +83,12 @@ public class SimpleOrchestration {
     private List<InstanceFeatureDescription> solveInstances(List<OneTrainTransferProblem> instances, List<InstanceFeatureDescription> featureDescriptions) {
         for (int i = 0; i < instances.size(); i++) {
             OneTrainTransferSolver solver = new FirstAvailableCarriageSolver(instances.get(i));
+            double firstRailCarriageCost = solver.solve();
+            featureDescriptions.get(i).setFirstAvailableCarriageCost(firstRailCarriageCost);
+
+            solver = new GreedySolver(instances.get(i));
             double greedyCost = solver.solve();
-            featureDescriptions.get(i).setFirstAvailableCarriageCost(greedyCost);
+            featureDescriptions.get(i).setGreedyCost(greedyCost);
         }
         return featureDescriptions;
     }

@@ -17,4 +17,6 @@ public class InstanceFeatureDescription {
     private double averageRailCarriageCapacity;
     @CsvBindByName(column = "algo_firstAvailableCarriage")
     private double firstAvailableCarriageCost;
+    @CsvBindByName(column = "algo_greedy")
+    private double greedyCost;
 }
