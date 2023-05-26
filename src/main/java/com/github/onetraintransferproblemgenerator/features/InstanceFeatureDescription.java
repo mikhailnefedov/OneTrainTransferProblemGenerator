@@ -15,6 +15,10 @@ public class InstanceFeatureDescription {
     private int passengerCount;
     @CsvBindByName(column = "feature_averageRailCarriageCapacity")
     private double averageRailCarriageCapacity;
+    @CsvBindByName(column = "feature_averageCongestion")
+    private double averageCongestion;
+    @CsvBindByName(column = "feature_maxCongestion")
+    private double maxCongestion;
     @CsvBindByName(column = "algo_firstAvailableCarriage")
     private double firstAvailableCarriageCost;
     @CsvBindByName(column = "algo_greedy")
