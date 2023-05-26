@@ -25,4 +25,12 @@ public abstract class OneTrainTransferSolver {
             .getDistanceBetweenPositionAndCarriagePosition(stationId, railCarriageId, passengerPosition);
         solutionCost += costComputer.computeCost(distance);
     }
+
+    /**
+     *
+     * @param distance simple distance without prior use of cost computation
+     */
+    protected void addToSolutionCost(int distance) {
+        solutionCost += costComputer.computeCost(distance);
+    }
 }
