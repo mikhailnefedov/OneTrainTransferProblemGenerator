@@ -14,6 +14,7 @@ public class RailCarriagePositionHelper {
     public RailCarriagePositionHelper(Train train) {
         this.train = train;
         lastRailCarriageId = train.getRailCarriages().size();
+        railCarriagePositionsOfStations = new HashMap<>();
 
         for (StationTuple station : train.getStations()) {
             setRailCarriagePositionsOfStation(station.getStationId());

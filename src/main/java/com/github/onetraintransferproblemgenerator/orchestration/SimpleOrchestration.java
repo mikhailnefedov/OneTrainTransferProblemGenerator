@@ -44,7 +44,7 @@ public class SimpleOrchestration {
         validateInstances(instances);
         List<InstanceFeatureDescription> featureDescriptions = generateFeatureDescriptions(instances);
         featureDescriptions = solveInstances(instances, featureDescriptions);
-        saveToMongoDB(instances, featureDescriptions);
+        //saveToMongoDB(instances, featureDescriptions);
         serializeToCsv(featureDescriptions);
 
         mongoClient.close();
