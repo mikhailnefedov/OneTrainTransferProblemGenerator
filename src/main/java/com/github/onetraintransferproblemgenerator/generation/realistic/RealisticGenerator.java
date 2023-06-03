@@ -3,6 +3,7 @@ package com.github.onetraintransferproblemgenerator.generation.realistic;
 import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
 import com.github.onetraintransferproblemgenerator.models.RailCarriage;
+import com.github.onetraintransferproblemgenerator.models.StationTuple;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -82,21 +83,24 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
                 .collect(Collectors.toList())
         );
 
-        for (Station station : trainRoute) {
+        List<StationTuple> stationTuples = new ArrayList<>();
+        for (int i=0; i < trainRoute.size(); i++) {
+            Station station = trainRoute.get(i);
             if (station.isRailhead()) {
-                convertRailheadStation();
+                stationTuples.add(convertRailheadStation(station));
             } else {
                 convertSimpleStation();
             }
         }
     }
 
-    private void convertRailheadStation() {
-
+    private StationTuple convertRailheadStation(Station station) {
+        //StationTuple tuple = new StationTuple();
+        return null;
     }
 
-    private void convertSimpleStation() {
-
+    private StationTuple convertSimpleStation() {
+        return null;
     }
 
     public static void main(String[] args) {
