@@ -12,7 +12,7 @@ class Train {
     private List<CarriageData> carriageData;
 
     @Data
-    private static class CarriageData {
+    public static class CarriageData {
         private String carriageType;
         private int carriageId;
         private int capacity;

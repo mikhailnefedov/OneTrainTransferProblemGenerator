@@ -21,6 +21,13 @@
     "accessPositions": [3, 5]
   },
   {
+    "stationName": "Leipzig Hbf",
+    "stationClass": 1,
+    "railhead": true,
+    "numberOfPositions": 16,
+    "accessPositions": [1]
+  },
+  {
     "stationName": "Dresden Hbf",
     "stationClass": 1,
     "railhead": false,

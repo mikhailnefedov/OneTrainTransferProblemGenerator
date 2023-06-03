@@ -7,11 +7,11 @@ import java.util.List;
 
 @Data
 public class Train {
-    private ArrayList<RailCarriage> railCarriages = new ArrayList<>();
+    private List<RailCarriage> railCarriages = new ArrayList<>();
     /**
      * left: station id, right: platform position
      */
-    private ArrayList<StationTuple> stations = new ArrayList<>();
+    private List<StationTuple> stations = new ArrayList<>();
 
     public int getTotalCapacity() {
         return railCarriages.stream().map(RailCarriage::getCapacity).reduce(0, Integer::sum);
