@@ -2,168 +2,168 @@
   {
     "stationName": "Hauptbahnhof Berlin",
     "stationClass": 1,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 14,
     "accessPositions": [1, 3, 9, 11]
   },
   {
     "stationName": "Hauptbahnhof Berlin",
     "stationClass": 1,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 14,
     "accessPositions": [9, 11]
   },
   {
     "stationName": "Dortmund Hbf",
     "stationClass": 1,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 10,
     "accessPositions": [3, 5]
   },
   {
     "stationName": "Dresden Hbf",
     "stationClass": 1,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 14,
     "accessPositions": [5, 9]
   },
   {
     "stationName": "Dresden Hbf",
     "stationClass": 1,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 16,
     "accessPositions": [1, 5, 9, 13]
   },
   {
     "stationName": "Dresden Hbf",
     "stationClass": 1,
-    "isRailhead": true,
+    "railhead": true,
     "numberOfPositions": 8,
     "accessPositions": [1]
   },
   {
     "stationName": "Duisburg Hbf",
     "stationClass": 1,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 12,
     "accessPositions": [3, 5]
   },
   {
     "stationName": "Essen Hbf",
     "stationClass": 1,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 12,
     "accessPositions": [1, 3, 5, 9]
   },
   {
     "stationName": "N\u00fcrnberg Hbf",
     "stationClass": 1,
-    "isRailhead": true,
+    "railhead": true,
     "numberOfPositions": 12,
     "accessPositions": [3, 5, 7, 9]
   },
   {
     "stationName": "Berlin Zoologischer Garten",
     "stationClass": 2,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 10,
     "accessPositions": [3, 7, 9]
   },
   {
     "stationName": "Bielefeld Hbf",
     "stationClass": 2,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 10,
     "accessPositions": [3, 5]
   },
   {
     "stationName": "Bremen Hbf",
     "stationClass": 2,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 10,
     "accessPositions": [3, 5]
   },
   {
     "stationName": "Darmstadt Hbf",
     "stationClass": 2,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 14,
     "accessPositions": [5, 7]
   },
   {
     "stationName": "Erfurt Hbf",
     "stationClass": 2,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 16,
     "accessPositions": [3, 7, 9]
   },
   {
     "stationName": "G\u00f6ttingen Hbf",
     "stationClass": 2,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 12,
     "accessPositions": [5, 7]
   },
   {
     "stationName": "G\u00f6ttingen Hbf",
     "stationClass": 2,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 2,
     "accessPositions": [1, 3]
   },
   {
     "stationName": "Kiel Hbf",
     "stationClass": 2,
-    "isRailhead": true,
+    "railhead": true,
     "numberOfPositions": 10,
     "accessPositions": [1]
   },
   {
     "stationName": "Wiesbaden Hbf",
     "stationClass": 2,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 12,
     "accessPositions": [1]
   },
   {
     "stationName": "Weimar Hbf",
     "stationClass": 3,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 12,
     "accessPositions": [3, 5]
   },
   {
     "stationName": "Weimar Hbf",
     "stationClass": 3,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 10,
     "accessPositions": [5, 7]
   },
   {
     "stationName": "Hamm Hbf",
     "stationClass": 3,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 16,
     "accessPositions": [9, 11]
   },
   {
     "stationName": "Hamburg Dammtor",
     "stationClass": 3,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 6,
     "accessPositions": [1, 5]
   },
   {
     "stationName": "Stralsund Hbf",
     "stationClass": 3,
-    "isRailhead": true,
+    "railhead": true,
     "numberOfPositions": 10,
     "accessPositions": [1]
   },
   {
     "stationName": "Bamberg Hbf",
     "stationClass": 3,
-    "isRailhead": false,
+    "railhead": false,
     "numberOfPositions": 10,
     "accessPositions": [5, 7]
   }

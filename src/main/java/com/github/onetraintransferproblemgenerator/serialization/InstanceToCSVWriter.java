@@ -15,7 +15,7 @@ import java.util.List;
 
 public class InstanceToCSVWriter {
 
-    private static String FILE_PATH = "../InstanceSpace/trial/metadata.csv";
+    private static String FILE_PATH = "./metadata.csv";
 
     public static void writeCSV(List<InstanceFeatureDescription> descriptions) {
 
