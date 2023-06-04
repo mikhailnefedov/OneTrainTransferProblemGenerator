@@ -1,9 +1,7 @@
 package com.github.onetraintransferproblemgenerator.generation.realistic;
 
 import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
-import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
-import com.github.onetraintransferproblemgenerator.models.RailCarriage;
-import com.github.onetraintransferproblemgenerator.models.StationTuple;
+import com.github.onetraintransferproblemgenerator.models.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -37,6 +35,7 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
         List<Station> trainRoute = generateStations(train);
 
         //TODO: Write Converter to Model, abide by logical rules
+        convertTrainToModel(train, trainRoute);
         //TODO: Generate Passengers, try different capacity usages
         return null;
     }
@@ -76,31 +75,60 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
         return stationClassProbabilityList;
     }
 
-    private void convertTrainToModel(Train train, List<Station> trainRoute) {
+    private List<StationTuple> convertTrainToModel(Train train, List<Station> trainRoute) {
         com.github.onetraintransferproblemgenerator.models.Train trainModel = new com.github.onetraintransferproblemgenerator.models.Train();
         trainModel.setRailCarriages(train.getCarriageData().stream()
                 .map(rC -> new RailCarriage(rC.getCarriageId(), rC.getCapacity()))
                 .collect(Collectors.toList())
         );
 
+        List<StationTuple> stationTuples = convertStations(train, trainRoute);
+        return setDirectionOfTravel(stationTuples, trainRoute);
+    }
+
+    private List<StationTuple> convertStations(Train train, List<Station> trainRoute) {
         List<StationTuple> stationTuples = new ArrayList<>();
-        for (int i=0; i < trainRoute.size(); i++) {
+        for (int i = 0; i < trainRoute.size(); i++) {
             Station station = trainRoute.get(i);
             if (station.isRailhead()) {
-                stationTuples.add(convertRailheadStation(station));
+                stationTuples.add(convertRailheadStation(i + 1));
             } else {
-                convertSimpleStation();
+                stationTuples.add(convertSimpleStation(station, i + 1, train));
             }
         }
+        return stationTuples;
     }
 
-    private StationTuple convertRailheadStation(Station station) {
-        //StationTuple tuple = new StationTuple();
-        return null;
+    private StationTuple convertRailheadStation(int stationId) {
+        StationOperation stationOperation = new StationOperation(1, 1, DirectionOfTravel.ascending);
+        return new StationTuple(stationId, stationOperation);
     }
 
-    private StationTuple convertSimpleStation() {
-        return null;
+    private StationTuple convertSimpleStation(Station station, int stationId, Train train) {
+        int positionCount = station.getNumberOfPositions();
+        int carriageCount = train.getCarriageCount();
+
+        int freePositions = positionCount - carriageCount;
+
+        int trainPosition = 1;
+        if (freePositions > 0) {
+            trainPosition = random.nextInt(1, freePositions + 2);
+        }
+
+        StationOperation stationOperation = new StationOperation(1, trainPosition, DirectionOfTravel.ascending);
+        return new StationTuple(stationId, stationOperation);
+    }
+
+    private List<StationTuple> setDirectionOfTravel(List<StationTuple> stationTuples, List<Station> originalStations) {
+        DirectionOfTravel lastDirectionOfTravel = DirectionOfTravel.ascending;
+        for (int i = 1; i < originalStations.size(); i++) {
+            if (originalStations.get(i).isRailhead()) {
+                lastDirectionOfTravel =
+                    lastDirectionOfTravel.equals(DirectionOfTravel.ascending) ? DirectionOfTravel.descending : DirectionOfTravel.ascending;
+            }
+            stationTuples.get(i).getStationOperation().setTravelDirection(lastDirectionOfTravel);
+        }
+        return stationTuples;
     }
 
     public static void main(String[] args) {
