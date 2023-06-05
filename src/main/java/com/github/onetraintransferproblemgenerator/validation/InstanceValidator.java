@@ -23,7 +23,7 @@ public class InstanceValidator {
             int outPassengerCount = problem.getOutPassengersOfStation(station.getStationId()).size();
             freeCapacity = freeCapacity - inPassengerCount + outPassengerCount;
             if (freeCapacity < 0) {
-                throw new NotEnoughTrainCapacityException(problem);
+                throw new NotEnoughTrainCapacityException(problem, station, freeCapacity);
             }
         }
     }
