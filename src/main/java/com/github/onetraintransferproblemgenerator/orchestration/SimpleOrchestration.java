@@ -62,9 +62,9 @@ public class SimpleOrchestration {
     private List<InstanceFeatureDescription> generateFeatureDescriptions(List<OneTrainTransferProblem> instances) {
         List<InstanceFeatureDescription> descriptions = new ArrayList<>();
         for (int i = 0; i < instances.size(); i++) {
-            String instanceId = String.format("auto_%d", i);
+            String instanceId = String.format("%s%d",parameters.getInstanceIdPrefix(), i);
             InstanceFeatureDescription description = FeatureExtractor.extract(instanceId, instances.get(i));
-
+            description.setSource(parameters.getGenerator().getClass().getSimpleName());
             descriptions.add(description);
         }
         return descriptions;
@@ -95,7 +95,7 @@ public class SimpleOrchestration {
     }
 
     private void serializeToCsv(List<InstanceFeatureDescription> descriptions) {
-        InstanceToCSVWriter.writeCSV(descriptions, parameters.getCsvFilePath());
+        InstanceToCSVWriter.writeToCSV(descriptions, parameters.getCsvFilePath());
     }
 
 }

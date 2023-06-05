@@ -1,26 +1,28 @@
 package com.github.onetraintransferproblemgenerator.features;
 
-import com.opencsv.bean.CsvBindByName;
+import com.github.onetraintransferproblemgenerator.serialization.CsvName;
 import lombok.Data;
 
 @Data
 public class InstanceFeatureDescription {
-    @CsvBindByName(column = "instances")
+    @CsvName(column = "Instances")
     private String instanceId;
-    @CsvBindByName(column = "feature_stationCount")
+    @CsvName(column = "Source")
+    private String source;
+    @CsvName(column = "feature_stationCount")
     private int stationCount;
-    @CsvBindByName(column = "feature_directionChangeCount")
+    @CsvName(column = "feature_directionChangeCount")
     private int directionChangeCount;
-    @CsvBindByName(column = "feature_passengerCount")
+    @CsvName(column = "feature_passengerCount")
     private int passengerCount;
-    @CsvBindByName(column = "feature_averageRailCarriageCapacity")
+    @CsvName(column = "feature_averageRailCarriageCapacity")
     private double averageRailCarriageCapacity;
-    @CsvBindByName(column = "feature_averageCongestion")
+    @CsvName(column = "feature_averageCongestion")
     private double averageCongestion;
-    @CsvBindByName(column = "feature_maxCongestion")
+    @CsvName(column = "feature_maxCongestion")
     private double maxCongestion;
-    @CsvBindByName(column = "algo_firstAvailableCarriage")
+    @CsvName(column = "algo_firstAvailableCarriage")
     private double firstAvailableCarriageCost;
-    @CsvBindByName(column = "algo_greedy")
+    @CsvName(column = "algo_greedy")
     private double greedyCost;
 }
