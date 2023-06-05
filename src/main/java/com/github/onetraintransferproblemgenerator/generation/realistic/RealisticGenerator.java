@@ -97,7 +97,7 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
                 stationTuples.add(convertSimpleStation(station, i + 1, train));
             }
         }
-        return stationTuples;
+        return setDirectionOfTravel(stationTuples, trainRoute);
     }
 
     private StationTuple convertRailheadStation(int stationId) {
@@ -153,7 +153,9 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
             p.setInPosition(getInPosition(stations, startStation));
             p.setOutPosition(getOutPosition(stations, lastStation));
             passengers.add(p);
+
             passengerId++;
+            availableRouteSectionCount-= lastStation - startStation;
         }
         return passengers;
     }
@@ -214,7 +216,7 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
         if (station.isRailhead()) {
             return station.getAccessPositions().get(0);
         } else {
-            return station.getAccessPositions().get(station.getAccessPositions().size());
+            return station.getAccessPositions().get(random.nextInt(station.getAccessPositions().size()));
         }
     }
 
