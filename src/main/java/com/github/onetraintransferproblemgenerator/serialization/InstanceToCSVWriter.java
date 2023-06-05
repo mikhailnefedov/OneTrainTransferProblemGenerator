@@ -1,8 +1,6 @@
 package com.github.onetraintransferproblemgenerator.serialization;
 
 import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
-import com.github.onetraintransferproblemgenerator.models.Platform;
-import com.opencsv.CSVWriter;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
@@ -15,11 +13,9 @@ import java.util.List;
 
 public class InstanceToCSVWriter {
 
-    private static String FILE_PATH = "./metadata.csv";
+    public static void writeCSV(List<InstanceFeatureDescription> descriptions, String filePath) {
 
-    public static void writeCSV(List<InstanceFeatureDescription> descriptions) {
-
-        try (Writer writer = new FileWriter(FILE_PATH)) {
+        try (Writer writer = new FileWriter(filePath)) {
 
             StatefulBeanToCsv<InstanceFeatureDescription> sbc =
                 new StatefulBeanToCsvBuilder<InstanceFeatureDescription>(writer)

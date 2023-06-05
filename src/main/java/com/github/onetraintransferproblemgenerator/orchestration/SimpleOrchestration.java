@@ -1,9 +1,7 @@
 package com.github.onetraintransferproblemgenerator.orchestration;
 
-import com.github.onetraintransferproblemgenerator.exceptions.NotEnoughTrainCapacityException;
 import com.github.onetraintransferproblemgenerator.features.FeatureExtractor;
 import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
-import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
 import com.github.onetraintransferproblemgenerator.persistence.IdGenerator;
 import com.github.onetraintransferproblemgenerator.persistence.MongoClientConfiguration;
@@ -14,10 +12,7 @@ import com.github.onetraintransferproblemgenerator.solvers.FirstAvailableCarriag
 import com.github.onetraintransferproblemgenerator.solvers.GreedySolver;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import com.github.onetraintransferproblemgenerator.validation.InstanceValidator;
-import com.mongodb.ConnectionString;
 import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoDatabase;
 import lombok.SneakyThrows;
 
 import java.util.ArrayList;
@@ -25,15 +20,14 @@ import java.util.List;
 
 public class SimpleOrchestration {
 
-    private final int INSTANCE_COUNT = 150;
-    private OneTrainTransferProblemGenerator generator;
+    private final OrchestrationParameters parameters;
     private InstanceValidator validator;
     private List<OneTrainTransferSolver> solvers;
     private MongoClient mongoClient;
     private ProblemInstanceRepository problemInstanceRepository;
 
-    public SimpleOrchestration(OneTrainTransferProblemGenerator generator) {
-        this.generator = generator;
+    public SimpleOrchestration(OrchestrationParameters parameters) {
+        this.parameters = parameters;
         validator = new InstanceValidator();
         mongoClient = MongoClientConfiguration.configureMongoClient();
         problemInstanceRepository = new ProblemInstanceRepository(mongoClient.getDatabase("OneTrainTransfer"));
@@ -52,8 +46,8 @@ public class SimpleOrchestration {
 
     private List<OneTrainTransferProblem> generateInstances() {
         List<OneTrainTransferProblem> instances = new ArrayList<>();
-        for (int i = 0; i < INSTANCE_COUNT; i++) {
-            instances.add(generator.generate());
+        for (int i = 0; i < parameters.getInstanceCount(); i++) {
+            instances.add(parameters.getGenerator().generate());
         }
         return instances;
     }
@@ -101,7 +95,7 @@ public class SimpleOrchestration {
     }
 
     private void serializeToCsv(List<InstanceFeatureDescription> descriptions) {
-        InstanceToCSVWriter.writeCSV(descriptions);
+        InstanceToCSVWriter.writeCSV(descriptions, parameters.getCsvFilePath());
     }
 
 }
