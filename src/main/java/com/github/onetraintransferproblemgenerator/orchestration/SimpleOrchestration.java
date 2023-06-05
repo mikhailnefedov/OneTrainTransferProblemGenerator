@@ -61,10 +61,7 @@ public class SimpleOrchestration {
     @SneakyThrows
     private void validateInstances(List<OneTrainTransferProblem> instances) {
         for (OneTrainTransferProblem instance : instances) {
-            boolean isValidated = validator.validateInstance(instance);
-            if (!isValidated) {
-                throw new NotEnoughTrainCapacityException(instance);
-            }
+            validator.validateInstance(instance);
         }
     }
 
