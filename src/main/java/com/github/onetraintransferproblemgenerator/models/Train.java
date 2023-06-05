@@ -21,6 +21,8 @@ public class Train {
         return stations.stream().map(StationTuple::getStationId).toList();
     }
 
+    public int getStationCount() {return stations.size();}
+
     public int getTrainLength() {
         return railCarriages.size();
     }

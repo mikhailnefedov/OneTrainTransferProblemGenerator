@@ -21,6 +21,7 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
 
     private final int maxStationCount = 24;
     private Random random;
+    private Map<Integer, Integer> freeCapacityFromStation;
 
     public RealisticGenerator() {
         stations = RealisticDataReader.getStations();
@@ -34,10 +35,10 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
         Train train = generateTrain();
         List<Station> trainRoute = generateStations(train);
 
-        //TODO: Write Converter to Model, abide by logical rules
-        convertTrainToModel(train, trainRoute);
-        //TODO: Generate Passengers, try different capacity usages
-        return null;
+        com.github.onetraintransferproblemgenerator.models.Train trainModel = convertTrainToModel(train, trainRoute);
+        List<Passenger> passengers = generatePassengers(trainRoute, trainModel);
+
+        return new OneTrainTransferProblem(trainModel, passengers);
     }
 
     private Train generateTrain() {
@@ -75,15 +76,15 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
         return stationClassProbabilityList;
     }
 
-    private List<StationTuple> convertTrainToModel(Train train, List<Station> trainRoute) {
+    private com.github.onetraintransferproblemgenerator.models.Train convertTrainToModel(Train train, List<Station> trainRoute) {
         com.github.onetraintransferproblemgenerator.models.Train trainModel = new com.github.onetraintransferproblemgenerator.models.Train();
         trainModel.setRailCarriages(train.getCarriageData().stream()
                 .map(rC -> new RailCarriage(rC.getCarriageId(), rC.getCapacity()))
                 .collect(Collectors.toList())
         );
 
-        List<StationTuple> stationTuples = convertStations(train, trainRoute);
-        return setDirectionOfTravel(stationTuples, trainRoute);
+        trainModel.setStations(convertStations(train, trainRoute));
+        return trainModel;
     }
 
     private List<StationTuple> convertStations(Train train, List<Station> trainRoute) {
@@ -129,6 +130,92 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
             stationTuples.get(i).getStationOperation().setTravelDirection(lastDirectionOfTravel);
         }
         return stationTuples;
+    }
+
+    private List<Passenger> generatePassengers(List<Station> trainRoute, com.github.onetraintransferproblemgenerator.models.Train trainModel) {
+        initializeCapacityTracker(trainModel);
+        int availableRouteSectionCount = computeAvailableRouteSections(trainModel);
+
+        List<Passenger> passengers = new ArrayList<>();
+        int passengerId = 1;
+        while (availableRouteSectionCount > 0) {
+            List<Integer> possibleStartStations = getAllPossibleStartStations();
+            int startStation = possibleStartStations.get(random.nextInt(possibleStartStations.size()));
+            int lastPossiblePenultimateStation = getPenultimateStation(startStation, trainModel);
+            int lastStation = random.nextInt(startStation, lastPossiblePenultimateStation + 2);
+
+            Passenger p = new Passenger();
+            p.setId(passengerId);
+            p.setInStation(startStation);
+            p.setOutStation(lastStation);
+            p.setInPlatform(1);
+            p.setOutPlatform(1);
+            p.setInPosition(getInPosition(stations, startStation));
+            p.setOutPosition(getOutPosition(stations, lastStation));
+            passengers.add(p);
+            passengerId++;
+        }
+        return passengers;
+    }
+
+    private void initializeCapacityTracker(com.github.onetraintransferproblemgenerator.models.Train train) {
+        freeCapacityFromStation = new HashMap<>();
+
+        int totalCapacity = train.getTotalCapacity();
+        for (Integer stationId : train.getStationIds()) {
+            freeCapacityFromStation.put(stationId, totalCapacity);
+        }
+        freeCapacityFromStation.remove(train.getStationIds().get(train.getStationCount() - 1));
+    }
+
+    private int computeAvailableRouteSections(com.github.onetraintransferproblemgenerator.models.Train trainModel) {
+        int totalCapacity = trainModel.getTotalCapacity();
+        int stationCount = trainModel.getStationCount();
+
+        double min = 0.05;
+        double max = 1.0;
+        double increment = 0.02;
+        double randomValue = min + (max - min) * random.nextDouble();
+        randomValue = randomValue / increment;
+        double totalCongestion = Math.floor(randomValue) * increment;
+
+        return (int) (totalCapacity * (stationCount - 1) * totalCongestion);
+    }
+
+    private List<Integer> getAllPossibleStartStations() {
+        return freeCapacityFromStation.entrySet().stream().filter(entry -> entry.getValue() > 0).map(Map.Entry::getKey).toList();
+    }
+
+    private int getPenultimateStation(int startStation, com.github.onetraintransferproblemgenerator.models.Train train) {
+        int lastPossibleStation = startStation;
+
+        for (int i = startStation + 1; i < train.getStationIds().size(); i++) {
+            if (freeCapacityFromStation.get(i) > 0) {
+                lastPossibleStation = i;
+            } else {
+                break;
+            }
+        }
+        return lastPossibleStation;
+    }
+
+    private int getInPosition(List<Station> stations, int stationId) {
+        Station station = stations.get(stationId - 1);
+        int positionCount = station.getNumberOfPositions();
+        int randomAccessPosition = station.getAccessPositions().get(random.nextInt(station.getAccessPositions().size()));
+        if (randomAccessPosition > 2 && randomAccessPosition < positionCount - 2) {
+            return random.nextInt(randomAccessPosition - 2, randomAccessPosition + 2);
+        }
+        return randomAccessPosition;
+    }
+
+    private int getOutPosition(List<Station> stations, int stationId) {
+        Station station = stations.get(stationId - 1);
+        if (station.isRailhead()) {
+            return station.getAccessPositions().get(0);
+        } else {
+            return station.getAccessPositions().get(station.getAccessPositions().size());
+        }
     }
 
     public static void main(String[] args) {
