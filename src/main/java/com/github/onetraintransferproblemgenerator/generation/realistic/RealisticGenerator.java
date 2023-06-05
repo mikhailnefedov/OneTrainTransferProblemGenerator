@@ -143,6 +143,7 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
             int startStation = possibleStartStations.get(random.nextInt(possibleStartStations.size()));
             int lastPossiblePenultimateStation = getPenultimateStation(startStation, trainModel);
             int lastStation = random.nextInt(startStation, lastPossiblePenultimateStation + 2);
+            updateFreeCapacitiesFromStation(startStation, lastStation - 1);
 
             Passenger p = new Passenger();
             p.setId(passengerId);
@@ -199,6 +200,12 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
             }
         }
         return lastPossibleStation;
+    }
+
+    private void updateFreeCapacitiesFromStation(int startStation, int penultimateStation) {
+        for (int i = startStation; i <= penultimateStation; i++) {
+            freeCapacityFromStation.put(i, freeCapacityFromStation.get(i) - 1);
+        }
     }
 
     private int getInPosition(List<Station> stations, int stationId) {
