@@ -101,7 +101,7 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
     }
 
     private StationTuple convertRailheadStation(int stationId) {
-        StationOperation stationOperation = new StationOperation(1, 1, DirectionOfTravel.ascending);
+        StationOperation stationOperation = new StationOperation(1, DirectionOfTravel.ascending);
         return new StationTuple(stationId, stationOperation);
     }
 
@@ -116,7 +116,7 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
             trainPosition = random.nextInt(1, freePositions + 2);
         }
 
-        StationOperation stationOperation = new StationOperation(1, trainPosition, DirectionOfTravel.ascending);
+        StationOperation stationOperation = new StationOperation(trainPosition, DirectionOfTravel.ascending);
         return new StationTuple(stationId, stationOperation);
     }
 

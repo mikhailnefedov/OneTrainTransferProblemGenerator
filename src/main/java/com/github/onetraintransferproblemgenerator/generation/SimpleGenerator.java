@@ -66,7 +66,6 @@ public class SimpleGenerator implements OneTrainTransferProblemGenerator {
             stationTuple.setStationId(station.getId());
 
             StationOperation stationOperation = new StationOperation();
-            stationOperation.setPlatformId(1);
             stationOperation.setPosition(1);
             DirectionOfTravel travelDirection = DirectionOfTravel.values()[new Random().nextInt(DirectionOfTravel.values().length)];
             stationOperation.setTravelDirection(travelDirection);

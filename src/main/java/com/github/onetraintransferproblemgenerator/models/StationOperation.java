@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StationOperation {
-    private int platformId;
     private int position;
     private DirectionOfTravel travelDirection;
 }
