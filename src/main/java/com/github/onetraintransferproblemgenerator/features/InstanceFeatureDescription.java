@@ -16,14 +16,18 @@ public class InstanceFeatureDescription {
     private int stationCount;
     @CsvName(column = "feature_directionChangeCount")
     private int directionChangeCount;
-    @CsvName(column = "feature_passengerCount")
-    private int passengerCount;
-    @CsvName(column = "feature_averageRailCarriageCapacity")
+    @CsvName(column = "feature_totalPassengerCount")
+    private int totalPassengerCount;
+    @CsvName(column = "feature_avgPassengerCount")
+    private double averagePassengerCount;
+    @CsvName(column = "feature_avgPassengerRouteLength")
+    private double averagePassengerRouteLength;
+    @CsvName(column = "feature_avgRailCarriageCapacity")
     private double averageRailCarriageCapacity;
-    @CsvName(column = "feature_averageCongestion")
+    @CsvName(column = "feature_stdDevRailCarriageCapacity")
+    private double standardDeviationRailCarriageCapacity;
+    @CsvName(column = "feature_avgCongestion")
     private double averageCongestion;
-    @CsvName(column = "feature_maxCongestion")
-    private double maxCongestion;
     @CsvName(column = "algo_firstAvailableCarriage")
     private double firstAvailableCarriageCost;
     @CsvName(column = "algo_greedy")

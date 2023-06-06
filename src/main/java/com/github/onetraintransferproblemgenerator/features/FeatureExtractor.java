@@ -13,9 +13,9 @@ public class FeatureExtractor {
         InstanceFeatureDescription description = new InstanceFeatureDescription();
         description.setInstanceId(instanceId);
         description.setStationCount(getStationCount(problem));
-        description.setPassengerCount(getPassengerCount(problem));
+        setPassengerFeatures(description, problem);
         description.setDirectionChangeCount(getDirectionChangeCount(problem));
-        description.setAverageRailCarriageCapacity(getAverageRailCarriageCapacity(problem));
+        setRailCarriageCapacities(description, problem);
         setCongestion(description, problem);
         return description;
     }
@@ -35,12 +35,37 @@ public class FeatureExtractor {
         return directionChangeCount;
     }
 
-    private static int getPassengerCount(OneTrainTransferProblem problem) {
+    private static void setPassengerFeatures(InstanceFeatureDescription description, OneTrainTransferProblem problem) {
+        description.setTotalPassengerCount(getTotalPassengerCount(problem));
+        description.setAveragePassengerCount(getAveragePassengerCount(problem));
+        description.setAveragePassengerRouteLength(getAveragePassengerRouteLength(problem));
+    }
+
+    private static int getTotalPassengerCount(OneTrainTransferProblem problem) {
         return problem.getPassengers().size();
+    }
+
+    private static double getAveragePassengerCount(OneTrainTransferProblem problem) {
+        return (double) getTotalPassengerCount(problem) / getStationCount(problem);
+    }
+
+    private static double getAveragePassengerRouteLength(OneTrainTransferProblem problem) {
+        int routeLengthSum = problem.getPassengers().stream()
+                .map(p -> p.getOutStation() - p.getInStation())
+                .reduce(Integer::sum)
+                .orElse(0);
+        double avgPassengerRouteLength = (double) routeLengthSum / problem.getPassengers().size();
+        return Double.isNaN(avgPassengerRouteLength) ? 0.0 : avgPassengerRouteLength;
     }
 
     private static int getStationCount(OneTrainTransferProblem problem) {
         return problem.getTrain().getStations().size();
+    }
+
+    private static void setRailCarriageCapacities(InstanceFeatureDescription description, OneTrainTransferProblem problem) {
+        double avgRailCarriageCapacity = getAverageRailCarriageCapacity(problem);
+        description.setAverageRailCarriageCapacity(avgRailCarriageCapacity);
+        description.setStandardDeviationRailCarriageCapacity(getStandardDeviationRailCarriageCapacity(problem, avgRailCarriageCapacity));
     }
 
     private static double getAverageRailCarriageCapacity(OneTrainTransferProblem problem) {
@@ -51,18 +76,22 @@ public class FeatureExtractor {
             .orElse(0.0);
     }
 
+    private static double getStandardDeviationRailCarriageCapacity(OneTrainTransferProblem problem, double mean) {
+        double variance = problem.getTrain().getRailCarriages().stream()
+                .map(rC -> Math.pow(rC.getCapacity() - mean, 2))
+                .reduce(Double::sum)
+                .orElse(0.0) / problem.getTrain().getRailCarriages().size();
+        variance = Double.isNaN(variance) ? 0 : variance;
+        return Math.sqrt(variance);
+    }
+
     private static void setCongestion(InstanceFeatureDescription description, OneTrainTransferProblem problem) {
         List<Double> congestions = getCongestionsOfSubRoutes(problem);
-        description.setMaxCongestion(getMaxCongestion(congestions));
         description.setAverageCongestion(getAverageCongestion(congestions));
     }
 
     private static double getAverageCongestion(List<Double> congestions) {
         return congestions.stream().mapToDouble(d -> d).average().orElse(0.0);
-    }
-
-    private static double getMaxCongestion(List<Double> congestions) {
-        return congestions.stream().max(Double::compare).orElse(0.0);
     }
 
     private static List<Double> getCongestionsOfSubRoutes(OneTrainTransferProblem problem) {
