@@ -149,8 +149,6 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
             p.setId(passengerId);
             p.setInStation(startStation);
             p.setOutStation(lastStation);
-            p.setInPlatform(1);
-            p.setOutPlatform(1);
             p.setInPosition(getInPosition(stations, startStation));
             p.setOutPosition(getOutPosition(stations, lastStation));
             passengers.add(p);

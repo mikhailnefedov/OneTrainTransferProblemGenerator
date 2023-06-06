@@ -35,7 +35,7 @@ public class InstanceValidator {
     private static void validatePassengerRoute(OneTrainTransferProblem problem) throws PassengerRouteException {
         List<Passenger> passengers = problem.getPassengers();
         for (Passenger p : passengers) {
-            if (p.getInStation() >= p.getOutPlatform()) {
+            if (p.getInStation() >= p.getOutStation()) {
                 throw new PassengerRouteException(problem, p);
             }
         }
