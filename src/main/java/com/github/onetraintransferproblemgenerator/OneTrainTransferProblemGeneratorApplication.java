@@ -1,6 +1,5 @@
 package com.github.onetraintransferproblemgenerator;
 
-import com.github.onetraintransferproblemgenerator.generation.SimpleGenerator;
 import com.github.onetraintransferproblemgenerator.generation.realistic.RealisticGenerator;
 import com.github.onetraintransferproblemgenerator.orchestration.OrchestrationParameters;
 import com.github.onetraintransferproblemgenerator.orchestration.SimpleOrchestration;
