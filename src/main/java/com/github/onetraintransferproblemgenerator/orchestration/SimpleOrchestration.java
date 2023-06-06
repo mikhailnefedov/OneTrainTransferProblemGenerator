@@ -15,13 +15,14 @@ import com.github.onetraintransferproblemgenerator.validation.InstanceValidator;
 import com.mongodb.client.MongoClient;
 import lombok.SneakyThrows;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleOrchestration {
 
     private final OrchestrationParameters parameters;
-    private List<OneTrainTransferSolver> solvers;
     private MongoClient mongoClient;
     private ProblemInstanceRepository problemInstanceRepository;
 
@@ -68,16 +69,24 @@ public class SimpleOrchestration {
         return descriptions;
     }
 
-    //TODO: Refactor to better use of multiple solvers
     private List<InstanceFeatureDescription> solveInstances(List<OneTrainTransferProblem> instances, List<InstanceFeatureDescription> featureDescriptions) {
         for (int i = 0; i < instances.size(); i++) {
-            OneTrainTransferSolver solver = new FirstAvailableCarriageSolver(instances.get(i));
-            double firstRailCarriageCost = solver.solve();
-            featureDescriptions.get(i).setFirstAvailableCarriageCost(firstRailCarriageCost);
-
-            solver = new GreedySolver(instances.get(i));
-            double greedyCost = solver.solve();
-            featureDescriptions.get(i).setGreedyCost(greedyCost);
+            for (Class<? extends OneTrainTransferSolver> solverClass : parameters.getSolvers()) {
+                try {
+                    Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class);
+                    OneTrainTransferSolver solver = con.newInstance(instances.get(i));
+                    double cost = solver.solve();
+                    featureDescriptions.get(i).setAlgorithmCost(cost, solverClass);
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return featureDescriptions;
     }

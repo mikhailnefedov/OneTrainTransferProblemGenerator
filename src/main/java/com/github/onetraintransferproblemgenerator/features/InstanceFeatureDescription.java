@@ -1,6 +1,9 @@
 package com.github.onetraintransferproblemgenerator.features;
 
 import com.github.onetraintransferproblemgenerator.serialization.CsvName;
+import com.github.onetraintransferproblemgenerator.solvers.FirstAvailableCarriageSolver;
+import com.github.onetraintransferproblemgenerator.solvers.GreedySolver;
+import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import lombok.Data;
 
 @Data
@@ -25,4 +28,12 @@ public class InstanceFeatureDescription {
     private double firstAvailableCarriageCost;
     @CsvName(column = "algo_greedy")
     private double greedyCost;
+
+    public void setAlgorithmCost(double cost, Class<? extends OneTrainTransferSolver> solverClass) {
+        if (solverClass.equals(FirstAvailableCarriageSolver.class)) {
+            setFirstAvailableCarriageCost(cost);
+        } else if (solverClass.equals(GreedySolver.class)) {
+            setGreedyCost(cost);
+        }
+    }
 }
