@@ -21,14 +21,12 @@ import java.util.List;
 public class SimpleOrchestration {
 
     private final OrchestrationParameters parameters;
-    private InstanceValidator validator;
     private List<OneTrainTransferSolver> solvers;
     private MongoClient mongoClient;
     private ProblemInstanceRepository problemInstanceRepository;
 
     public SimpleOrchestration(OrchestrationParameters parameters) {
         this.parameters = parameters;
-        validator = new InstanceValidator();
         mongoClient = MongoClientConfiguration.configureMongoClient();
         problemInstanceRepository = new ProblemInstanceRepository(mongoClient.getDatabase("OneTrainTransfer"));
     }
@@ -55,7 +53,7 @@ public class SimpleOrchestration {
     @SneakyThrows
     private void validateInstances(List<OneTrainTransferProblem> instances) {
         for (OneTrainTransferProblem instance : instances) {
-            validator.validateInstance(instance);
+            InstanceValidator.validateInstance(instance);
         }
     }
 
