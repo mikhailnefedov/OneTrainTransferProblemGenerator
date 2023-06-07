@@ -1,9 +1,12 @@
 package com.github.onetraintransferproblemgenerator.solvers;
 
+import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.models.StationTuple;
 import com.github.onetraintransferproblemgenerator.models.Train;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RailCarriagePositionHelper {
 
@@ -44,7 +47,21 @@ public class RailCarriagePositionHelper {
         }
     }
 
-    public HashMap<Integer, Integer> getDistancesBetweenRailCarriagesAndPosition(int stationId, int position) {
+    public List<RailCarriageDistance> getDistanceIfRailCarriageIsUsed(Passenger passenger) {
+        HashMap<Integer, Integer> inDistances =
+                getDistancesBetweenRailCarriagesAndPosition(passenger.getInStation(), passenger.getInPosition());
+        HashMap<Integer, Integer> outDistances =
+                getDistancesBetweenRailCarriagesAndPosition(passenger.getOutStation(), passenger.getOutPosition());
+
+        return inDistances.entrySet().stream().map(entry -> {
+            int railCarriageId = entry.getKey();
+            int inDistance = entry.getValue();
+            int outDistance = outDistances.get(railCarriageId);
+            return new RailCarriageDistance(railCarriageId, inDistance, outDistance);
+        }).collect(Collectors.toList());
+    }
+
+    private HashMap<Integer, Integer> getDistancesBetweenRailCarriagesAndPosition(int stationId, int position) {
         HashMap<Integer, Integer> resultMap = new HashMap<>();
         HashMap<Integer, Integer> railCarriagePositions = railCarriagePositionsOfStations.get(stationId);
 

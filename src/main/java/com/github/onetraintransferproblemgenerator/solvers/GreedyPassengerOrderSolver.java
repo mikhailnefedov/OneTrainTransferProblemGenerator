@@ -2,8 +2,6 @@ package com.github.onetraintransferproblemgenerator.solvers;
 
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
 import com.github.onetraintransferproblemgenerator.models.Passenger;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -41,7 +39,7 @@ public class GreedyPassengerOrderSolver extends OneTrainTransferSolver {
 
     private void seatPassengersInTrain(List<Passenger> passengers) {
         for (Passenger passenger : passengers) {
-            List<RailCarriageDistance> railCarriageDistances = getDistanceIfRailCarriageIsUsed(passenger);
+            List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistanceIfRailCarriageIsUsed(passenger);
             railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCombinedDistances));
             for (RailCarriageDistance railCarriageDistance : railCarriageDistances) {
                 if (capacityStorage.isBoardingPossible(railCarriageDistance.getRailCarriageId())) {
@@ -54,33 +52,4 @@ public class GreedyPassengerOrderSolver extends OneTrainTransferSolver {
         }
     }
 
-    private List<RailCarriageDistance> getDistanceIfRailCarriageIsUsed(Passenger passenger) {
-        HashMap<Integer, Integer> inDistances =
-                carriagePositionHelper.getDistancesBetweenRailCarriagesAndPosition(passenger.getInStation(), passenger.getInPosition());
-        HashMap<Integer, Integer> outDistances =
-                carriagePositionHelper.getDistancesBetweenRailCarriagesAndPosition(passenger.getOutStation(), passenger.getOutPosition());
-
-        return inDistances.entrySet().stream().map(entry -> {
-            int railCarriageId = entry.getKey();
-            int inDistance = entry.getValue();
-            int outDistance = outDistances.get(railCarriageId);
-            return new RailCarriageDistance(railCarriageId, inDistance, outDistance);
-        }).collect(Collectors.toList());
-    }
-
-    @Data
-    @AllArgsConstructor
-    private class RailCarriageDistance {
-        private int railCarriageId;
-        private int combinedDistances;
-        private int inDistance;
-        private int outDistance;
-
-        public RailCarriageDistance(int railCarriageId, int inDistance, int outDistance) {
-            combinedDistances = inDistance + outDistance;
-            this.railCarriageId = railCarriageId;
-            this.inDistance = inDistance;
-            this.outDistance = outDistance;
-        }
-    }
 }
