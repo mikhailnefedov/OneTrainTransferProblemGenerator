@@ -16,9 +16,9 @@ public class SectionCapacityRailCarriageStorage {
         railCarriageOfPassenger = new HashMap<>();
 
         for (RailCarriage railCarriage : train.getRailCarriages()) {
-            HashMap<Integer, Integer> sectionCapacity =
-                    freeSectionCapacityOfRailCarriages.put(railCarriage.getSequenceNumber(), new HashMap<>());
+            freeSectionCapacityOfRailCarriages.put(railCarriage.getSequenceNumber(), new HashMap<>());
             for (int i = 0; i < train.getStationIds().size(); i++) {
+                HashMap<Integer, Integer> sectionCapacity = freeSectionCapacityOfRailCarriages.get(railCarriage.getSequenceNumber());
                 sectionCapacity.put(train.getStationIds().get(i), railCarriage.getCapacity());
             }
         }

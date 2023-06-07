@@ -4,6 +4,7 @@ import com.github.onetraintransferproblemgenerator.serialization.CsvName;
 import com.github.onetraintransferproblemgenerator.solvers.FirstAvailableCarriageSolver;
 import com.github.onetraintransferproblemgenerator.solvers.GreedyPassengerOrderSolver;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
+import com.github.onetraintransferproblemgenerator.solvers.greedyall.GreedyAllPassengersSolver;
 import lombok.Data;
 
 @Data
@@ -30,14 +31,18 @@ public class InstanceFeatureDescription {
     private double averageCongestion;
     @CsvName(column = "algo_firstAvailableCarriage")
     private double firstAvailableCarriageCost;
-    @CsvName(column = "algo_greedy")
-    private double greedyCost;
+    @CsvName(column = "algo_greedyPassengerOrder")
+    private double greedyPassengerOrderCost;
+    @CsvName(column = "algo_greedyAllPassenger")
+    private double greedyAllPassengerCost;
 
     public void setAlgorithmCost(double cost, Class<? extends OneTrainTransferSolver> solverClass) {
         if (solverClass.equals(FirstAvailableCarriageSolver.class)) {
             setFirstAvailableCarriageCost(cost);
         } else if (solverClass.equals(GreedyPassengerOrderSolver.class)) {
-            setGreedyCost(cost);
+            setGreedyPassengerOrderCost(cost);
+        } else if (solverClass.equals(GreedyAllPassengersSolver.class)) {
+            setGreedyAllPassengerCost(cost);
         }
     }
 }

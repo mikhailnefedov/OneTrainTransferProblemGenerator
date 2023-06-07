@@ -9,6 +9,7 @@ import com.github.onetraintransferproblemgenerator.solvers.RailCarriagePositionH
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GreedyAllPassengersSolver extends OneTrainTransferSolver {
 
@@ -28,9 +29,9 @@ public class GreedyAllPassengersSolver extends OneTrainTransferSolver {
                     List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistanceIfRailCarriageIsUsed(p);
                     railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCombinedDistances));
                     return new Tuple<>(p, railCarriageDistances);
-                }).toList();
-
-        passengersAndTheirRailCarriageDistances.sort(Comparator.comparingInt(t -> t.getRight().get(0).getCombinedDistances()));
+                })
+                .sorted(Comparator.comparingInt(t -> t.getRight().get(0).getCombinedDistances()))
+                .collect(Collectors.toList());
 
         for (Tuple<Passenger, List<RailCarriageDistance>> tuple : passengersAndTheirRailCarriageDistances) {
             for(RailCarriageDistance railCarriageDistance :tuple.getRight()) {
