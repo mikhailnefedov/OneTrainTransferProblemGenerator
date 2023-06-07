@@ -4,7 +4,7 @@ import com.github.onetraintransferproblemgenerator.generation.realistic.Realisti
 import com.github.onetraintransferproblemgenerator.orchestration.OrchestrationParameters;
 import com.github.onetraintransferproblemgenerator.orchestration.SimpleOrchestration;
 import com.github.onetraintransferproblemgenerator.solvers.FirstAvailableCarriageSolver;
-import com.github.onetraintransferproblemgenerator.solvers.GreedySolver;
+import com.github.onetraintransferproblemgenerator.solvers.GreedyPassengerOrderSolver;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -25,7 +25,7 @@ public class OneTrainTransferProblemGeneratorApplication {
 
         List<Class<? extends OneTrainTransferSolver>> solvers = new ArrayList<>();
         solvers.add(FirstAvailableCarriageSolver.class);
-        solvers.add(GreedySolver.class);
+        solvers.add(GreedyPassengerOrderSolver.class);
         parameters.setSolvers(solvers);
 
         SimpleOrchestration orchestration = new SimpleOrchestration(parameters);

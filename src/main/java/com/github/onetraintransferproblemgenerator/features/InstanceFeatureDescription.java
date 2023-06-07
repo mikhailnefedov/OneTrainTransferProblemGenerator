@@ -2,7 +2,7 @@ package com.github.onetraintransferproblemgenerator.features;
 
 import com.github.onetraintransferproblemgenerator.serialization.CsvName;
 import com.github.onetraintransferproblemgenerator.solvers.FirstAvailableCarriageSolver;
-import com.github.onetraintransferproblemgenerator.solvers.GreedySolver;
+import com.github.onetraintransferproblemgenerator.solvers.GreedyPassengerOrderSolver;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import lombok.Data;
 
@@ -36,7 +36,7 @@ public class InstanceFeatureDescription {
     public void setAlgorithmCost(double cost, Class<? extends OneTrainTransferSolver> solverClass) {
         if (solverClass.equals(FirstAvailableCarriageSolver.class)) {
             setFirstAvailableCarriageCost(cost);
-        } else if (solverClass.equals(GreedySolver.class)) {
+        } else if (solverClass.equals(GreedyPassengerOrderSolver.class)) {
             setGreedyCost(cost);
         }
     }

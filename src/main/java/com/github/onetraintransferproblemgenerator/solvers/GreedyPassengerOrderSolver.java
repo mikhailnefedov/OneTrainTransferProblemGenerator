@@ -10,11 +10,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GreedySolver extends OneTrainTransferSolver {
+/**
+ * Tries to solve problem greedily by abiding the order of passengers by inStation and using the rail carriage
+ * with minimum transfer distance.
+ */
+public class GreedyPassengerOrderSolver extends OneTrainTransferSolver {
 
     private RailCarriagePositionHelper carriagePositionHelper;
 
-    public GreedySolver(OneTrainTransferProblem problem) {
+    public GreedyPassengerOrderSolver(OneTrainTransferProblem problem) {
         super(problem);
         carriagePositionHelper = new RailCarriagePositionHelper(problem.getTrain());
     }
@@ -25,7 +29,7 @@ public class GreedySolver extends OneTrainTransferSolver {
 
         for (int stationId : stationIds) {
             letPassengersOutOfTrain(problem.getOutPassengersOfStation(stationId));
-            seatPassengersInTrain(stationId, problem.getInPassengersOfStation(stationId));
+            seatPassengersInTrain(problem.getInPassengersOfStation(stationId));
         }
 
         return solutionCost;
@@ -35,7 +39,7 @@ public class GreedySolver extends OneTrainTransferSolver {
         passengers.forEach(p -> capacityStorage.outPassenger(p));
     }
 
-    private void seatPassengersInTrain(int stationId, List<Passenger> passengers) {
+    private void seatPassengersInTrain(List<Passenger> passengers) {
         for (Passenger passenger : passengers) {
             List<RailCarriageDistance> railCarriageDistances = getDistanceIfRailCarriageIsUsed(passenger);
             railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCombinedDistances));

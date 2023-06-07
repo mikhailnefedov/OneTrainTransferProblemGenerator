@@ -8,8 +8,6 @@ import com.github.onetraintransferproblemgenerator.persistence.MongoClientConfig
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRepository;
 import com.github.onetraintransferproblemgenerator.serialization.InstanceToCSVWriter;
-import com.github.onetraintransferproblemgenerator.solvers.FirstAvailableCarriageSolver;
-import com.github.onetraintransferproblemgenerator.solvers.GreedySolver;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import com.github.onetraintransferproblemgenerator.validation.InstanceValidator;
 import com.mongodb.client.MongoClient;
