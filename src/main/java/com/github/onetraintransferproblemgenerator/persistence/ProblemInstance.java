@@ -23,13 +23,14 @@ public class ProblemInstance {
     private OneTrainTransferProblem problem;
     private InstanceFeatureDescription featureDescription;
 
-    public ProblemInstance(OneTrainTransferProblem problem, String experimentId, String generatorName, String instanceId) {
+    public ProblemInstance(OneTrainTransferProblem problem, String experimentId, Class generator, String instanceId) {
         this.problem = problem;
         this.experimentId = experimentId;
-        this.generatorName = generatorName;
+        this.generatorName = generator.getName();
         this.instanceId = instanceId;
 
         featureDescription = new InstanceFeatureDescription();
         featureDescription.setInstanceId(instanceId);
+        featureDescription.setSource(generator.getSimpleName());
     }
 }

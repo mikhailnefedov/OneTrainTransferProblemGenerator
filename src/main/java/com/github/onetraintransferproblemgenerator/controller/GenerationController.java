@@ -1,13 +1,14 @@
 package com.github.onetraintransferproblemgenerator.controller;
 
+import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
 import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRepository;
+import com.github.onetraintransferproblemgenerator.serialization.InstanceToCSVWriter;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import com.github.onetraintransferproblemgenerator.validation.InstanceValidator;
 import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,17 +19,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("generation")
 public class GenerationController {
 
     private GenerationParameters generationParameters;
-    @Autowired
-    private ProblemInstanceRepository problemInstanceRepository;
+    private final ProblemInstanceRepository problemInstanceRepository;
 
-    public GenerationController() {
-
+    public GenerationController(ProblemInstanceRepository problemInstanceRepository) {
+        this.problemInstanceRepository = problemInstanceRepository;
     }
 
     @PostMapping("generateinstances")
@@ -39,8 +40,9 @@ public class GenerationController {
         if (generationParameters.isStoreInstances()) {
             problemInstanceRepository.saveAll(instances);
         }
-        System.out.println(generationParameters);
-        System.out.println(instances);
+        if (!generationParameters.getCsvFile().equals("")) {
+            serializeToCsv(instances.stream().map(ProblemInstance::getFeatureDescription).collect(Collectors.toList()));
+        }
     }
 
     private List<ProblemInstance> generateInstances(Map<String, InstanceGeneration> generators) {
@@ -50,7 +52,7 @@ public class GenerationController {
                 OneTrainTransferProblemGenerator generator = createGenerator(generatorName);
                 InstanceGeneration generatorParameter = generators.get(generatorName);
                 for (int i = 1; i <= generatorParameter.getInstanceCount(); i++) {
-                    ProblemInstance instance = generateInstance(generator, String.format("%s%d",generatorParameter.getIdPrefix(), i));
+                    ProblemInstance instance = generateInstance(generator, String.format("%s%d", generatorParameter.getIdPrefix(), i));
                     problemInstances.add(instance);
                 }
             } catch (ClassNotFoundException e) {
@@ -76,8 +78,7 @@ public class GenerationController {
     private ProblemInstance generateInstance(OneTrainTransferProblemGenerator generator, String instanceId) {
         OneTrainTransferProblem instance = generator.generate();
         validateInstance(instance);
-        ProblemInstance problemInstance = new ProblemInstance(instance, generationParameters.getExperimentId(), generator.getClass().getName(), instanceId);
-        return problemInstance;
+        return new ProblemInstance(instance, generationParameters.getExperimentId(), generator.getClass(), instanceId);
     }
 
     @SneakyThrows
@@ -85,24 +86,24 @@ public class GenerationController {
         InstanceValidator.validateInstance(instance);
     }
 
-    /**
-     *
-     * @param instances
-     */
     private void solveInstances(List<ProblemInstance> instances) {
-        for (int i = 0; i < instances.size(); i++) {
+        for (ProblemInstance instance : instances) {
             for (String solverName : generationParameters.getSolvers()) {
                 try {
                     Class<? extends OneTrainTransferSolver> solverClass = Class.forName(solverName).asSubclass(OneTrainTransferSolver.class);
                     Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class);
-                    OneTrainTransferSolver solver = con.newInstance(instances.get(i).getProblem());
+                    OneTrainTransferSolver solver = con.newInstance(instance.getProblem());
                     double cost = solver.solve();
-                    instances.get(i).getFeatureDescription().setAlgorithmCost(cost, solverClass);
+                    instance.getFeatureDescription().setAlgorithmCost(cost, solverClass);
                 } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
                     e.printStackTrace();
                 }
             }
         }
+    }
+
+    private void serializeToCsv(List<InstanceFeatureDescription> descriptions) {
+        InstanceToCSVWriter.writeToCSV(descriptions, generationParameters.getCsvFile());
     }
 
 }
