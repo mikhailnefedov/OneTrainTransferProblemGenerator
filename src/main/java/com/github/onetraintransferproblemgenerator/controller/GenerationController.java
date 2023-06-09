@@ -3,9 +3,11 @@ package com.github.onetraintransferproblemgenerator.controller;
 import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
+import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRepository;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import com.github.onetraintransferproblemgenerator.validation.InstanceValidator;
 import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,8 @@ import java.util.Map;
 public class GenerationController {
 
     private GenerationParameters generationParameters;
+    @Autowired
+    private ProblemInstanceRepository problemInstanceRepository;
 
     public GenerationController() {
 
@@ -32,6 +36,9 @@ public class GenerationController {
         this.generationParameters = generationParameters;
         List<ProblemInstance> instances = generateInstances(generationParameters.getGenerators());
         solveInstances(instances);
+        if (generationParameters.isStoreInstances()) {
+            problemInstanceRepository.saveAll(instances);
+        }
         System.out.println(generationParameters);
         System.out.println(instances);
     }

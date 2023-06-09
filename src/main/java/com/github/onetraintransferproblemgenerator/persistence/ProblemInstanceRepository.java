@@ -1,10 +1,7 @@
 package com.github.onetraintransferproblemgenerator.persistence;
 
-import com.mongodb.client.MongoDatabase;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public class ProblemInstanceRepository extends BaseMongoRepository<ProblemInstance> {
-
-    public ProblemInstanceRepository(MongoDatabase mongoDB) {
-        super(mongoDB, "problemInstances", ProblemInstance.class);
-    }
+public interface ProblemInstanceRepository extends MongoRepository<ProblemInstance, ObjectId> {
 }

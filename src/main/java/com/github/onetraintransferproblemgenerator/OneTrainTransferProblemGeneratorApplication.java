@@ -10,12 +10,14 @@ import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolve
 import com.github.onetraintransferproblemgenerator.solvers.greedyall.GreedyAllPassengersSolver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
+@EnableMongoRepositories
 public class OneTrainTransferProblemGeneratorApplication {
 
     public static void main(String[] args) {
