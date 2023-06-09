@@ -32,7 +32,6 @@ public class SimpleOrchestration {
 
     public void runOrchestration() {
         List<OneTrainTransferProblem> instances = generateInstances();
-        validateInstances(instances);
         List<InstanceFeatureDescription> featureDescriptions = generateFeatureDescriptions(instances);
         featureDescriptions = solveInstances(instances, featureDescriptions);
         //saveToMongoDB(instances, featureDescriptions);
@@ -47,13 +46,6 @@ public class SimpleOrchestration {
             instances.add(parameters.getGenerator().generate());
         }
         return instances;
-    }
-
-    @SneakyThrows
-    private void validateInstances(List<OneTrainTransferProblem> instances) {
-        for (OneTrainTransferProblem instance : instances) {
-            InstanceValidator.validateInstance(instance);
-        }
     }
 
     private List<InstanceFeatureDescription> generateFeatureDescriptions(List<OneTrainTransferProblem> instances) {
@@ -75,13 +67,7 @@ public class SimpleOrchestration {
                     OneTrainTransferSolver solver = con.newInstance(instances.get(i));
                     double cost = solver.solve();
                     featureDescriptions.get(i).setAlgorithmCost(cost, solverClass);
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
+                } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
             }
@@ -93,8 +79,8 @@ public class SimpleOrchestration {
         String experimentId = IdGenerator.generateExperimentId();
         List<ProblemInstance> problemInstances = new ArrayList<>();
         for (int i = 0; i < instances.size(); i++) {
-            ProblemInstance problemInstance = new ProblemInstance(instances.get(i), featureDescriptions.get(i), experimentId);
-            problemInstances.add(problemInstance);
+            //ProblemInstance problemInstance = new ProblemInstance(instances.get(i), featureDescriptions.get(i), experimentId);
+            //problemInstances.add(problemInstance);
         }
         problemInstanceRepository.getCollection().insertMany(problemInstances);
     }

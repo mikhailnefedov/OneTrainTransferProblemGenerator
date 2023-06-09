@@ -2,22 +2,29 @@ package com.github.onetraintransferproblemgenerator.persistence;
 
 import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProblemInstance {
 
     private ObjectId id;
-    private String instanceId;
     private String experimentId;
+    private String instanceId;
+    private String generatorName;
     private OneTrainTransferProblem problem;
     private InstanceFeatureDescription featureDescription;
 
-    public ProblemInstance(OneTrainTransferProblem problem, InstanceFeatureDescription description, String experimentId) {
+    public ProblemInstance(OneTrainTransferProblem problem, String experimentId, String instanceId) {
         this.problem = problem;
-        featureDescription = description;
-        instanceId = featureDescription.getInstanceId();
         this.experimentId = experimentId;
+        this.instanceId = instanceId;
+
+        featureDescription = new InstanceFeatureDescription();
+        featureDescription.setInstanceId(instanceId);
     }
 }
