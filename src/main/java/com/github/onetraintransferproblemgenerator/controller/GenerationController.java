@@ -3,6 +3,7 @@ package com.github.onetraintransferproblemgenerator.controller;
 import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
+import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import com.github.onetraintransferproblemgenerator.validation.InstanceValidator;
 import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ import java.util.Map;
 @RequestMapping("generation")
 public class GenerationController {
 
-    private String experimentId;
+    private GenerationParameters generationParameters;
 
     public GenerationController() {
 
@@ -28,8 +29,9 @@ public class GenerationController {
 
     @PostMapping("generateinstances")
     void generateInstances(@RequestBody GenerationParameters generationParameters) {
-        experimentId = generationParameters.getExperimentId();
+        this.generationParameters = generationParameters;
         List<ProblemInstance> instances = generateInstances(generationParameters.getGenerators());
+        solveInstances(instances);
         System.out.println(generationParameters);
         System.out.println(instances);
     }
@@ -67,7 +69,7 @@ public class GenerationController {
     private ProblemInstance generateInstance(OneTrainTransferProblemGenerator generator, String instanceId) {
         OneTrainTransferProblem instance = generator.generate();
         validateInstance(instance);
-        ProblemInstance problemInstance = new ProblemInstance(instance, experimentId, instanceId);
+        ProblemInstance problemInstance = new ProblemInstance(instance, generationParameters.getExperimentId(), generator.getClass().getName(), instanceId);
         return problemInstance;
     }
 
@@ -76,5 +78,24 @@ public class GenerationController {
         InstanceValidator.validateInstance(instance);
     }
 
+    /**
+     *
+     * @param instances
+     */
+    private void solveInstances(List<ProblemInstance> instances) {
+        for (int i = 0; i < instances.size(); i++) {
+            for (String solverName : generationParameters.getSolvers()) {
+                try {
+                    Class<? extends OneTrainTransferSolver> solverClass = Class.forName(solverName).asSubclass(OneTrainTransferSolver.class);
+                    Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class);
+                    OneTrainTransferSolver solver = con.newInstance(instances.get(i).getProblem());
+                    double cost = solver.solve();
+                    instances.get(i).getFeatureDescription().setAlgorithmCost(cost, solverClass);
+                } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
 }

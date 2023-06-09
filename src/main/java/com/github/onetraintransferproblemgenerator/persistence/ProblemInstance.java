@@ -19,9 +19,10 @@ public class ProblemInstance {
     private OneTrainTransferProblem problem;
     private InstanceFeatureDescription featureDescription;
 
-    public ProblemInstance(OneTrainTransferProblem problem, String experimentId, String instanceId) {
+    public ProblemInstance(OneTrainTransferProblem problem, String experimentId, String generatorName, String instanceId) {
         this.problem = problem;
         this.experimentId = experimentId;
+        this.generatorName = generatorName;
         this.instanceId = instanceId;
 
         featureDescription = new InstanceFeatureDescription();

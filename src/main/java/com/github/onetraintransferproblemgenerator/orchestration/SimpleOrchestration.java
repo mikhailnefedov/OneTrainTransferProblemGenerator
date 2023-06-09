@@ -33,7 +33,6 @@ public class SimpleOrchestration {
     public void runOrchestration() {
         List<OneTrainTransferProblem> instances = generateInstances();
         List<InstanceFeatureDescription> featureDescriptions = generateFeatureDescriptions(instances);
-        featureDescriptions = solveInstances(instances, featureDescriptions);
         //saveToMongoDB(instances, featureDescriptions);
         serializeToCsv(featureDescriptions);
 
@@ -57,22 +56,6 @@ public class SimpleOrchestration {
             descriptions.add(description);
         }
         return descriptions;
-    }
-
-    private List<InstanceFeatureDescription> solveInstances(List<OneTrainTransferProblem> instances, List<InstanceFeatureDescription> featureDescriptions) {
-        for (int i = 0; i < instances.size(); i++) {
-            for (Class<? extends OneTrainTransferSolver> solverClass : parameters.getSolvers()) {
-                try {
-                    Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class);
-                    OneTrainTransferSolver solver = con.newInstance(instances.get(i));
-                    double cost = solver.solve();
-                    featureDescriptions.get(i).setAlgorithmCost(cost, solverClass);
-                } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return featureDescriptions;
     }
 
     private void saveToMongoDB(List<OneTrainTransferProblem> instances, List<InstanceFeatureDescription> featureDescriptions) {
