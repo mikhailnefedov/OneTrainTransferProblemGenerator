@@ -1,5 +1,6 @@
 package com.github.onetraintransferproblemgenerator.controller;
 
+import com.github.onetraintransferproblemgenerator.features.FeatureExtractor;
 import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
 import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
@@ -36,6 +37,7 @@ public class GenerationController {
     void generateInstances(@RequestBody GenerationParameters generationParameters) {
         this.generationParameters = generationParameters;
         List<ProblemInstance> instances = generateInstances(generationParameters.getGenerators());
+        generateFeatureDescriptions(instances);
         solveInstances(instances);
         if (generationParameters.isStoreInstances()) {
             problemInstanceRepository.saveAll(instances);
@@ -84,6 +86,15 @@ public class GenerationController {
     @SneakyThrows
     private void validateInstance(OneTrainTransferProblem instance) {
         InstanceValidator.validateInstance(instance);
+    }
+
+    private void generateFeatureDescriptions(List<ProblemInstance> instances) {
+        for (ProblemInstance instance : instances) {
+            InstanceFeatureDescription description = FeatureExtractor.extract(instance.getInstanceId(), instance.getProblem());
+            String source = instance.getFeatureDescription().getSource();
+            instance.setFeatureDescription(description);
+            instance.getFeatureDescription().setSource(source);
+        }
     }
 
     private void solveInstances(List<ProblemInstance> instances) {
