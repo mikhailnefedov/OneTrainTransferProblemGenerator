@@ -8,7 +8,9 @@ import com.github.onetraintransferproblemgenerator.solvers.FirstAvailableCarriag
 import com.github.onetraintransferproblemgenerator.solvers.GreedyPassengerOrderSolver;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import com.github.onetraintransferproblemgenerator.solvers.greedyall.GreedyAllPassengersSolver;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +19,9 @@ import java.util.List;
 public class OneTrainTransferProblemGeneratorApplication {
 
     public static void main(String[] args) {
-        //SpringApplication.run(OneTrainTransferProblemGeneratorApplication.class, args);
+        SpringApplication.run(OneTrainTransferProblemGeneratorApplication.class, args);
 
+        /**
         OrchestrationParameters parameters = new OrchestrationParameters();
         parameters.setCsvFilePath("./metadata.csv");
         parameters.setInstanceCount(500);
@@ -41,6 +44,7 @@ public class OneTrainTransferProblemGeneratorApplication {
         parameters.setGenerator(new SimpleGenerator());
         orchestration = new SimpleOrchestration(parameters);
         orchestration.runOrchestration();
+         */
     }
 
 }
