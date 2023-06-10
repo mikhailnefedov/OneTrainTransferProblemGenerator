@@ -1,11 +1,16 @@
 package com.github.onetraintransferproblemgenerator.features;
 
+import com.github.onetraintransferproblemgenerator.helpers.Tuple;
 import com.github.onetraintransferproblemgenerator.serialization.CsvName;
 import com.github.onetraintransferproblemgenerator.solvers.FirstAvailableCarriageSolver;
 import com.github.onetraintransferproblemgenerator.solvers.GreedyPassengerOrderSolver;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import com.github.onetraintransferproblemgenerator.solvers.greedyall.GreedyAllPassengersSolver;
 import lombok.Data;
+
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Objects;
 
 @Data
 public class InstanceFeatureDescription {
@@ -44,5 +49,23 @@ public class InstanceFeatureDescription {
         } else if (solverClass.equals(GreedyAllPassengersSolver.class)) {
             setGreedyAllPassengerCost(cost);
         }
+    }
+
+    public double[] getFeatureVector(List<String> csvFeatureNames) {
+        List<Field> declaredFields = List.of(InstanceFeatureDescription.class.getDeclaredFields());
+        return declaredFields.stream()
+                .peek(f -> f.setAccessible(true))
+                .map(f -> {
+                    try {
+                        String csvAnnotation = f.getDeclaredAnnotationsByType(CsvName.class)[0].column();
+                        return new Tuple<>(csvAnnotation, Double.parseDouble(f.get(this).toString()));
+                    } catch (IllegalAccessException | NumberFormatException ignored) {
+                    }
+                    return null;
+                })
+                .filter(Objects::nonNull)
+                .filter(t -> csvFeatureNames.contains(t.getLeft()))
+                .mapToDouble(Tuple::getRight)
+                .toArray();
     }
 }
