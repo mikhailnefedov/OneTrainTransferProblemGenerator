@@ -33,3 +33,4 @@ build/
 .vscode/
 /python/
 /venv/
+/python_backend/venv/
