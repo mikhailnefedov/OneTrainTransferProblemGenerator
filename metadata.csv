@@ -1,11 +1,5 @@
-Instances,Source,feature_stationCount,feature_directionChangeCount,feature_passengerCount,feature_averageRailCarriageCapacity,feature_averageCongestion,feature_maxCongestion,algo_firstAvailableCarriage,algo_greedy
-realistic_0,RealisticGenerator,16,1,1432,70.61538461538461,0.4315087145969499,0.6328976034858388,84216.0,36312.0
-realistic_1,RealisticGenerator,4,1,470,47.72727272727273,0.3304761904761905,0.540952380952381,19436.0,15340.0
-realistic_2,RealisticGenerator,9,1,954,54.875,0.6398380156922298,0.9840546697038725,52474.0,36814.0
-realistic_3,RealisticGenerator,21,6,146,50.0,0.17314285714285715,0.264,7941.0,5369.0
-realistic_4,RealisticGenerator,20,1,4238,70.61538461538461,0.8929738562091503,1.0,470371.0,459285.0
-realistic_5,RealisticGenerator,10,3,1013,52.125,0.3779376498800959,0.5575539568345323,128179.0,57457.0
-realistic_6,RealisticGenerator,21,6,876,52.857142857142854,0.6478764478764479,0.9945945945945946,49146.0,44566.0
-realistic_7,RealisticGenerator,4,2,53,50.0,0.09,0.152,633.0,561.0
-realistic_8,RealisticGenerator,9,2,1268,52.125,0.462296829203304,0.7062350119904077,56058.0,43414.0
-realistic_9,RealisticGenerator,9,0,1133,52.857142857142854,0.4801801801801802,0.7148648648648649,51198.0,38924.0
+Instances,Source,feature_stationCount,feature_directionChangeCount,feature_totalPassengerCount,feature_avgPassengerCount,feature_avgPassengerRouteLength,feature_avgRailCarriageCapacity,feature_stdDevRailCarriageCapacity,feature_avgCongestion,algo_firstAvailableCarriage,algo_greedyPassengerOrder,algo_greedyAllPassenger
+simple_1,SimpleGenerator,5,3,11,2.2,1.8181818181818181,17.0,0.0,0.11764705882352941,399.0,383.0,383.0
+simple_2,SimpleGenerator,5,3,38,7.6,1.605263157894737,17.0,0.0,0.7176470588235294,1519.0,1519.0,1519.0
+realistic_1,RealisticGenerator,23,6,388,16.869565217391305,6.139175257731959,56.25,24.02472684548151,0.11507246376811593,67975.0,19131.0,19131.0
+realistic_2,RealisticGenerator,20,5,688,34.4,5.575581395348837,54.875,18.550185309047453,0.43690205011389527,21081.0,13251.0,12907.0

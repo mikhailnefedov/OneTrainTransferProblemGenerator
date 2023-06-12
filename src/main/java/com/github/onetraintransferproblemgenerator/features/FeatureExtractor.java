@@ -37,8 +37,8 @@ public class FeatureExtractor {
 
     private static void setPassengerFeatures(InstanceFeatureDescription description, OneTrainTransferProblem problem) {
         description.setTotalPassengerCount(getTotalPassengerCount(problem));
-        description.setAveragePassengerCount(getAveragePassengerCount(problem));
-        description.setAveragePassengerRouteLength(getAveragePassengerRouteLength(problem));
+        description.setAvgPassengerCount(getAveragePassengerCount(problem));
+        description.setAvgPassengerRouteLength(getAveragePassengerRouteLength(problem));
     }
 
     private static int getTotalPassengerCount(OneTrainTransferProblem problem) {
@@ -64,8 +64,8 @@ public class FeatureExtractor {
 
     private static void setRailCarriageCapacities(InstanceFeatureDescription description, OneTrainTransferProblem problem) {
         double avgRailCarriageCapacity = getAverageRailCarriageCapacity(problem);
-        description.setAverageRailCarriageCapacity(avgRailCarriageCapacity);
-        description.setStandardDeviationRailCarriageCapacity(getStandardDeviationRailCarriageCapacity(problem, avgRailCarriageCapacity));
+        description.setAvgRailCarriageCapacity(avgRailCarriageCapacity);
+        description.setStdDevRailCarriageCapacity(getStandardDeviationRailCarriageCapacity(problem, avgRailCarriageCapacity));
     }
 
     private static double getAverageRailCarriageCapacity(OneTrainTransferProblem problem) {
@@ -87,7 +87,7 @@ public class FeatureExtractor {
 
     private static void setCongestion(InstanceFeatureDescription description, OneTrainTransferProblem problem) {
         List<Double> congestions = getCongestionsOfSubRoutes(problem);
-        description.setAverageCongestion(getAverageCongestion(congestions));
+        description.setAvgCongestion(getAverageCongestion(congestions));
     }
 
     private static double getAverageCongestion(List<Double> congestions) {

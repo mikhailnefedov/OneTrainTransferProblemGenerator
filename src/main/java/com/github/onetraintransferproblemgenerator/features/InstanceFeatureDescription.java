@@ -25,15 +25,15 @@ public class InstanceFeatureDescription {
     @CsvName(column = "feature_totalPassengerCount")
     private int totalPassengerCount;
     @CsvName(column = "feature_avgPassengerCount")
-    private double averagePassengerCount;
+    private double avgPassengerCount;
     @CsvName(column = "feature_avgPassengerRouteLength")
-    private double averagePassengerRouteLength;
+    private double avgPassengerRouteLength;
     @CsvName(column = "feature_avgRailCarriageCapacity")
-    private double averageRailCarriageCapacity;
+    private double avgRailCarriageCapacity;
     @CsvName(column = "feature_stdDevRailCarriageCapacity")
-    private double standardDeviationRailCarriageCapacity;
+    private double stdDevRailCarriageCapacity;
     @CsvName(column = "feature_avgCongestion")
-    private double averageCongestion;
+    private double avgCongestion;
     @CsvName(column = "algo_firstAvailableCarriage")
     private double firstAvailableCarriageCost = Double.NaN;
     @CsvName(column = "algo_greedyPassengerOrder")
