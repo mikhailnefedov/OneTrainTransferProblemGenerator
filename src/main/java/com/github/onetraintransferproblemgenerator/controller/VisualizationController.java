@@ -29,7 +29,8 @@ public class VisualizationController {
     @PostMapping("instancesbysource")
     void visualizeInstancesBySource(@RequestBody VisualizationParameters parameters) {
         List<ProblemInstance> instances = problemInstanceRepository.findAllByExperimentId(parameters.getExperimentId());
-        VisualizationData data = new VisualizationData(instances, parameters.getTransposedProjectionMatrix(), parameters.getFeatureNames());
+        VisualizationData data = new VisualizationData(instances, parameters.getTransposedProjectionMatrix(),
+                parameters.getFeatureNames(), parameters.getAxisRangeX(), parameters.getAxisRangeY());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

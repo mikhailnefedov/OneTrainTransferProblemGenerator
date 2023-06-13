@@ -16,4 +16,6 @@ public class VisualizationParameters {
      * must be in same format as in model
      */
     private List<String> featureNames;
+    private List<Double> axisRangeX;
+    private List<Double> axisRangeY;
 }

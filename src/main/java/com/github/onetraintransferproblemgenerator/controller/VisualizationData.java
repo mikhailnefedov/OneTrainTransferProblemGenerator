@@ -14,4 +14,6 @@ public class VisualizationData {
     private List<ProblemInstance> instances;
     private double[][] transposedProjectionMatrix;
     private List<String> featureNames;
+    private List<Double> axisRangeX;
+    private List<Double> axisRangeY;
 }

@@ -1,29 +1,14 @@
-import matplotlib.pyplot as plt
+import io
+
 from flask import Flask, request
 import numpy as np
 
 from prelim import bound_outliers, normalize
+from visualization_storage import VisualizationStorage
 
 app = Flask(__name__)
 
-
-def get_feature_vectors(request):
-    feature_vectors = []
-    for instance in request.json:
-        feature_vectors.append(instance['right'])
-    return np.array(feature_vectors)
-
-
-def get_normalized_feature_vectors():
-    unprocessed_feature_vectors = get_feature_vectors(request)
-    bounded_feature_vectors = bound_outliers(unprocessed_feature_vectors)
-    return normalize(bounded_feature_vectors)
-
-
-@app.route('/preprocessing', methods=['POST'])
-def preprocessing():
-    normalized_feature_vectors = get_normalized_feature_vectors()
-    return {"featureVectors": normalized_feature_vectors.tolist()}
+visualization_storage = VisualizationStorage()
 
 
 def create_feature_vector(instances, feature_names):
@@ -58,14 +43,6 @@ def project_instances(transposed_projection_matrix, instance_feature_vector_pair
     return projected_instance_feature_vector_pairs
 
 
-def show_plot(instance_coordinate_pairs):
-    x_coords = [pair[1][0] for pair in instance_coordinate_pairs]
-    y_coords = [pair[1][1] for pair in instance_coordinate_pairs]
-    plt.scatter(x_coords, y_coords)
-    plt.title("Instance Space")
-    plt.show()
-
-
 @app.route('/visualizationbysource', methods=['POST'])
 def visualization_by_source():
     json_data = request.json
@@ -73,10 +50,20 @@ def visualization_by_source():
     preprocess_instances_and_feature_vectors(instances_and_feature_vectors)
     instance_and_coord_pairs = project_instances(json_data["transposedProjectionMatrix"], instances_and_feature_vectors)
 
-    show_plot(instance_and_coord_pairs)
-    # normalized_feature_vectors = get_normalized_feature_vectors()
-    # return {"featureVectors": normalized_feature_vectors.tolist()}
+    visualization_storage.set_plot_dimensions(json_data["axisRangeX"], json_data["axisRangeY"])
+    visualization_storage.add_visualization_by_source(instance_and_coord_pairs)
     return "Ok"
+
+
+@app.route('/showvisualizations')
+def show_visualizations():
+    plots = visualization_storage.get_plots()
+    html = ""
+    for plot in plots:
+        img = io.StringIO()
+        plot.savefig(img, format="svg")
+        html += '<svg' + img.getvalue().split('<svg')[1]
+    return html
 
 
 if __name__ == '__main__':
