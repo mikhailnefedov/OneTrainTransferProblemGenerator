@@ -55,6 +55,18 @@ def visualization_by_source():
     return "Ok"
 
 
+@app.route('/visualizationbystationcount', methods=['POST'])
+def visualization_by_station_count():
+    json_data = request.json
+    instances_and_feature_vectors = create_feature_vector(json_data["instances"], json_data["featureNames"])
+    preprocess_instances_and_feature_vectors(instances_and_feature_vectors)
+    instance_and_coord_pairs = project_instances(json_data["transposedProjectionMatrix"], instances_and_feature_vectors)
+
+    visualization_storage.set_plot_dimensions(json_data["axisRangeX"], json_data["axisRangeY"])
+    visualization_storage.add_visualization_by_station_count(instance_and_coord_pairs, json_data["stationCount"])
+    return "Ok"
+
+
 @app.route('/showvisualizations')
 def show_visualizations():
     plots = visualization_storage.get_plots()

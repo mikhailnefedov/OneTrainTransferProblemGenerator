@@ -29,13 +29,36 @@ public class VisualizationController {
     @PostMapping("instancesbysource")
     void visualizeInstancesBySource(@RequestBody VisualizationParameters parameters) {
         List<ProblemInstance> instances = problemInstanceRepository.findAllByExperimentId(parameters.getExperimentId());
-        VisualizationData data = new VisualizationData(instances, parameters.getTransposedProjectionMatrix(),
-                parameters.getFeatureNames(), parameters.getAxisRangeX(), parameters.getAxisRangeY());
+        VisualizationData data = VisualizationData.builder()
+                .instances(instances)
+                .transposedProjectionMatrix(parameters.getTransposedProjectionMatrix())
+                .featureNames(parameters.getFeatureNames())
+                .axisRangeX(parameters.getAxisRangeX())
+                .axisRangeY(parameters.getAxisRangeY())
+                .build();
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<VisualizationData> request = new HttpEntity<>(data, headers);
         restTemplate.postForEntity(PYTHON_BACKEND_URL + "/visualizationbysource", request, String.class);
+    }
+
+    @PostMapping("instancesbystationcount")
+    void visualizeInstancesByStationCount(@RequestBody VisualizationParameters parameters) {
+        List<ProblemInstance> instances = problemInstanceRepository.findAllByExperimentId(parameters.getExperimentId());
+        VisualizationData data = VisualizationData.builder()
+                .instances(instances)
+                .transposedProjectionMatrix(parameters.getTransposedProjectionMatrix())
+                .featureNames(parameters.getFeatureNames())
+                .axisRangeX(parameters.getAxisRangeX())
+                .axisRangeY(parameters.getAxisRangeY())
+                .stationCount(parameters.getStationCount())
+                .build();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<VisualizationData> request = new HttpEntity<>(data, headers);
+        restTemplate.postForEntity(PYTHON_BACKEND_URL + "/visualizationbystationcount", request, String.class);
     }
 
 }

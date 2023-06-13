@@ -9,12 +9,12 @@ import java.util.Random;
 
 public class SimpleGenerator implements OneTrainTransferProblemGenerator {
 
-    private final int POSITION_COUNT = 10;
-    private final int minStationCount = 4;
-    private final int maxStationCount = 8;
+    private final int POSITION_COUNT = 14;
+    private final int minStationCount = 3;
+    private final int maxStationCount = 24;
     private final int minRailCarriages = 1;
-    private final int maxRailCarriages = 6;
-    private final int maxRailCarriageCapacity = 20;
+    private final int maxRailCarriages = 8;
+    private final int maxRailCarriageCapacity = 100;
 
     private final double minCongestion = 0.05;
     private final double maxCongestion = 0.95;

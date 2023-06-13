@@ -18,4 +18,5 @@ public class VisualizationParameters {
     private List<String> featureNames;
     private List<Double> axisRangeX;
     private List<Double> axisRangeY;
+    private int stationCount;
 }

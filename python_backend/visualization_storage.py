@@ -24,6 +24,17 @@ class VisualizationStorage():
         plt.ylim(self.y_lim)
         self.plots.append(fig)
 
+    def add_visualization_by_station_count(self, instance_coordinate_pairs, station_count):
+        fig = plt.figure()
+        instances = list(filter(lambda x: x[0]["featureDescription"]["stationCount"] == station_count, instance_coordinate_pairs))
+        x_coords = [pair[1][0] for pair in instances]
+        y_coords = [pair[1][1] for pair in instances]
+        plt.scatter(x_coords, y_coords)
+        plt.title("Instance Space stationCount = " + str(station_count))
+        plt.xlim(self.x_lim)
+        plt.ylim(self.y_lim)
+        self.plots.append(fig)
+
     def get_plots(self):
         return self.plots
 
