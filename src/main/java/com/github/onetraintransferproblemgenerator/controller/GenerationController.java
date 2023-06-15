@@ -53,9 +53,14 @@ public class GenerationController {
             try {
                 OneTrainTransferProblemGenerator generator = createGenerator(generatorName);
                 InstanceGeneration generatorParameter = generators.get(generatorName);
+                System.out.println("Start generation for " + generatorName);
                 for (int i = 1; i <= generatorParameter.getInstanceCount(); i++) {
                     ProblemInstance instance = generateInstance(generator, String.format("%s%d", generatorParameter.getIdPrefix(), i));
                     problemInstances.add(instance);
+                    if (i % 50 == 0) {
+                        int remainingInstances = generatorParameter.getInstanceCount() - i;
+                        System.out.println("remaining instances to generate: " + remainingInstances);
+                    }
                 }
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
