@@ -77,6 +77,15 @@ def show_visualizations():
         html += '<svg' + img.getvalue().split('<svg')[1]
     return html
 
+@app.route('/instancecoords', methods=['POST'])
+def get_instance_coords():
+    json_data = request.json
+    instances_and_feature_vectors = create_feature_vector(json_data["instances"], json_data["featureNames"])
+    preprocess_instances_and_feature_vectors(instances_and_feature_vectors)
+    instance_and_coord_pairs = project_instances(json_data["transposedProjectionMatrix"], instances_and_feature_vectors)
+
+    coords = [pair[1].tolist() for pair in instance_and_coord_pairs]
+    return {"coordinates": coords}
 
 if __name__ == '__main__':
     app.run()

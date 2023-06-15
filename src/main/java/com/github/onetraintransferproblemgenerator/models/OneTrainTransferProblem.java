@@ -2,11 +2,14 @@ package com.github.onetraintransferproblemgenerator.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@AllArgsConstructor
+
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class OneTrainTransferProblem {
     private Train train;
     private List<Passenger> passengers;
