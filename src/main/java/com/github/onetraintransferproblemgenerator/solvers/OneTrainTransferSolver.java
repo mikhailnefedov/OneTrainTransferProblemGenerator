@@ -6,7 +6,7 @@ public abstract class OneTrainTransferSolver {
 
     protected OneTrainTransferProblem problem;
     protected SeatReservationStorage capacityStorage;
-    protected CostComputer costComputer;
+    protected SquareDistanceCost costComputer;
     protected double solutionCost = 0;
 
     public OneTrainTransferSolver(OneTrainTransferProblem problem) {
