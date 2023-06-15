@@ -17,6 +17,7 @@ public class FeatureExtractor {
         description.setDirectionChangeCount(getDirectionChangeCount(problem));
         setRailCarriageCapacities(description, problem);
         setCongestion(description, problem);
+        description.setDecisionPointRatio(getDecisionPointRatio(problem));
         return description;
     }
 
@@ -107,5 +108,22 @@ public class FeatureExtractor {
             currentPassengerCount -= problem.getOutPassengersOfStation(stationId).size();
         }
         return congestions;
+    }
+
+    private static double getDecisionPointRatio(OneTrainTransferProblem problem) {
+        double decisionPointSum = 0;
+
+        int passengersOnBoard = 0;
+
+        for (int stationId : problem.getTrain().getStationIds()) {
+            passengersOnBoard -= problem.getOutPassengersOfStation(stationId).size();
+            int newPassengers = problem.getInPassengersOfStation(stationId).size();
+            decisionPointSum += passengersOnBoard * newPassengers;
+            passengersOnBoard += newPassengers;
+        }
+
+        int sectionCount = problem.getTrain().getStationIds().size();
+        int capacity = problem.getTrain().getTotalCapacity();
+        return decisionPointSum / (sectionCount * capacity);
     }
 }
