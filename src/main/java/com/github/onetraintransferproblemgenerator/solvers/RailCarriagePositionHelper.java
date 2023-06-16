@@ -47,7 +47,7 @@ public class RailCarriagePositionHelper {
         }
     }
 
-    public List<RailCarriageDistance> getDistanceIfRailCarriageIsUsed(Passenger passenger) {
+    public List<RailCarriageDistance> getDistancesForRailCarriages(Passenger passenger) {
         HashMap<Integer, Integer> inDistances =
                 getDistancesBetweenRailCarriagesAndPosition(passenger.getInStation(), passenger.getInPosition());
         HashMap<Integer, Integer> outDistances =
@@ -59,6 +59,15 @@ public class RailCarriagePositionHelper {
             int outDistance = outDistances.get(railCarriageId);
             return new RailCarriageDistance(railCarriageId, inDistance, outDistance);
         }).collect(Collectors.toList());
+    }
+
+    public RailCarriageDistance getDistanceOfRailCarriage(Passenger passenger, int railCarriageId) {
+        int inDistance = Math.abs(
+                railCarriagePositionsOfStations.get(passenger.getInStation()).get(railCarriageId) - passenger.getInPosition());
+        int outDistance = Math.abs(
+                railCarriagePositionsOfStations.get(passenger.getOutStation()).get(railCarriageId) - passenger.getOutPosition());
+
+        return new RailCarriageDistance(railCarriageId, inDistance, outDistance);
     }
 
     private HashMap<Integer, Integer> getDistancesBetweenRailCarriagesAndPosition(int stationId, int position) {

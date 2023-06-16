@@ -6,11 +6,11 @@ public abstract class OneTrainTransferSolver {
 
     protected OneTrainTransferProblem problem;
     protected SeatReservationStorage capacityStorage;
-    protected SquareDistanceCost costComputer;
+    protected CostComputer costComputer;
     protected double solutionCost = 0;
 
     public OneTrainTransferSolver(OneTrainTransferProblem problem) {
-        costComputer = new SquareDistanceCost();
+        costComputer = new CostComputer();
         this.problem = problem;
         capacityStorage = new SeatReservationStorage(problem.getTrain());
     }

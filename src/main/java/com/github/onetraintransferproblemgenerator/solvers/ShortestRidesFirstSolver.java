@@ -32,7 +32,7 @@ public class ShortestRidesFirstSolver extends OneTrainTransferSolver {
                 .collect(Collectors.toList());
 
         for (Passenger passenger : passengers) {
-            List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistanceIfRailCarriageIsUsed(passenger);
+            List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistancesForRailCarriages(passenger);
             railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCombinedDistances));
 
             for (RailCarriageDistance railCarriageDistance : railCarriageDistances) {

@@ -4,9 +4,7 @@ import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProble
 import com.github.onetraintransferproblemgenerator.models.Passenger;
 
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Tries to solve problem greedily by abiding the order of passengers by inStation and using the rail carriage
@@ -39,7 +37,7 @@ public class GreedyPassengerOrderSolver extends OneTrainTransferSolver {
 
     private void seatPassengersInTrain(List<Passenger> passengers) {
         for (Passenger passenger : passengers) {
-            List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistanceIfRailCarriageIsUsed(passenger);
+            List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistancesForRailCarriages(passenger);
             railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCombinedDistances));
             for (RailCarriageDistance railCarriageDistance : railCarriageDistances) {
                 if (capacityStorage.isBoardingPossible(railCarriageDistance.getRailCarriageId())) {

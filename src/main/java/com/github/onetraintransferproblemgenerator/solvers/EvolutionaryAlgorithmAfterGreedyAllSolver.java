@@ -33,7 +33,7 @@ public class EvolutionaryAlgorithmAfterGreedyAllSolver extends OneTrainTransferS
     private HashMap<Passenger, Integer> greedyAllAlgorithm() {
         List<Tuple<Passenger, List<RailCarriageDistance>>> passengersAndTheirRailCarriageDistances = problem.getPassengers().stream()
                 .map(p -> {
-                    List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistanceIfRailCarriageIsUsed(p);
+                    List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistancesForRailCarriages(p);
                     railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCombinedDistances));
                     return new Tuple<>(p, railCarriageDistances);
                 })

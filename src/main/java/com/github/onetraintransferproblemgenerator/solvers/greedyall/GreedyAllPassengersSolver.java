@@ -26,7 +26,7 @@ public class GreedyAllPassengersSolver extends OneTrainTransferSolver {
     public double solve() {
         List<Tuple<Passenger, List<RailCarriageDistance>>> passengersAndTheirRailCarriageDistances = problem.getPassengers().stream()
                 .map(p -> {
-                    List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistanceIfRailCarriageIsUsed(p);
+                    List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistancesForRailCarriages(p);
                     railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCombinedDistances));
                     return new Tuple<>(p, railCarriageDistances);
                 })
