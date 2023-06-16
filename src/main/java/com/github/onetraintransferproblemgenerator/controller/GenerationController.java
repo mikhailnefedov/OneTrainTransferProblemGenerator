@@ -4,9 +4,11 @@ import com.github.onetraintransferproblemgenerator.features.FeatureExtractor;
 import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
 import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
+import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRepository;
 import com.github.onetraintransferproblemgenerator.serialization.InstanceToCSVWriter;
+import com.github.onetraintransferproblemgenerator.solvers.CostComputer;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import com.github.onetraintransferproblemgenerator.validation.InstanceValidator;
 import lombok.SneakyThrows;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -104,16 +107,21 @@ public class GenerationController {
 
     private void solveInstances(List<ProblemInstance> instances) {
         for (ProblemInstance instance : instances) {
+            HashMap<Class<? extends OneTrainTransferSolver>, HashMap<Passenger, Integer>> solverSolutionMapping = new HashMap<>();
             for (String solverName : generationParameters.getSolvers()) {
                 try {
                     Class<? extends OneTrainTransferSolver> solverClass = Class.forName(solverName).asSubclass(OneTrainTransferSolver.class);
                     Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class);
                     OneTrainTransferSolver solver = con.newInstance(instance.getProblem());
-                    double cost = solver.solve();
-                    instance.getFeatureDescription().setAlgorithmCost(cost, solverClass);
+                    solverSolutionMapping.put(solverClass, solver.solve());
                 } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
                     e.printStackTrace();
                 }
+            }
+            CostComputer costComputer = new CostComputer(instance.getProblem());
+            for (Class<? extends OneTrainTransferSolver> solverClass : solverSolutionMapping.keySet()) {
+                double cost = costComputer.computeCost(solverSolutionMapping.get(solverClass));
+                instance.getFeatureDescription().setAlgorithmCost(cost, solverClass);
             }
         }
     }

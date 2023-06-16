@@ -4,6 +4,7 @@ import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProble
 import com.github.onetraintransferproblemgenerator.models.Passenger;
 
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class GreedyPassengerOrderSolver extends OneTrainTransferSolver {
     }
 
     @Override
-    public double solve() {
+    public HashMap<Passenger, Integer> solve() {
         List<Integer> stationIds = problem.getTrain().getStationIds();
 
         for (int stationId : stationIds) {
@@ -28,7 +29,7 @@ public class GreedyPassengerOrderSolver extends OneTrainTransferSolver {
             seatPassengersInTrain(problem.getInPassengersOfStation(stationId));
         }
 
-        return solutionCost;
+        return solutionMapping;
     }
 
     private void letPassengersOutOfTrain(List<Passenger> passengers) {
@@ -42,8 +43,7 @@ public class GreedyPassengerOrderSolver extends OneTrainTransferSolver {
             for (RailCarriageDistance railCarriageDistance : railCarriageDistances) {
                 if (capacityStorage.isBoardingPossible(railCarriageDistance.getRailCarriageId())) {
                     capacityStorage.inPassenger(railCarriageDistance.getRailCarriageId(), passenger);
-                    addToSolutionCost(railCarriageDistance.getInDistance());
-                    addToSolutionCost(railCarriageDistance.getOutDistance());
+                    addToSolution(passenger, railCarriageDistance.getRailCarriageId());
                     break;
                 }
             }

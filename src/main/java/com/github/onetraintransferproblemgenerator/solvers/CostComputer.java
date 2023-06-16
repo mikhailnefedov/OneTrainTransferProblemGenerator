@@ -28,12 +28,8 @@ public class CostComputer {
         }
         return cost;
     }
-
-    public double computeCost(int startPosition, int endPosition) {
-        return Math.pow(endPosition - startPosition, 2);
-    }
-
-    public double computeCost(int distance) {
+    
+    private double computeCost(int distance) {
         return Math.pow(distance, 2);
     }
 }

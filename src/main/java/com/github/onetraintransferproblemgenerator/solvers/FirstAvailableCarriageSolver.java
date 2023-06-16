@@ -4,6 +4,7 @@ import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProble
 import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.models.RailCarriage;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class FirstAvailableCarriageSolver extends OneTrainTransferSolver {
@@ -13,15 +14,15 @@ public class FirstAvailableCarriageSolver extends OneTrainTransferSolver {
     }
 
     @Override
-    public double solve() {
+    public HashMap<Passenger, Integer> solve() {
         List<Integer> stationIds = problem.getTrain().getStationIds();
 
         for (int stationId : stationIds) {
-            letPassengersOutOfTrain(stationId, problem.getOutPassengersOfStation(stationId));
+            letPassengersOutOfTrain(problem.getOutPassengersOfStation(stationId));
             seatPassengersInTrain(stationId, problem.getInPassengersOfStation(stationId));
         }
 
-        return solutionCost;
+        return solutionMapping;
     }
 
     private void seatPassengersInTrain(int stationId, List<Passenger> passengers) {
@@ -29,17 +30,16 @@ public class FirstAvailableCarriageSolver extends OneTrainTransferSolver {
             for (RailCarriage railCarriage : problem.getTrain().getRailCarriages()) {
                 if (capacityStorage.isBoardingPossible(railCarriage.getSequenceNumber())) {
                     int railCarriageId = capacityStorage.inPassenger(railCarriage.getSequenceNumber(), passenger);
-                    addToSolutionCost(stationId, railCarriageId, passenger.getInPosition());
+                    addToSolution(passenger, railCarriageId);
                     break;
                 }
             }
         }
     }
 
-    private void letPassengersOutOfTrain(int stationId, List<Passenger> passengers) {
+    private void letPassengersOutOfTrain(List<Passenger> passengers) {
         passengers.forEach(p -> {
-            int railCarriageId = capacityStorage.outPassenger(p);
-            addToSolutionCost(stationId, railCarriageId, p.getOutPosition());
+            capacityStorage.outPassenger(p);
         });
     }
 

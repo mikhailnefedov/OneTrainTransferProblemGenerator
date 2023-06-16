@@ -1,32 +1,25 @@
 package com.github.onetraintransferproblemgenerator.solvers;
 
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
+import com.github.onetraintransferproblemgenerator.models.Passenger;
+
+import java.util.HashMap;
 
 public abstract class OneTrainTransferSolver {
 
     protected OneTrainTransferProblem problem;
     protected SeatReservationStorage capacityStorage;
-    protected CostComputer costComputer;
-    protected double solutionCost = 0;
+    protected HashMap<Passenger, Integer> solutionMapping;
 
     public OneTrainTransferSolver(OneTrainTransferProblem problem) {
-        costComputer = new CostComputer();
         this.problem = problem;
         capacityStorage = new SeatReservationStorage(problem.getTrain());
+        solutionMapping = new HashMap<>();
     }
 
-    public abstract double solve();
+    public abstract HashMap<Passenger, Integer> solve();
 
-    protected void addToSolutionCost(int stationId, int railCarriageId, int passengerPosition) {
-        int distance = problem.getTrain()
-                .getDistanceBetweenPositionAndCarriagePosition(stationId, railCarriageId, passengerPosition);
-        solutionCost += costComputer.computeCost(distance);
-    }
-
-    /**
-     * @param distance simple distance without prior use of cost computation
-     */
-    protected void addToSolutionCost(int distance) {
-        solutionCost += costComputer.computeCost(distance);
+    protected void addToSolution(Passenger passenger, int railCarriageId) {
+        solutionMapping.put(passenger, railCarriageId);
     }
 }

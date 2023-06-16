@@ -8,6 +8,7 @@ import com.github.onetraintransferproblemgenerator.solvers.RailCarriageDistance;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriagePositionHelper;
 
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ public class GreedyAllPassengersSolver extends OneTrainTransferSolver {
     }
 
     @Override
-    public double solve() {
+    public HashMap<Passenger, Integer> solve() {
         List<Tuple<Passenger, List<RailCarriageDistance>>> passengersAndTheirRailCarriageDistances = problem.getPassengers().stream()
                 .map(p -> {
                     List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistancesForRailCarriages(p);
@@ -34,17 +35,15 @@ public class GreedyAllPassengersSolver extends OneTrainTransferSolver {
                 .collect(Collectors.toList());
 
         for (Tuple<Passenger, List<RailCarriageDistance>> tuple : passengersAndTheirRailCarriageDistances) {
-            for(RailCarriageDistance railCarriageDistance :tuple.getRight()) {
+            for (RailCarriageDistance railCarriageDistance : tuple.getRight()) {
                 if (sectionCapacityRailCarriageStorage.isBoardingPossible(railCarriageDistance.getRailCarriageId(), tuple.getLeft())) {
                     sectionCapacityRailCarriageStorage.inPassenger(railCarriageDistance.getRailCarriageId(), tuple.getLeft());
-                    addToSolutionCost(railCarriageDistance.getInDistance());
-                    addToSolutionCost(railCarriageDistance.getOutDistance());
+                    addToSolution(tuple.getLeft(), railCarriageDistance.getRailCarriageId());
                     break;
                 }
             }
         }
-
-        return solutionCost;
+        return solutionMapping;
     }
 
 }

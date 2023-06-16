@@ -24,10 +24,10 @@ public class EvolutionaryAlgorithmAfterGreedyAllSolver extends OneTrainTransferS
     }
 
     @Override
-    public double solve() {
+    public HashMap<Passenger, Integer> solve() {
         HashMap<Passenger, Integer> passengerCarriageIdMapping = greedyAllAlgorithm();
         //TODO: evolutionary algorithm
-        return 0.0;
+        return passengerCarriageIdMapping;
     }
 
     private HashMap<Passenger, Integer> greedyAllAlgorithm() {

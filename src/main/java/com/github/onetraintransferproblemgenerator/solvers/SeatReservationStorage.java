@@ -7,6 +7,8 @@ import com.github.onetraintransferproblemgenerator.models.Train;
 
 import java.util.HashMap;
 
+//TODO: first developed helper for solvers, may be refactored to use newer helpers, because only works in order by going
+//through each station sequentially
 public class SeatReservationStorage {
 
     private final HashMap<Integer, Integer> freeCapacityOfRailCarriages;
