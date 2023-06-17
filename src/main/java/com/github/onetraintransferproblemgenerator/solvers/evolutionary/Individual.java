@@ -25,7 +25,7 @@ public class Individual {
         initializePassengerMap(problem);
         for (Passenger passenger : passengerRailCarriageMapping.keySet()) {
             int railCarriageId = passengerRailCarriageMapping.get(passenger);
-            for (int stationId = passenger.getInStation(); stationId <= passenger.getOutStation(); stationId++) {
+            for (int stationId = passenger.getInStation(); stationId < passenger.getOutStation(); stationId++) {
                 passengersOfRailCarriageOfInStation.get(stationId).get(railCarriageId).addPassenger(passenger);
             }
         }
@@ -44,7 +44,13 @@ public class Individual {
     }
 
     public int getRailCarriageIdOfPassenger(Passenger passenger) {
-        return passengerRailCarriageMapping.get(passenger);
+        try {
+            return passengerRailCarriageMapping.get(passenger);
+        } catch (Exception e) {
+            int a = 2+2;
+            System.out.println(e);
+        }
+        return 0;
     }
 
     public void addPassengerWithRailCarriageId(Passenger passenger, int railCarriageId) {

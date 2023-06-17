@@ -10,6 +10,7 @@ import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRe
 import com.github.onetraintransferproblemgenerator.serialization.InstanceToCSVWriter;
 import com.github.onetraintransferproblemgenerator.solvers.CostComputer;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.EvolutionarySolver;
 import com.github.onetraintransferproblemgenerator.validation.InstanceValidator;
 import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -111,9 +112,15 @@ public class GenerationController {
             for (String solverName : generationParameters.getSolvers()) {
                 try {
                     Class<? extends OneTrainTransferSolver> solverClass = Class.forName(solverName).asSubclass(OneTrainTransferSolver.class);
-                    Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class);
-                    OneTrainTransferSolver solver = con.newInstance(instance.getProblem());
-                    solverSolutionMapping.put(solverClass, solver.solve());
+                    if (solverClass.equals(EvolutionarySolver.class)) {
+                        System.out.println("Start EvolutionSolver for Instance" + instance.getInstanceId().toString());
+                        List<HashMap<Passenger, Integer>> knownSolutions = solverSolutionMapping.values().stream().collect(Collectors.toList());
+                        Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class, knownSolutions.getClass());
+                        OneTrainTransferSolver solver = con.newInstance(instance.getProblem(), knownSolutions);
+                        solverSolutionMapping.put(solverClass, solver.solve());
+                    } else {
+                        solverSolutionMapping.put(solverClass, handleOtherSolvers(solverClass, instance));
+                    }
                 } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -124,6 +131,12 @@ public class GenerationController {
                 instance.getFeatureDescription().setAlgorithmCost(cost, solverClass);
             }
         }
+    }
+
+    private HashMap<Passenger, Integer> handleOtherSolvers(Class<? extends OneTrainTransferSolver> solverClass, ProblemInstance instance) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class);
+        OneTrainTransferSolver solver = con.newInstance(instance.getProblem());
+        return solver.solve();
     }
 
     private void serializeToCsv(List<InstanceFeatureDescription> descriptions) {

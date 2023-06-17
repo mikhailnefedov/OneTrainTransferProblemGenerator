@@ -13,11 +13,15 @@ public class Mutation {
 
     public void mutate(Individual individual) {
         random = new Random();
-        Passenger passenger = chooseRandomPassenger(individual);
+        if (individual.getPassengerRailCarriageMapping().keySet().size() > 0) {
+            Passenger passenger = chooseRandomPassenger(individual);
 
-        List<? extends SwapPartner> swaps = createSwapsWithFreeCapacity(individual, passenger);
-        SwapPartner swap = swaps.get(random.nextInt(swaps.size()));
-        swap.makeSwap(individual, passenger);
+            List<? extends SwapPartner> swaps = createSwapsWithFreeCapacity(individual, passenger);
+            if (swaps.size() > 0) {
+                SwapPartner swap = swaps.get(random.nextInt(swaps.size()));
+                swap.makeSwap(individual, passenger);
+            }
+        }
     }
 
     private Passenger chooseRandomPassenger(Individual individual) {

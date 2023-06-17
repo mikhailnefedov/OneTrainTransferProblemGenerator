@@ -6,6 +6,7 @@ import com.github.onetraintransferproblemgenerator.solvers.FirstAvailableCarriag
 import com.github.onetraintransferproblemgenerator.solvers.GreedyPassengerOrderSolver;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import com.github.onetraintransferproblemgenerator.solvers.ShortestRidesFirstSolver;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.EvolutionarySolver;
 import com.github.onetraintransferproblemgenerator.solvers.greedyall.GreedyAllPassengersSolver;
 import lombok.Data;
 
@@ -43,8 +44,10 @@ public class InstanceFeatureDescription {
     private double greedyPassengerOrderCost = Double.NaN;
     @CsvName(column = "algo_greedyAllPassenger")
     private double greedyAllPassengerCost = Double.NaN;
-    @CsvName(column = "algo_shortestRidesFirstSolver")
-    private double shortestRidesFirstSolver = Double.NaN;
+    @CsvName(column = "algo_shortestRidesFirstCost")
+    private double shortestRidesFirstCost = Double.NaN;
+    @CsvName(column = "algo_evolutionaryCost")
+    private double evolutionaryCost = Double.NaN;
 
     public void setAlgorithmCost(double cost, Class<? extends OneTrainTransferSolver> solverClass) {
         if (solverClass.equals(FirstAvailableCarriageSolver.class)) {
@@ -54,7 +57,9 @@ public class InstanceFeatureDescription {
         } else if (solverClass.equals(GreedyAllPassengersSolver.class)) {
             setGreedyAllPassengerCost(cost);
         } else if (solverClass.equals(ShortestRidesFirstSolver.class)) {
-            setShortestRidesFirstSolver(cost);
+            setShortestRidesFirstCost(cost);
+        } else if (solverClass.equals(EvolutionarySolver.class)) {
+            setEvolutionaryCost(cost);
         }
     }
 
