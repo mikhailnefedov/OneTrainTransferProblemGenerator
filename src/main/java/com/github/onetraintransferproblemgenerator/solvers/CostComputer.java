@@ -7,17 +7,18 @@ import java.util.HashMap;
 
 public class CostComputer {
 
+    private OneTrainTransferProblem problem;
     private RailCarriagePositionHelper railCarriagePositions;
 
-    public CostComputer() {
-
-    }
-
     public CostComputer(OneTrainTransferProblem problem) {
+        this.problem = problem;
         railCarriagePositions = new RailCarriagePositionHelper(problem.getTrain());
     }
 
     public double computeCost(HashMap<Passenger, Integer> passengerRailCarriageMapping) {
+        if (!isExactSolution(passengerRailCarriageMapping)) {
+            return Double.NaN;
+        }
         double cost = 0;
         for (Passenger passenger : passengerRailCarriageMapping.keySet()) {
             RailCarriageDistance distances =
@@ -27,6 +28,11 @@ public class CostComputer {
             cost += computeCost(distances.getOutDistance());
         }
         return cost;
+    }
+
+    private boolean isExactSolution(HashMap<Passenger, Integer> solutionMapping) {
+        return solutionMapping.keySet().size() == problem.getPassengers().size();
+
     }
     
     private double computeCost(int distance) {
