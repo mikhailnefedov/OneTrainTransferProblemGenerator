@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//TODO: FAULTY --> Theoretically possible to seat passengers, but passenger would net to change rail carriage (not possible)
 public class GreedyAllPassengersSolver extends OneTrainTransferSolver {
 
     private RailCarriagePositionHelper carriagePositionHelper;

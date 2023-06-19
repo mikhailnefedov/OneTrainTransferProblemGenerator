@@ -113,7 +113,7 @@ public class GenerationController {
                 try {
                     Class<? extends OneTrainTransferSolver> solverClass = Class.forName(solverName).asSubclass(OneTrainTransferSolver.class);
                     if (solverClass.equals(EvolutionarySolver.class)) {
-                        System.out.println("Start EvolutionSolver for Instance" + instance.getInstanceId().toString());
+                        System.out.println("Start EvolutionSolver for Instance " + instance.getInstanceId().toString());
                         List<HashMap<Passenger, Integer>> knownSolutions = solverSolutionMapping.values().stream().collect(Collectors.toList());
                         Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class, knownSolutions.getClass());
                         OneTrainTransferSolver solver = con.newInstance(instance.getProblem(), knownSolutions);

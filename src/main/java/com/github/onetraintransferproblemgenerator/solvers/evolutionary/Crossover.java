@@ -5,8 +5,10 @@ import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriageDistance;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriagePositionHelper;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Crossover {
 
@@ -34,12 +36,24 @@ public class Crossover {
         for (Passenger passenger : passengersFromFirstParent) {
             child.addPassengerWithRailCarriageId(passenger, parent1.getRailCarriageIdOfPassenger(passenger));
         }
+        passengersFromSecondParent =
+                passengersFromSecondParent.stream().sorted(Comparator.comparing(Passenger::getInStation)).toList();
         for (Passenger passenger : passengersFromSecondParent) {
             List<Integer> greedyRailCarriages = railCarriagePositionHelper.getDistancesForRailCarriages(passenger).stream()
                     .map(RailCarriageDistance::getRailCarriageId)
-                    .toList();
+                    .collect(Collectors.toList());
+            int railCarriageIdInSecondParent = parent2.getPassengerRailCarriageMapping().get(passenger);
+            swapRailCarriageIntoFirstPlace(greedyRailCarriages, railCarriageIdInSecondParent);
             child.addPassengerWithoutRailCarriage(passenger, greedyRailCarriages);
         }
+
         return child;
+    }
+
+    private void swapRailCarriageIntoFirstPlace(List<Integer> railCarriages, int railCarriageId) {
+        int firstRailCarriage = railCarriages.get(0);
+        int index = railCarriages.indexOf(railCarriageId);
+        railCarriages.set(index, firstRailCarriage);
+        railCarriages.set(0, railCarriageId);
     }
 }
