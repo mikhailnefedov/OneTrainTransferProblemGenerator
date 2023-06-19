@@ -107,17 +107,13 @@ public class GenerationController {
     }
 
     private void solveInstances(List<ProblemInstance> instances) {
-        for (ProblemInstance instance : instances) {
+        instances.parallelStream().forEach(instance -> {
             HashMap<Class<? extends OneTrainTransferSolver>, HashMap<Passenger, Integer>> solverSolutionMapping = new HashMap<>();
             for (String solverName : generationParameters.getSolvers()) {
                 try {
                     Class<? extends OneTrainTransferSolver> solverClass = Class.forName(solverName).asSubclass(OneTrainTransferSolver.class);
                     if (solverClass.equals(EvolutionarySolver.class)) {
-                        System.out.println("Start EvolutionSolver for Instance " + instance.getInstanceId().toString());
-                        List<HashMap<Passenger, Integer>> knownSolutions = solverSolutionMapping.values().stream().collect(Collectors.toList());
-                        Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class, knownSolutions.getClass());
-                        OneTrainTransferSolver solver = con.newInstance(instance.getProblem(), knownSolutions);
-                        solverSolutionMapping.put(solverClass, solver.solve());
+                        solverSolutionMapping.put(solverClass, handleEvolutionarySolver(instance, solverSolutionMapping, solverClass));
                     } else {
                         solverSolutionMapping.put(solverClass, handleOtherSolvers(solverClass, instance));
                     }
@@ -125,18 +121,31 @@ public class GenerationController {
                     e.printStackTrace();
                 }
             }
-            CostComputer costComputer = new CostComputer(instance.getProblem());
-            for (Class<? extends OneTrainTransferSolver> solverClass : solverSolutionMapping.keySet()) {
-                double cost = costComputer.computeCost(solverSolutionMapping.get(solverClass));
-                instance.getFeatureDescription().setAlgorithmCost(cost, solverClass);
-            }
-        }
+            setInstanceAlgorithmCosts(instance, solverSolutionMapping);
+        });
+    }
+
+    private HashMap<Passenger, Integer> handleEvolutionarySolver(ProblemInstance instance, HashMap<Class<? extends OneTrainTransferSolver>, HashMap<Passenger, Integer>> solverSolutionMapping, Class<? extends OneTrainTransferSolver> solverClass) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        System.out.println("Start EvolutionSolver for Instance " + instance.getInstanceId());
+        ArrayList<HashMap<Passenger, Integer>> knownSolutions = new ArrayList<>(solverSolutionMapping.values());
+        Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class, knownSolutions.getClass());
+        OneTrainTransferSolver solver = con.newInstance(instance.getProblem(), knownSolutions);
+        return solver.solve();
     }
 
     private HashMap<Passenger, Integer> handleOtherSolvers(Class<? extends OneTrainTransferSolver> solverClass, ProblemInstance instance) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class);
         OneTrainTransferSolver solver = con.newInstance(instance.getProblem());
         return solver.solve();
+    }
+
+    private void setInstanceAlgorithmCosts(ProblemInstance instance,
+                                           HashMap<Class<? extends OneTrainTransferSolver>, HashMap<Passenger, Integer>> solverSolutionMapping) {
+        CostComputer costComputer = new CostComputer(instance.getProblem());
+        for (Class<? extends OneTrainTransferSolver> solverClass : solverSolutionMapping.keySet()) {
+            double cost = costComputer.computeCost(solverSolutionMapping.get(solverClass));
+            instance.getFeatureDescription().setAlgorithmCost(cost, solverClass);
+        }
     }
 
     private void serializeToCsv(List<InstanceFeatureDescription> descriptions) {
