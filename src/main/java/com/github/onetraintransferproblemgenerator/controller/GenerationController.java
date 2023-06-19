@@ -49,6 +49,7 @@ public class GenerationController {
         if (!generationParameters.getCsvFile().equals("")) {
             serializeToCsv(instances.stream().map(ProblemInstance::getFeatureDescription).collect(Collectors.toList()));
         }
+        System.out.println("Finished generation!");
     }
 
     private List<ProblemInstance> generateInstances(Map<String, InstanceGeneration> generators) {
