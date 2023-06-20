@@ -1,5 +1,7 @@
-package com.github.onetraintransferproblemgenerator.controller;
+package com.github.onetraintransferproblemgenerator.controller.generation;
 
+import com.github.onetraintransferproblemgenerator.controller.generation.GenerationParameters;
+import com.github.onetraintransferproblemgenerator.controller.generation.InstanceGeneration;
 import com.github.onetraintransferproblemgenerator.features.FeatureExtractor;
 import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
 import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
