@@ -1,4 +1,5 @@
 import io
+import json
 
 from flask import Flask, request
 import numpy as np
@@ -90,7 +91,7 @@ def get_instance_coords():
     return {"coordinates": coords}
 
 
-@app.route('/outliernormalizedata', methods=['POST'])
+@app.route('/prelimdata', methods=['POST'])
 def get_outlier_normalize_data():
     json_data = request.json
     instances_and_feature_vectors = create_feature_vector(json_data["instances"], json_data["featureNames"])
@@ -102,6 +103,7 @@ def get_outlier_normalize_data():
     data = []
     for i in range(0, len(json_data["featureNames"])):
         feature_data = {
+            "featureName": json_data["featureNames"][i],
             "columnMin": column_min[i],
             "columnMax": column_max[i],
             "featureMin": feature_min[i],

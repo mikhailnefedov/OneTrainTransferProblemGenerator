@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OutlierNormalizeRequest {
+public class PrelimRequest {
     private List<ProblemInstance> instances;
     private List<String> featureNames;
 }

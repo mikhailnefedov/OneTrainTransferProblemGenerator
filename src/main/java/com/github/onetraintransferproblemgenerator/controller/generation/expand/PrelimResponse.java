@@ -9,14 +9,20 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OutlierNormalizeResponse {
-    private List<OutlierNormalizeData> featureData;
+public class PrelimResponse {
+    private List<PrelimData> featureData;
+
+    public PrelimData getPrelimData(String featureName) {
+        return featureData.stream().filter(d -> d.getFeatureName().equals(featureName)).findFirst().get();
+    }
+
 }
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-class OutlierNormalizeData {
+class PrelimData {
+    private String featureName;
     private double columnMin;
     private double columnMax;
     private double featureMin;

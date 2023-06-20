@@ -63,21 +63,19 @@ public class InstanceFeatureDescription {
         }
     }
 
-    public double[] getFeatureVector(List<String> csvFeatureNames) {
+    public List<Tuple<String, Double>> getFeatureVector(List<String> featureNames) {
         List<Field> declaredFields = List.of(InstanceFeatureDescription.class.getDeclaredFields());
         return declaredFields.stream()
                 .peek(f -> f.setAccessible(true))
                 .map(f -> {
                     try {
-                        String csvAnnotation = f.getDeclaredAnnotationsByType(CsvName.class)[0].column();
-                        return new Tuple<>(csvAnnotation, Double.parseDouble(f.get(this).toString()));
+                        return new Tuple<>(f.getName(), Double.parseDouble(f.get(this).toString()));
                     } catch (IllegalAccessException | NumberFormatException ignored) {
                     }
                     return null;
                 })
                 .filter(Objects::nonNull)
-                .filter(t -> csvFeatureNames.contains(t.getLeft()))
-                .mapToDouble(Tuple::getRight)
-                .toArray();
+                .filter(t -> featureNames.contains(t.getLeft()))
+                .toList();
     }
 }
