@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("expandinstancespace")
@@ -57,16 +58,17 @@ public class ExpandInstanceSpaceGenerationController {
     }
 
     private void doPrelim(List<List<Tuple<String, Double>>> featureVectors, PrelimResponse prelimData) {
-        List<List<Double>> result = featureVectors.stream()
+        List<List<Double>> transformedFeatureVectors = featureVectors.stream()
                 .map(featureVector ->
                         featureVector.stream().map(tuple -> {
                             PrelimData featurePrelimData = prelimData.getPrelimData(tuple.getLeft());
                             double tmp = boundOutliers(tuple.getRight(), featurePrelimData);
-                            return normalize(tmp, featurePrelimData.getLambda());
-                        }).toList()
+                            return boxcox(tmp, featurePrelimData.getLambda());
+                        }).collect(Collectors.toList())
                 )
                 .toList();
-        result.get(0).get(0);
+        standardize(transformedFeatureVectors, prelimData.getFeatureData().size());
+        transformedFeatureVectors.get(0).get(0);
     }
 
     private double boundOutliers(double featureValue, PrelimData prelimData) {
@@ -81,7 +83,7 @@ public class ExpandInstanceSpaceGenerationController {
     /**
      * Box-Cox transformation
      */
-    private double normalize(double featureValue, double lambda) {
+    private double boxcox(double featureValue, double lambda) {
         if (lambda == 0) {
             return Math.log(featureValue);
         } else {
@@ -89,7 +91,36 @@ public class ExpandInstanceSpaceGenerationController {
         }
     }
 
-    private void doProjection() {
+    private void standardize(List<List<Double>> featureVectors, int featureCount) {
+        List<Double> means = new ArrayList<>();
+        List<Double> stdDeviations = new ArrayList<>();
 
+        for (int i = 0; i < featureCount; i++) {
+            int column = i;
+            List<Double> featureValues = featureVectors.stream().map(vector -> vector.get(column)).toList();
+            double mean = featureValues.stream().mapToDouble(value -> value).average().orElse(0.0);
+            means.add(mean);
+            double stdDeviation = computeStandardDeviation(featureValues, mean);
+            stdDeviations.add(stdDeviation);
+
+            for (List<Double> featureVector : featureVectors) {
+                featureVector.set(i, zeroMeanUnitVariance(featureVector.get(i), mean, stdDeviation));
+            }
+        }
     }
+
+    private double computeStandardDeviation(List<Double> values, double mean) {
+        double variance = values.stream()
+                .map(value -> Math.pow(value - mean, 2))
+                .reduce(Double::sum)
+                .orElse(0.0) / values.size();
+        variance = Double.isNaN(variance) ? 0 : variance;
+        return Math.sqrt(variance);
+    }
+
+    private double zeroMeanUnitVariance(double value, double mean, double stdDeviation) {
+        value -= mean;
+        return value / stdDeviation;
+    }
+
 }
