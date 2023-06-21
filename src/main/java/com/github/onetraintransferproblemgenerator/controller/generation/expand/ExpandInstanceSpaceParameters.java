@@ -12,4 +12,6 @@ import java.util.List;
 public class ExpandInstanceSpaceParameters {
     private String experimentId;
     private List<String> featureNames;
+    private double[][] transposedProjectionMatrix;
+    private List<Double> targetPoint;
 }
