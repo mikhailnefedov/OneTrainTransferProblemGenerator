@@ -14,4 +14,5 @@ public class ExpandInstanceSpaceParameters {
     private List<String> featureNames;
     private double[][] transposedProjectionMatrix;
     private List<Double> targetPoint;
+    private int localSearchRounds;
 }

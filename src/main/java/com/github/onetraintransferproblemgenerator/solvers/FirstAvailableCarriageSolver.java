@@ -19,13 +19,13 @@ public class FirstAvailableCarriageSolver extends OneTrainTransferSolver {
 
         for (int stationId : stationIds) {
             letPassengersOutOfTrain(problem.getOutPassengersOfStation(stationId));
-            seatPassengersInTrain(stationId, problem.getInPassengersOfStation(stationId));
+            seatPassengersInTrain(problem.getInPassengersOfStation(stationId));
         }
 
         return solutionMapping;
     }
 
-    private void seatPassengersInTrain(int stationId, List<Passenger> passengers) {
+    private void seatPassengersInTrain(List<Passenger> passengers) {
         for (Passenger passenger : passengers) {
             for (RailCarriage railCarriage : problem.getTrain().getRailCarriages()) {
                 if (capacityStorage.isBoardingPossible(railCarriage.getSequenceNumber())) {

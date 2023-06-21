@@ -6,6 +6,9 @@ import com.github.onetraintransferproblemgenerator.models.RailCarriage;
 import com.github.onetraintransferproblemgenerator.models.Train;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 //TODO: first developed helper for solvers, may be refactored to use newer helpers, because only works in order by going
 //through each station sequentially

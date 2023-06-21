@@ -1,5 +1,7 @@
 package com.github.onetraintransferproblemgenerator.persistence;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
 import lombok.AllArgsConstructor;
@@ -32,5 +34,17 @@ public class ProblemInstance {
         featureDescription = new InstanceFeatureDescription();
         featureDescription.setInstanceId(instanceId);
         featureDescription.setSource(generator.getSimpleName());
+    }
+
+    public ProblemInstance deepClone() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            ProblemInstance copy = objectMapper.readValue(objectMapper.writeValueAsString(this), ProblemInstance.class);
+            copy.getFeatureDescription().resetAlgorithmCosts();
+            return copy;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

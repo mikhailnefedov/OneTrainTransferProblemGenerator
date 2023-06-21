@@ -78,4 +78,19 @@ public class InstanceFeatureDescription {
                 .filter(t -> featureNames.contains(t.getLeft()))
                 .toList();
     }
+
+    public void resetAlgorithmCosts() {
+        List<Field> declaredFields = List.of(InstanceFeatureDescription.class.getDeclaredFields());
+        declaredFields.stream()
+                .filter(f -> f.getAnnotation(CsvName.class).column().contains("algo"))
+                .forEach(f -> {
+                    f.setAccessible(true);
+                    try {
+                        f.set(this, Double.NaN);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                    f.setAccessible(false);
+                });
+    }
 }
