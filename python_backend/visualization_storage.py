@@ -12,6 +12,7 @@ class VisualizationStorage():
 
     def add_visualization_by_source(self, instance_coordinate_pairs):
         fig = plt.figure()
+        instance_coordinate_pairs.sort(key = lambda x: x[0]["featureDescription"]["source"])
         grouped_instances_by_source = itertools.groupby(instance_coordinate_pairs, key= lambda x: x[0]["featureDescription"]["source"])
         for key, group in grouped_instances_by_source:
             group_list = list(group)

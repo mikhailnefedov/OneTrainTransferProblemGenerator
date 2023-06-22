@@ -28,12 +28,16 @@ public class StationCapacityTracker {
 
     private void setFreeCapacity(List<Passenger> passengers) {
         for (Passenger passenger : passengers) {
-            int startStation = passenger.getInStation();
-            int penultimateStation = passenger.getOutStation() - 1;
-            for (int i = startStation; i <= penultimateStation; i++) {
-                int freeCapacity = freeCapacityFromStation.get(i);
-                freeCapacityFromStation.put(i, freeCapacity - 1);
-            }
+            addPassenger(passenger);
+        }
+    }
+
+    public void addPassenger(Passenger passenger) {
+        int startStation = passenger.getInStation();
+        int penultimateStation = passenger.getOutStation() - 1;
+        for (int i = startStation; i <= penultimateStation; i++) {
+            int freeCapacity = freeCapacityFromStation.get(i);
+            freeCapacityFromStation.put(i, freeCapacity - 1);
         }
     }
 

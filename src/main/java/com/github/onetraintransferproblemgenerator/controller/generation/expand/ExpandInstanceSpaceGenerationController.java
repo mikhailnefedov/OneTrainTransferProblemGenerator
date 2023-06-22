@@ -1,5 +1,7 @@
 package com.github.onetraintransferproblemgenerator.controller.generation.expand;
 
+import com.github.onetraintransferproblemgenerator.features.FeatureExtractor;
+import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
 import com.github.onetraintransferproblemgenerator.helpers.Tuple;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRepository;
@@ -17,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.BiFunction;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("expandinstancespace")
@@ -38,9 +41,30 @@ public class ExpandInstanceSpaceGenerationController {
     @PostMapping("expand")
     void generateInstances(@RequestBody ExpandInstanceSpaceParameters parameters) {
         List<Tuple<ProblemInstance, SimpleMatrix>> instancesAndCoords = initializeKnownInstancesWithTheirCoordinates(parameters);
-        List<Tuple<ProblemInstance, SimpleMatrix>> startPopulation = getNearestInstancesToTargetPoint(parameters.getTargetPoint(), instancesAndCoords);
+        List<ExpandInstanceIndividual> startPopulation =
+                getNearestInstancesToTargetPoint(parameters.getTargetPoint(), instancesAndCoords)
+                        .stream()
+                        .map(t -> new ExpandInstanceIndividual(t.getLeft()))
+                        .collect(Collectors.toList());
 
-        startPopulation.get(0);
+        for (int i = 0; i < parameters.getLocalSearchRounds(); i++) {
+            startPopulation.forEach(individual -> mutation.mutate(individual));
+        }
+        List<ProblemInstance> newInstances = startPopulation.stream()
+                .map(ExpandInstanceIndividual::getProblemInstance)
+                .peek(individual -> {
+                    String instanceId = "mutated" + individual.getInstanceId();
+                    InstanceFeatureDescription description = FeatureExtractor
+                            .extract(instanceId,
+                                    individual.getProblem());
+                    String source = "ExpandInstanceController";
+                    individual.setFeatureDescription(description);
+                    individual.getFeatureDescription().setSource(source);
+
+                    individual.setGeneratorName(source);
+                    individual.setInstanceId(instanceId);
+                }).collect(Collectors.toList());
+        problemInstanceRepository.saveAll(newInstances);
     }
 
     private List<Tuple<ProblemInstance, SimpleMatrix>> initializeKnownInstancesWithTheirCoordinates(ExpandInstanceSpaceParameters parameters) {
@@ -80,7 +104,7 @@ public class ExpandInstanceSpaceGenerationController {
         return knownInstances.stream()
                 .sorted(Comparator.comparingDouble(o -> computeDistance(targetPointX, targetPointY, o.getRight())))
                 .limit(POPULATION_COUNT)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     private double computeDistance(double targetPointX, double targetPointY, SimpleMatrix instanceCoords) {
