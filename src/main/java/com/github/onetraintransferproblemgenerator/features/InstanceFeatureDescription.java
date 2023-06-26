@@ -13,6 +13,7 @@ import lombok.Data;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Data
 public class InstanceFeatureDescription {
@@ -76,7 +77,7 @@ public class InstanceFeatureDescription {
                 })
                 .filter(Objects::nonNull)
                 .filter(t -> featureNames.contains(t.getLeft()))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public void resetAlgorithmCosts() {

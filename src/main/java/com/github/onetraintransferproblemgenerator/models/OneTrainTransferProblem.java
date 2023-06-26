@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Data
@@ -20,5 +21,15 @@ public class OneTrainTransferProblem {
 
     public List<Passenger> getOutPassengersOfStation(int stationId) {
         return passengers.stream().filter(p -> p.getOutStation() == stationId).toList();
+    }
+
+    public OneTrainTransferProblem deepCopy() {
+        OneTrainTransferProblem copy = new OneTrainTransferProblem();
+        Train trainCopy = new Train();
+        trainCopy.setRailCarriages(train.getRailCarriages().stream().collect(Collectors.toList()));
+        trainCopy.setStations(train.getStations().stream().collect(Collectors.toList()));
+        copy.setTrain(trainCopy);
+        copy.setPassengers(passengers.stream().collect(Collectors.toList()));
+        return copy;
     }
 }

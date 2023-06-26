@@ -42,17 +42,19 @@ public class ExpandInstanceSpaceGenerationController {
     void generateInstances(@RequestBody ExpandInstanceSpaceParameters parameters) {
         List<Tuple<ProblemInstance, SimpleMatrix>> instancesAndCoords = initializeKnownInstancesWithTheirCoordinates(parameters);
         List<ExpandInstanceIndividual> startPopulation =
-                getNearestInstancesToTargetPoint(parameters.getTargetPoint(), instancesAndCoords)
-                        .stream()
-                        .map(t -> new ExpandInstanceIndividual(t.getLeft()))
-                        .collect(Collectors.toList());
+                getNearestInstancesToTargetPoint(parameters.getTargetPoint(), instancesAndCoords);
 
         for (int i = 0; i < parameters.getLocalSearchRounds(); i++) {
-            startPopulation.forEach(individual -> mutation.mutate(individual));
-        }
+            for (int j = 0; j < startPopulation.size(); j++) {
+                ExpandInstanceIndividual newIndividual = startPopulation.get(i).deepClone();
+                mutation.mutate(newIndividual);
+                setCoordinatesAndDistance(newIndividual, parameters);
 
-        //TODO: build better local search, ensure that new individuals are copies of previous individual
-        //TODO: build coordination computation for new individual
+                if (newIndividual.getFitness() <= startPopulation.get(i).getFitness()) {
+                    startPopulation.set(i, newIndividual);
+                }
+            }
+        }
 
         List<ProblemInstance> newInstances = startPopulation.stream()
                 .map(ExpandInstanceIndividual::getProblemInstance)
@@ -69,6 +71,7 @@ public class ExpandInstanceSpaceGenerationController {
                     individual.setInstanceId(instanceId);
                 }).collect(Collectors.toList());
         problemInstanceRepository.saveAll(newInstances);
+        System.out.println("Ended local search");
     }
 
     private List<Tuple<ProblemInstance, SimpleMatrix>> initializeKnownInstancesWithTheirCoordinates(ExpandInstanceSpaceParameters parameters) {
@@ -100,14 +103,16 @@ public class ExpandInstanceSpaceGenerationController {
                 .getBody();
     }
 
-    private List<Tuple<ProblemInstance, SimpleMatrix>> getNearestInstancesToTargetPoint(List<Double> targetPoint,
-                                                                                        List<Tuple<ProblemInstance, SimpleMatrix>> knownInstances) {
+    private List<ExpandInstanceIndividual> getNearestInstancesToTargetPoint(List<Double> targetPoint,
+                                                                            List<Tuple<ProblemInstance, SimpleMatrix>> knownInstances) {
         double targetPointX = targetPoint.get(0);
         double targetPointY = targetPoint.get(1);
 
         return knownInstances.stream()
                 .sorted(Comparator.comparingDouble(o -> computeDistance(targetPointX, targetPointY, o.getRight())))
                 .limit(POPULATION_COUNT)
+                .map(tuple ->
+                        new ExpandInstanceIndividual(tuple.getLeft(), tuple.getRight(), computeDistance(targetPointX, targetPointY, tuple.getRight())))
                 .collect(Collectors.toList());
     }
 
@@ -119,6 +124,18 @@ public class ExpandInstanceSpaceGenerationController {
         double deltaY = Math.abs(instanceY - targetPointY);
 
         return Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+    }
+
+    private void setCoordinatesAndDistance(ExpandInstanceIndividual individual, ExpandInstanceSpaceParameters parameters) {
+        List<Tuple<String, Double>> featureVector = individual.getProblemInstance().getFeatureDescription().getFeatureVector(parameters.getFeatureNames());
+
+        List<Double> transformedFeatureVector = prelimUtils.doPrelimOnSingleFeatureVector(featureVector);
+        SimpleMatrix coords = ProjectionUtils.projectSingleFeatureVector(transformedFeatureVector, parameters.getTransposedProjectionMatrix());
+
+        individual.setCoordinates(coords);
+
+        double distance = computeDistance(parameters.getTargetPoint().get(0), parameters.getTargetPoint().get(1), coords);
+        individual.setFitness(distance);
     }
 
 }

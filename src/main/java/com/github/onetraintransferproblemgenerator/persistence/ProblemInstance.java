@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
+import com.github.onetraintransferproblemgenerator.models.Train;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,14 +38,10 @@ public class ProblemInstance {
     }
 
     public ProblemInstance deepClone() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            ProblemInstance copy = objectMapper.readValue(objectMapper.writeValueAsString(this), ProblemInstance.class);
-            copy.getFeatureDescription().resetAlgorithmCosts();
-            return copy;
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return null;
+        ProblemInstance copy = new ProblemInstance();
+        copy.setExperimentId(experimentId);
+        copy.setProblem(problem.deepCopy());
+        copy.setFeatureDescription(featureDescription);
+        return copy;
     }
 }
