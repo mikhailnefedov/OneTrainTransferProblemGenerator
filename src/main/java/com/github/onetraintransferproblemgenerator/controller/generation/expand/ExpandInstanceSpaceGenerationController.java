@@ -50,6 +50,10 @@ public class ExpandInstanceSpaceGenerationController {
         for (int i = 0; i < parameters.getLocalSearchRounds(); i++) {
             startPopulation.forEach(individual -> mutation.mutate(individual));
         }
+
+        //TODO: build better local search, ensure that new individuals are copies of previous individual
+        //TODO: build coordination computation for new individual
+
         List<ProblemInstance> newInstances = startPopulation.stream()
                 .map(ExpandInstanceIndividual::getProblemInstance)
                 .peek(individual -> {
@@ -77,7 +81,7 @@ public class ExpandInstanceSpaceGenerationController {
                 .toList();
 
         List<List<Double>> transformedFeatureVectors = prelimUtils.doPrelim(featureVectors, prelimData);
-        List<SimpleMatrix> coords = ProjectionUtils.projectFeatureVector(transformedFeatureVectors, parameters.getTransposedProjectionMatrix());
+        List<SimpleMatrix> coords = ProjectionUtils.projectFeatureVectors(transformedFeatureVectors, parameters.getTransposedProjectionMatrix());
 
         return StreamUtils
                 .zip(problemInstances.stream(), coords.stream(), (BiFunction<ProblemInstance, SimpleMatrix, Tuple<ProblemInstance, SimpleMatrix>>) Tuple::new)

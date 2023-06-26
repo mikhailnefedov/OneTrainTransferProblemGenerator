@@ -10,24 +10,41 @@ public class PrelimUtils {
 
     List<Double> means;
     List<Double> stdDeviations;
-
+    PrelimResponse prelimData;
 
     public PrelimUtils() {
 
     }
 
-    public List<List<Double>> doPrelim(List<List<Tuple<String, Double>>> featureVectors, PrelimResponse prelimData) {
+    public List<List<Double>> doPrelim(List<List<Tuple<String, Double>>> featureVectors, PrelimResponse prelimResponse) {
+        this.prelimData = prelimResponse;
+
         List<List<Double>> transformedFeatureVectors = featureVectors.stream()
                 .map(featureVector ->
                         featureVector.stream().map(tuple -> {
-                            PrelimData featurePrelimData = prelimData.getPrelimData(tuple.getLeft());
+                            PrelimData featurePrelimData = prelimResponse.getPrelimData(tuple.getLeft());
                             double tmp = boundOutliers(tuple.getRight(), featurePrelimData);
                             return boxcox(tmp, featurePrelimData.getLambda());
                         }).collect(Collectors.toList())
                 )
                 .toList();
-        standardize(transformedFeatureVectors, prelimData.getFeatureData().size());
+        standardize(transformedFeatureVectors, prelimResponse.getFeatureData().size());
         return transformedFeatureVectors;
+    }
+
+
+    /**
+     * prerequisite computation of doPrelim (already known individuals), this method should be used on new individuals
+     */
+    public List<Double> doPrelimOnSingleFeatureVector(List<Tuple<String, Double>> featureVector) {
+        List<Double> transformedFeatureVector = featureVector.stream()
+                .map(tuple -> {
+                    PrelimData prelimDataOfFeature = prelimData.getPrelimData(tuple.getLeft());
+                    double tmp = boundOutliers(tuple.getRight(), prelimDataOfFeature);
+                    return boxcox(tmp, prelimDataOfFeature.getLambda());
+                }).collect(Collectors.toList());
+        standardizeSingleFeatureVector(transformedFeatureVector);
+        return transformedFeatureVector;
     }
 
     private double boundOutliers(double featureValue, PrelimData prelimData) {
@@ -80,5 +97,21 @@ public class PrelimUtils {
     private double zeroMeanUnitVariance(double value, double mean, double stdDeviation) {
         value -= mean;
         return value / stdDeviation;
+    }
+
+    /**
+     * prerequisite call after PrelimUtils has been used to make a computation on known individuals, so that means and
+     * standard deviations are already known for the features
+     */
+    private void standardizeSingleFeatureVector(List<Double> featureVector) {
+        int featureCount = featureVector.size();
+
+        for (int i = 0; i < featureCount; i++) {
+            double mean = means.get(i);
+            double stdDeviation = stdDeviations.get(i);
+
+            double newValue = zeroMeanUnitVariance(featureVector.get(i), mean, stdDeviation);
+            featureVector.set(i, newValue);
+        }
     }
 }

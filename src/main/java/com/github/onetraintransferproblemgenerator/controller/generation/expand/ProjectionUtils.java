@@ -6,12 +6,16 @@ import java.util.List;
 
 public class ProjectionUtils {
 
-    public static List<SimpleMatrix> projectFeatureVector(List<List<Double>> featureVectors, double[][] transposedProjectionMatrix) {
+    public static List<SimpleMatrix> projectFeatureVectors(List<List<Double>> featureVectors,
+                                                           double[][] transposedProjectionMatrix) {
+        return featureVectors.stream().map(v -> projectSingleFeatureVector(v, transposedProjectionMatrix)).toList();
+    }
+
+    public static SimpleMatrix projectSingleFeatureVector(List<Double> featureVector,
+                                                          double[][] transposedProjectionMatrix) {
         SimpleMatrix projectionMatrix = new SimpleMatrix(transposedProjectionMatrix).transpose();
 
-        return featureVectors.stream().map(v -> {
-            SimpleMatrix featureMatrix = new SimpleMatrix(v.stream().mapToDouble(d -> d).toArray());
-            return projectionMatrix.mult(featureMatrix);
-        }).toList();
+        SimpleMatrix featureMatrix = new SimpleMatrix(featureVector.stream().mapToDouble(d -> d).toArray());
+        return projectionMatrix.mult(featureMatrix);
     }
 }
