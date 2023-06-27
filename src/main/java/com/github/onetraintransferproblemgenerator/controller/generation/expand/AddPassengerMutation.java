@@ -2,7 +2,6 @@ package com.github.onetraintransferproblemgenerator.controller.generation.expand
 
 import com.github.onetraintransferproblemgenerator.helpers.Tuple;
 import com.github.onetraintransferproblemgenerator.models.Passenger;
-import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 
 import java.util.List;
 import java.util.Random;
@@ -36,7 +35,7 @@ class AddPassengerMutation implements Mutation {
 
         int startStation = randomRide.getLeft();
         int lastStation = randomRide.getRight();
-        int randomLastStation = random.nextInt(startStation,lastStation + 1);
+        int randomLastStation = random.nextInt(startStation, lastStation + 1);
         return new Tuple<>(startStation, randomLastStation);
     }
 }
