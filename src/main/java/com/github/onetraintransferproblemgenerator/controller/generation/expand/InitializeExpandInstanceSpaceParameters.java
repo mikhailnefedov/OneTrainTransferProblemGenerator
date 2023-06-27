@@ -9,10 +9,19 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExpandInstanceSpaceParameters {
+class InitializeExpandInstanceSpaceParameters {
     private String experimentId;
     private List<String> featureNames;
     private double[][] transposedProjectionMatrix;
     private List<Double> targetPoint;
+    private int localSearchRounds;
+}
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+class LocalSearchExpandInstanceParameters {
+    private List<Double> targetPoint;
+    private int iterations;
     private int localSearchRounds;
 }

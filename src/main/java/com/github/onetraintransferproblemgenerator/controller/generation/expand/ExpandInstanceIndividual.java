@@ -16,6 +16,12 @@ class ExpandInstanceIndividual {
      */
     private double fitness;
 
+    public ExpandInstanceIndividual(ProblemInstance problemInstance, SimpleMatrix coordinates) {
+        this.problemInstance = problemInstance;
+        stationCapacityTracker = new StationCapacityTracker(problemInstance.getProblem());
+        this.coordinates = coordinates;
+    }
+
     public ExpandInstanceIndividual(ProblemInstance problemInstance, SimpleMatrix coordinates, double fitness) {
         this.problemInstance = problemInstance;
         stationCapacityTracker = new StationCapacityTracker(problemInstance.getProblem());

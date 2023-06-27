@@ -31,6 +31,8 @@ public class ExpandInstanceSpaceGenerationController {
     private PrelimUtils prelimUtils;
     private final int POPULATION_COUNT = 20;
     private Mutation mutation = new AddPassengerMutation();
+    private InitializeExpandInstanceSpaceParameters instanceSpaceParameters;
+    private List<ExpandInstanceIndividual> individuals;
 
     public ExpandInstanceSpaceGenerationController(ProblemInstanceRepository problemInstanceRepository) {
         this.problemInstanceRepository = problemInstanceRepository;
@@ -38,43 +40,43 @@ public class ExpandInstanceSpaceGenerationController {
         prelimUtils = new PrelimUtils();
     }
 
-    @PostMapping("expand")
-    void generateInstances(@RequestBody ExpandInstanceSpaceParameters parameters) {
+    @PostMapping("init")
+    void initExpandInstanceSpace(@RequestBody InitializeExpandInstanceSpaceParameters parameters) {
         List<Tuple<ProblemInstance, SimpleMatrix>> instancesAndCoords = initializeKnownInstancesWithTheirCoordinates(parameters);
-        List<ExpandInstanceIndividual> startPopulation =
-                getNearestInstancesToTargetPoint(parameters.getTargetPoint(), instancesAndCoords);
+        individuals = instancesAndCoords.stream()
+                .map(t -> new ExpandInstanceIndividual(t.getLeft(), t.getRight()))
+                .collect(Collectors.toList());
+        instanceSpaceParameters = parameters;
+    }
 
-        for (int i = 0; i < parameters.getLocalSearchRounds(); i++) {
+    @PostMapping("localsearch")
+    void generateInstancesThroughLocalSearch(@RequestBody LocalSearchExpandInstanceParameters parameters) {
+        for (int i = 0; i < parameters.getIterations(); i++) {
+            localSearchIteration(parameters.getTargetPoint(), parameters.getLocalSearchRounds());
+        }
+    }
+
+    private void localSearchIteration(List<Double> targetPoint, int localSearchRounds) {
+        List<ExpandInstanceIndividual> startPopulation =
+                getNearestInstancesToTargetPoint(targetPoint);
+
+        for (int i = 0; i < localSearchRounds; i++) {
             for (int j = 0; j < startPopulation.size(); j++) {
                 ExpandInstanceIndividual newIndividual = startPopulation.get(i).deepClone();
                 mutation.mutate(newIndividual);
-                setCoordinatesAndDistance(newIndividual, parameters);
+                setCoordinatesAndDistance(newIndividual, targetPoint);
 
                 if (newIndividual.getFitness() <= startPopulation.get(i).getFitness()) {
                     startPopulation.set(i, newIndividual);
                 }
             }
         }
-
-        List<ProblemInstance> newInstances = startPopulation.stream()
-                .map(ExpandInstanceIndividual::getProblemInstance)
-                .peek(individual -> {
-                    String instanceId = "mutated" + individual.getInstanceId();
-                    InstanceFeatureDescription description = FeatureExtractor
-                            .extract(instanceId,
-                                    individual.getProblem());
-                    String source = "ExpandInstanceController";
-                    individual.setFeatureDescription(description);
-                    individual.getFeatureDescription().setSource(source);
-
-                    individual.setGeneratorName(source);
-                    individual.setInstanceId(instanceId);
-                }).collect(Collectors.toList());
-        problemInstanceRepository.saveAll(newInstances);
-        System.out.println("Ended local search");
+        List<ExpandInstanceIndividual> newIndividuals = startPopulation.stream().filter(individual -> individual.getProblemInstance().getId() == null).toList();
+        individuals.addAll(newIndividuals);
+        saveNewInstances(newIndividuals);
     }
 
-    private List<Tuple<ProblemInstance, SimpleMatrix>> initializeKnownInstancesWithTheirCoordinates(ExpandInstanceSpaceParameters parameters) {
+    private List<Tuple<ProblemInstance, SimpleMatrix>> initializeKnownInstancesWithTheirCoordinates(InitializeExpandInstanceSpaceParameters parameters) {
         List<ProblemInstance> problemInstances =
                 problemInstanceRepository.findAllByExperimentId(parameters.getExperimentId());
         PrelimResponse prelimData = getPrelimData(problemInstances, parameters);
@@ -91,7 +93,7 @@ public class ExpandInstanceSpaceGenerationController {
                 .toList();
     }
 
-    private PrelimResponse getPrelimData(List<ProblemInstance> problemInstances, ExpandInstanceSpaceParameters parameters) {
+    private PrelimResponse getPrelimData(List<ProblemInstance> problemInstances, InitializeExpandInstanceSpaceParameters parameters) {
         PrelimRequest data = new PrelimRequest();
         data.setInstances(problemInstances);
         data.setFeatureNames(parameters.getFeatureNames());
@@ -103,16 +105,14 @@ public class ExpandInstanceSpaceGenerationController {
                 .getBody();
     }
 
-    private List<ExpandInstanceIndividual> getNearestInstancesToTargetPoint(List<Double> targetPoint,
-                                                                            List<Tuple<ProblemInstance, SimpleMatrix>> knownInstances) {
+    private List<ExpandInstanceIndividual> getNearestInstancesToTargetPoint(List<Double> targetPoint) {
         double targetPointX = targetPoint.get(0);
         double targetPointY = targetPoint.get(1);
 
-        return knownInstances.stream()
-                .sorted(Comparator.comparingDouble(o -> computeDistance(targetPointX, targetPointY, o.getRight())))
+        return individuals.stream()
+                .peek(individual -> individual.setFitness(computeDistance(targetPointX, targetPointY, individual.getCoordinates())))
+                .sorted(Comparator.comparing(ExpandInstanceIndividual::getFitness))
                 .limit(POPULATION_COUNT)
-                .map(tuple ->
-                        new ExpandInstanceIndividual(tuple.getLeft(), tuple.getRight(), computeDistance(targetPointX, targetPointY, tuple.getRight())))
                 .collect(Collectors.toList());
     }
 
@@ -126,16 +126,35 @@ public class ExpandInstanceSpaceGenerationController {
         return Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
     }
 
-    private void setCoordinatesAndDistance(ExpandInstanceIndividual individual, ExpandInstanceSpaceParameters parameters) {
-        List<Tuple<String, Double>> featureVector = individual.getProblemInstance().getFeatureDescription().getFeatureVector(parameters.getFeatureNames());
+    private void setCoordinatesAndDistance(ExpandInstanceIndividual individual,
+                                           List<Double> targetPoint) {
+        List<Tuple<String, Double>> featureVector = individual.getProblemInstance().getFeatureDescription().getFeatureVector(instanceSpaceParameters.getFeatureNames());
 
         List<Double> transformedFeatureVector = prelimUtils.doPrelimOnSingleFeatureVector(featureVector);
-        SimpleMatrix coords = ProjectionUtils.projectSingleFeatureVector(transformedFeatureVector, parameters.getTransposedProjectionMatrix());
+        SimpleMatrix coords = ProjectionUtils.projectSingleFeatureVector(transformedFeatureVector, instanceSpaceParameters.getTransposedProjectionMatrix());
 
         individual.setCoordinates(coords);
 
-        double distance = computeDistance(parameters.getTargetPoint().get(0), parameters.getTargetPoint().get(1), coords);
+        double distance = computeDistance(targetPoint.get(0), targetPoint.get(1), coords);
         individual.setFitness(distance);
+    }
+
+    private void saveNewInstances(List<ExpandInstanceIndividual> population) {
+        List<ProblemInstance> newInstances = population.stream()
+                .map(ExpandInstanceIndividual::getProblemInstance)
+                .peek(individual -> {
+                    String instanceId = "mutated_" + individual.getInstanceId();
+                    individual.setInstanceId(instanceId);
+                    InstanceFeatureDescription description = FeatureExtractor
+                            .extract(instanceId,
+                                    individual.getProblem());
+                    individual.setFeatureDescription(description);
+                    String source = "ExpandInstanceController";
+                    individual.getFeatureDescription().setSource(source);
+                    individual.setGeneratorName(source);
+                }).collect(Collectors.toList());
+        problemInstanceRepository.saveAll(newInstances);
+        System.out.println("Ended local search");
     }
 
 }
