@@ -15,7 +15,6 @@ public class GenerationParameters {
     private boolean storeInstances = false;
     private Map<String, InstanceGeneration> generators;
     private List<String> solvers;
-    private String csvFile;
 }
 
 @Data

@@ -6,7 +6,6 @@ import com.github.onetraintransferproblemgenerator.solvers.CostComputer;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriagePositionHelper;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class EvolutionarySolver extends OneTrainTransferSolver {
@@ -24,8 +23,6 @@ public class EvolutionarySolver extends OneTrainTransferSolver {
     private Individual bestKnownIndividual;
     private double bestKnownFitnessScore = Double.MAX_VALUE;
 
-    //TODO: currently copy paste from greedy all, better structure for solver evaluation necessary
-    // --> give back solution not the cost and evaluate the cost afterwards
     public EvolutionarySolver(OneTrainTransferProblem problem, ArrayList<HashMap<Passenger, Integer>> knownSolutions) {
         super(problem);
         carriagePositionHelper = new RailCarriagePositionHelper(problem.getTrain());

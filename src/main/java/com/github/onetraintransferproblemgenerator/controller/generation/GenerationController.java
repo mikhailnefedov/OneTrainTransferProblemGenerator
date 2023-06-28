@@ -48,9 +48,7 @@ public class GenerationController {
         if (generationParameters.isStoreInstances()) {
             problemInstanceRepository.saveAll(instances);
         }
-        if (!generationParameters.getCsvFile().equals("")) {
-            serializeToCsv(instances.stream().map(ProblemInstance::getFeatureDescription).collect(Collectors.toList()));
-        }
+        serializeToCsv(instances.stream().map(ProblemInstance::getFeatureDescription).collect(Collectors.toList()));
         System.out.println("Finished generation!");
     }
 
@@ -130,7 +128,11 @@ public class GenerationController {
 
     private HashMap<Passenger, Integer> handleEvolutionarySolver(ProblemInstance instance, HashMap<Class<? extends OneTrainTransferSolver>, HashMap<Passenger, Integer>> solverSolutionMapping, Class<? extends OneTrainTransferSolver> solverClass) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         System.out.println("Start EvolutionSolver for Instance " + instance.getInstanceId());
-        ArrayList<HashMap<Passenger, Integer>> knownSolutions = new ArrayList<>(solverSolutionMapping.values());
+
+        int passengerCount = instance.getProblem().getPassengers().size();
+        List<HashMap<Passenger, Integer>> knownSolutions = solverSolutionMapping.values().stream()
+                .filter(solutionMapping -> solutionMapping.keySet().size() == passengerCount)
+                .collect(Collectors.toList());
         Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class, knownSolutions.getClass());
         OneTrainTransferSolver solver = con.newInstance(instance.getProblem(), knownSolutions);
         return solver.solve();
@@ -152,7 +154,8 @@ public class GenerationController {
     }
 
     private void serializeToCsv(List<InstanceFeatureDescription> descriptions) {
-        InstanceToCSVWriter.writeToCSV(descriptions, generationParameters.getCsvFile());
+        String csvFile = "./metadata_" + generationParameters.getExperimentId() + ".csv";
+        InstanceToCSVWriter.writeToCSV(descriptions, csvFile);
     }
 
 }
