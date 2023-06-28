@@ -30,7 +30,7 @@ public class ExpandInstanceSpaceGenerationController {
     private final String PYTHON_BACKEND_URL = "http://localhost:5000";
     private PrelimUtils prelimUtils;
     private final int POPULATION_COUNT = 20;
-    private Mutation mutation = new AddPassengerMutation();
+    private Mutation mutation = new IncreaseCongestionMutation();
     private InitializeExpandInstanceSpaceParameters instanceSpaceParameters;
     private List<ExpandInstanceIndividual> individuals;
 
