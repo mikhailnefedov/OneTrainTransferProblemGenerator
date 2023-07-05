@@ -48,6 +48,8 @@ public class InstanceFeatureDescription {
     private double evolutionaryCost = Double.NaN;
     @CsvName(column = "algo_longestRidesFirstCost")
     private double longestRidesFirstCost = Double.NaN;
+    @CsvName(column = "algo_greedyPassengerReverseOrder")
+    private double greedyPassengerReverseOrderCost = Double.NaN;
 
     public void setAlgorithmCost(double cost, Class<? extends OneTrainTransferSolver> solverClass) {
         if (solverClass.equals(FirstAvailableCarriageSolver.class)) {
@@ -62,6 +64,8 @@ public class InstanceFeatureDescription {
             setEvolutionaryCost(cost);
         } else if (solverClass.equals(LongestRidesFirstSolver.class)) {
             setLongestRidesFirstCost(cost);
+        } else if (solverClass.equals(GreedyPassengerReverseOrderSolver.class)) {
+            setGreedyPassengerReverseOrderCost(cost);
         }
     }
 
