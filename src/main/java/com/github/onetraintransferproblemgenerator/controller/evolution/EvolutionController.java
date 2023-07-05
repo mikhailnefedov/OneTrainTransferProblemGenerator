@@ -1,6 +1,6 @@
 package com.github.onetraintransferproblemgenerator.controller.evolution;
 
-import com.github.onetraintransferproblemgenerator.controller.VisualizationData;
+import com.github.onetraintransferproblemgenerator.controller.visualization.VisualizationData;
 import com.github.onetraintransferproblemgenerator.helpers.Tuple;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRepository;

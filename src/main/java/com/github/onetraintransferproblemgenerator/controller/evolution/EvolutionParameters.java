@@ -1,6 +1,6 @@
 package com.github.onetraintransferproblemgenerator.controller.evolution;
 
-import com.github.onetraintransferproblemgenerator.controller.VisualizationParameters;
+import com.github.onetraintransferproblemgenerator.controller.visualization.VisualizationParameters;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

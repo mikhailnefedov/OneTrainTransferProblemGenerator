@@ -1,4 +1,4 @@
-package com.github.onetraintransferproblemgenerator.controller;
+package com.github.onetraintransferproblemgenerator.controller.visualization;
 
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import lombok.AllArgsConstructor;
