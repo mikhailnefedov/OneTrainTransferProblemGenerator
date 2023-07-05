@@ -39,6 +39,7 @@ public class ProblemInstance {
 
     public ProblemInstance deepClone() {
         ProblemInstance copy = new ProblemInstance();
+        copy.setId(id);
         copy.setExperimentId(experimentId);
         copy.setProblem(problem.deepCopy());
         copy.setFeatureDescription(featureDescription);
