@@ -81,18 +81,27 @@ public class InstanceFeatureDescription {
                 .collect(Collectors.toList());
     }
 
-    public void resetAlgorithmCosts() {
+    public List<Tuple<String, Double>> getAlgorithmCosts() {
         List<Field> declaredFields = List.of(InstanceFeatureDescription.class.getDeclaredFields());
-        declaredFields.stream()
-                .filter(f -> f.getAnnotation(CsvName.class).column().contains("algo"))
-                .forEach(f -> {
-                    f.setAccessible(true);
-                    try {
-                        f.set(this, Double.NaN);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                    f.setAccessible(false);
-                });
+        return declaredFields.stream()
+            .filter(f -> f.getName().contains("Cost"))
+            .peek(f -> f.setAccessible(true))
+            .map(f -> {
+                try {
+                    return new Tuple<>(f.getName(), f.getDouble(this));
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            })
+            .toList();
+    }
+
+    public static List<String> getAlgorithmNames() {
+        List<Field> declaredFields = List.of(InstanceFeatureDescription.class.getDeclaredFields());
+        return declaredFields.stream()
+            .filter(f -> f.getName().contains("Cost"))
+            .map(Field::getName)
+            .toList();
     }
 }
