@@ -6,7 +6,7 @@ import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRepository;
 import com.github.onetraintransferproblemgenerator.solvers.CostComputer;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +26,7 @@ public class SolverController {
         this.problemInstanceRepository = problemInstanceRepository;
     }
 
-    @GetMapping("single")
+    @PostMapping("single")
     public void solveWithDeterministicAlgorithm(@RequestBody DeterministicSolverParameters parameters) {
         List<ProblemInstance> instances = problemInstanceRepository.findAllByExperimentId(parameters.getExperimentId());
         Class<? extends OneTrainTransferSolver> solverClass = getSolverClass(parameters.getSolverClass());

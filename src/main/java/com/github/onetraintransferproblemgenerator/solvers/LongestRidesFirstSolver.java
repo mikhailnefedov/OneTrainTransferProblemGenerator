@@ -5,6 +5,7 @@ import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProble
 import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.solvers.greedyall.SectionCapacityRailCarriageStorage;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -13,12 +14,12 @@ import java.util.stream.Collectors;
 /**
  * Can produce incomplete solutions (aka no rail carriage for certain passengers found)
  */
-public class ShortestRidesFirstSolver extends OneTrainTransferSolver {
+public class LongestRidesFirstSolver extends OneTrainTransferSolver {
 
     private RailCarriagePositionHelper carriagePositionHelper;
     private SectionCapacityRailCarriageStorage sectionCapacityRailCarriageStorage;
 
-    public ShortestRidesFirstSolver(OneTrainTransferProblem problem) {
+    public LongestRidesFirstSolver(OneTrainTransferProblem problem) {
         super(problem);
         carriagePositionHelper = new RailCarriagePositionHelper(problem.getTrain());
         sectionCapacityRailCarriageStorage = new SectionCapacityRailCarriageStorage(problem.getTrain());
@@ -27,13 +28,13 @@ public class ShortestRidesFirstSolver extends OneTrainTransferSolver {
     @Override
     public HashMap<Passenger, Integer> solve() {
         List<Passenger> passengers = problem.getPassengers().stream()
-                .map(p -> {
-                    int rideLength = p.getOutStation() - p.getInStation();
-                    return new Tuple<>(p, rideLength);
-                })
-                .sorted(Comparator.comparingInt(Tuple::getRight))
-                .map(Tuple::getLeft)
-                .collect(Collectors.toList());
+            .map(p -> {
+                int rideLength = p.getOutStation() - p.getInStation();
+                return new Tuple<>(p, rideLength);
+            })
+            .sorted((o1, o2) -> o2.getRight().compareTo(o1.getRight()))
+            .map(Tuple::getLeft)
+            .collect(Collectors.toList());
 
         for (Passenger passenger : passengers) {
             List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistancesForRailCarriages(passenger);
