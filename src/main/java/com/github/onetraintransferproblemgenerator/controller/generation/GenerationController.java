@@ -9,6 +9,7 @@ import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProble
 import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRepository;
+import com.github.onetraintransferproblemgenerator.serialization.CsvExporter;
 import com.github.onetraintransferproblemgenerator.serialization.InstanceToCSVWriter;
 import com.github.onetraintransferproblemgenerator.solvers.CostComputer;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
@@ -48,7 +49,7 @@ public class GenerationController {
         if (generationParameters.isStoreInstances()) {
             problemInstanceRepository.saveAll(instances);
         }
-        serializeToCsv(instances.stream().map(ProblemInstance::getFeatureDescription).collect(Collectors.toList()));
+        CsvExporter.exportToCsv(instances, generationParameters.getExperimentId());
         System.out.println("Finished generation!");
     }
 
@@ -151,11 +152,6 @@ public class GenerationController {
             double cost = costComputer.computeCost(solverSolutionMapping.get(solverClass));
             instance.getFeatureDescription().setAlgorithmCost(cost, solverClass);
         }
-    }
-
-    private void serializeToCsv(List<InstanceFeatureDescription> descriptions) {
-        String csvFile = "./metadata_" + generationParameters.getExperimentId() + ".csv";
-        InstanceToCSVWriter.writeToCSV(descriptions, csvFile);
     }
 
 }
