@@ -151,7 +151,7 @@ public class ExpandInstanceSpaceGenerationController {
                     individual.setFeatureDescription(description);
                     String source = "ExpandInstanceController";
                     individual.getFeatureDescription().setSource(source);
-                    individual.setGeneratorName(source);
+                    individual.setSource(source);
                 }).collect(Collectors.toList());
         problemInstanceRepository.saveAll(newInstances);
         System.out.println("Ended local search");

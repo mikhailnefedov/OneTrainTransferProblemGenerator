@@ -1,7 +1,5 @@
 package com.github.onetraintransferproblemgenerator.controller.generation;
 
-import com.github.onetraintransferproblemgenerator.controller.generation.GenerationParameters;
-import com.github.onetraintransferproblemgenerator.controller.generation.InstanceGeneration;
 import com.github.onetraintransferproblemgenerator.features.FeatureExtractor;
 import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
 import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
@@ -10,7 +8,6 @@ import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRepository;
 import com.github.onetraintransferproblemgenerator.serialization.CsvExporter;
-import com.github.onetraintransferproblemgenerator.serialization.InstanceToCSVWriter;
 import com.github.onetraintransferproblemgenerator.solvers.CostComputer;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.EvolutionarySolver;
@@ -33,8 +30,8 @@ import java.util.stream.Collectors;
 @RequestMapping("generation")
 public class GenerationController {
 
-    private GenerationParameters generationParameters;
     private final ProblemInstanceRepository problemInstanceRepository;
+    private GenerationParameters generationParameters;
 
     public GenerationController(ProblemInstanceRepository problemInstanceRepository) {
         this.problemInstanceRepository = problemInstanceRepository;
@@ -79,7 +76,7 @@ public class GenerationController {
     private OneTrainTransferProblemGenerator createGenerator(String generatorName) throws ClassNotFoundException {
         try {
             Class<? extends OneTrainTransferProblemGenerator> generatorClass =
-                    Class.forName(generatorName).asSubclass(OneTrainTransferProblemGenerator.class);
+                Class.forName(generatorName).asSubclass(OneTrainTransferProblemGenerator.class);
             Constructor<? extends OneTrainTransferProblemGenerator> con = generatorClass.getConstructor();
             return con.newInstance();
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
@@ -102,9 +99,8 @@ public class GenerationController {
     private void generateFeatureDescriptions(List<ProblemInstance> instances) {
         for (ProblemInstance instance : instances) {
             InstanceFeatureDescription description = FeatureExtractor.extract(instance.getInstanceId(), instance.getProblem());
-            String source = instance.getFeatureDescription().getSource();
+            description.setSource(instance.getSource());
             instance.setFeatureDescription(description);
-            instance.getFeatureDescription().setSource(source);
         }
     }
 
@@ -124,16 +120,15 @@ public class GenerationController {
                 }
             }
             setInstanceAlgorithmCosts(instance, solverSolutionMapping);
+            System.out.println("Finish solving " + instance.getInstanceId());
         });
     }
 
     private HashMap<Passenger, Integer> handleEvolutionarySolver(ProblemInstance instance, HashMap<Class<? extends OneTrainTransferSolver>, HashMap<Passenger, Integer>> solverSolutionMapping, Class<? extends OneTrainTransferSolver> solverClass) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        System.out.println("Start EvolutionSolver for Instance " + instance.getInstanceId());
-
         int passengerCount = instance.getProblem().getPassengers().size();
         List<HashMap<Passenger, Integer>> knownSolutions = solverSolutionMapping.values().stream()
-                .filter(solutionMapping -> solutionMapping.keySet().size() == passengerCount)
-                .collect(Collectors.toList());
+            .filter(solutionMapping -> solutionMapping.keySet().size() == passengerCount)
+            .collect(Collectors.toList());
         Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class, knownSolutions.getClass());
         OneTrainTransferSolver solver = con.newInstance(instance.getProblem(), knownSolutions);
         return solver.solve();
