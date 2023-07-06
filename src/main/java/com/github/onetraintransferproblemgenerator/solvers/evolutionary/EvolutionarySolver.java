@@ -5,6 +5,9 @@ import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.solvers.CostComputer;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriagePositionHelper;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.Crossover;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.Mutation;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.TournamentSelection;
 
 import java.util.*;
 

@@ -1,4 +1,6 @@
-package com.github.onetraintransferproblemgenerator.solvers.evolutionary;
+package com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators;
+
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.Individual;
 
 import java.util.ArrayList;
 import java.util.List;

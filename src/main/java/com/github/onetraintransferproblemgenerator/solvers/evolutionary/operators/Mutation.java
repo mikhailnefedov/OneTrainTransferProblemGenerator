@@ -1,6 +1,7 @@
-package com.github.onetraintransferproblemgenerator.solvers.evolutionary;
+package com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators;
 
 import com.github.onetraintransferproblemgenerator.models.Passenger;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.Individual;
 
 import java.util.List;
 import java.util.Map;

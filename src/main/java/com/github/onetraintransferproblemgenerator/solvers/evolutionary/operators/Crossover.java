@@ -1,9 +1,10 @@
-package com.github.onetraintransferproblemgenerator.solvers.evolutionary;
+package com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators;
 
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
 import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriageDistance;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriagePositionHelper;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.Individual;
 
 import java.util.Comparator;
 import java.util.List;
