@@ -1,8 +1,9 @@
-package com.github.onetraintransferproblemgenerator.solvers.evolutionary;
+package com.github.onetraintransferproblemgenerator.solvers.evolutionary.models;
 
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
 import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.models.RailCarriage;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.RailCarriageSectionSet;
 import lombok.Data;
 
 import java.util.ArrayList;

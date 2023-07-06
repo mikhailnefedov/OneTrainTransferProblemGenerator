@@ -10,7 +10,7 @@ import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRe
 import com.github.onetraintransferproblemgenerator.serialization.CsvExporter;
 import com.github.onetraintransferproblemgenerator.solvers.CostComputer;
 import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
-import com.github.onetraintransferproblemgenerator.solvers.evolutionary.EvolutionarySolver;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.KnownSolutionsEvolutionarySolver;
 import com.github.onetraintransferproblemgenerator.validation.InstanceValidator;
 import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -110,7 +110,7 @@ public class GenerationController {
             for (String solverName : generationParameters.getSolvers()) {
                 try {
                     Class<? extends OneTrainTransferSolver> solverClass = Class.forName(solverName).asSubclass(OneTrainTransferSolver.class);
-                    if (solverClass.equals(EvolutionarySolver.class)) {
+                    if (solverClass.equals(KnownSolutionsEvolutionarySolver.class)) {
                         solverSolutionMapping.put(solverClass, handleEvolutionarySolver(instance, solverSolutionMapping, solverClass));
                     } else {
                         solverSolutionMapping.put(solverClass, handleOtherSolvers(solverClass, instance));

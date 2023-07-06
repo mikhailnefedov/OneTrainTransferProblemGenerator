@@ -4,7 +4,7 @@ import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProble
 import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriageDistance;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriagePositionHelper;
-import com.github.onetraintransferproblemgenerator.solvers.evolutionary.Individual;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.Individual;
 
 import java.util.Comparator;
 import java.util.List;

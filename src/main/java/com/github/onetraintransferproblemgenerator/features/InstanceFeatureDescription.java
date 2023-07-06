@@ -3,7 +3,7 @@ package com.github.onetraintransferproblemgenerator.features;
 import com.github.onetraintransferproblemgenerator.helpers.Tuple;
 import com.github.onetraintransferproblemgenerator.serialization.CsvName;
 import com.github.onetraintransferproblemgenerator.solvers.*;
-import com.github.onetraintransferproblemgenerator.solvers.evolutionary.EvolutionarySolver;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.KnownSolutionsEvolutionarySolver;
 import com.github.onetraintransferproblemgenerator.solvers.greedyall.GreedyAllPassengersSolver;
 import lombok.Data;
 
@@ -44,8 +44,8 @@ public class InstanceFeatureDescription {
     private double greedyAllPassengerCost = Double.NaN;
     @CsvName(column = "algo_shortestRidesFirstCost")
     private double shortestRidesFirstCost = Double.NaN;
-    @CsvName(column = "algo_evolutionaryCost")
-    private double evolutionaryCost = Double.NaN;
+    @CsvName(column = "algo_knownSolutionsEvolutionaryCost")
+    private double knownSolutionsEvolutionaryCost = Double.NaN;
     @CsvName(column = "algo_longestRidesFirstCost")
     private double longestRidesFirstCost = Double.NaN;
     @CsvName(column = "algo_greedyPassengerReverseOrder")
@@ -60,8 +60,8 @@ public class InstanceFeatureDescription {
             setGreedyAllPassengerCost(cost);
         } else if (solverClass.equals(ShortestRidesFirstSolver.class)) {
             setShortestRidesFirstCost(cost);
-        } else if (solverClass.equals(EvolutionarySolver.class)) {
-            setEvolutionaryCost(cost);
+        } else if (solverClass.equals(KnownSolutionsEvolutionarySolver.class)) {
+            setKnownSolutionsEvolutionaryCost(cost);
         } else if (solverClass.equals(LongestRidesFirstSolver.class)) {
             setLongestRidesFirstCost(cost);
         } else if (solverClass.equals(GreedyPassengerReverseOrderSolver.class)) {
