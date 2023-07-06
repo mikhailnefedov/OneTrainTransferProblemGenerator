@@ -17,16 +17,16 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("solver")
-public class SolverController {
+@RequestMapping("deterministic")
+public class DeterministicSolverController {
 
     private final ProblemInstanceRepository problemInstanceRepository;
 
-    public SolverController(ProblemInstanceRepository problemInstanceRepository) {
+    public DeterministicSolverController(ProblemInstanceRepository problemInstanceRepository) {
         this.problemInstanceRepository = problemInstanceRepository;
     }
 
-    @PostMapping("single")
+    @PostMapping("solve")
     public void solveWithDeterministicAlgorithm(@RequestBody DeterministicSolverParameters parameters) {
         List<ProblemInstance> instances = problemInstanceRepository.findAllByExperimentId(parameters.getExperimentId());
         Class<? extends OneTrainTransferSolver> solverClass = getSolverClass(parameters.getSolverClass());

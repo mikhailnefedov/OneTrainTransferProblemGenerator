@@ -11,3 +11,9 @@ class DeterministicSolverParameters {
     private String experimentId;
     private String solverClass;
 }
+
+@Data
+class EvolutionarySolverParameters {
+    private String experimentId;
+    private String solverClass;
+}
