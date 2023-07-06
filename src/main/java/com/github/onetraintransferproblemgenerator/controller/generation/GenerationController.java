@@ -120,6 +120,7 @@ public class GenerationController {
                 }
             }
             setInstanceAlgorithmCosts(instance, solverSolutionMapping);
+            instance.setSolverSolutions(solverSolutionMapping);
             System.out.println("Finish solving " + instance.getInstanceId());
         });
     }
