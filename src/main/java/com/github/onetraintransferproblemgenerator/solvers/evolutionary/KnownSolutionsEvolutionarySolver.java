@@ -56,8 +56,8 @@ public class KnownSolutionsEvolutionarySolver extends EvolutionarySolver {
         if (bestIndividual.getFitness() < bestKnownFitnessScore) {
             bestKnownFitnessScore = bestIndividual.getFitness();
             bestKnownIndividual = bestIndividual;
-            historicalData.addBestCost(bestKnownFitnessScore);
         }
+        historicalData.addBestCost(bestKnownFitnessScore);
     }
 
     @Override

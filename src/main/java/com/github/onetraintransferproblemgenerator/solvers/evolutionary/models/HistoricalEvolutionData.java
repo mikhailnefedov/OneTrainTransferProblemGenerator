@@ -16,9 +16,9 @@ public class HistoricalEvolutionData {
     private String experimentId;
     private String instanceId;
     private String solverName;
-    private List<Double> historicalCostData = new ArrayList<>();
+    private List<Double> costData = new ArrayList<>();
 
     public void addBestCost(double cost) {
-        historicalCostData.add(cost);
+        costData.add(cost);
     }
 }
