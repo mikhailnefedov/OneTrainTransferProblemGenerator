@@ -3,10 +3,13 @@ package com.github.onetraintransferproblemgenerator.controller.solver;
 import com.github.onetraintransferproblemgenerator.helpers.Tuple;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
 import com.github.onetraintransferproblemgenerator.models.Passenger;
+import com.github.onetraintransferproblemgenerator.persistence.HistoricalEvolutionDataRepository;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRepository;
 import com.github.onetraintransferproblemgenerator.solvers.CostComputer;
-import com.github.onetraintransferproblemgenerator.solvers.OneTrainTransferSolver;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.EvolutionarySolver;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.HistoricalEvolutionData;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.SolutionAndHistoryData;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -24,39 +26,48 @@ import java.util.stream.Collectors;
 public class EvolutionarySolverController {
 
     private final ProblemInstanceRepository problemInstanceRepository;
+    private final HistoricalEvolutionDataRepository historicalEvolutionDataRepository;
 
-    public EvolutionarySolverController(ProblemInstanceRepository problemInstanceRepository) {
+    public EvolutionarySolverController(ProblemInstanceRepository problemInstanceRepository,
+                                        HistoricalEvolutionDataRepository historicalEvolutionDataRepository) {
         this.problemInstanceRepository = problemInstanceRepository;
+        this.historicalEvolutionDataRepository = historicalEvolutionDataRepository;
     }
 
     @PostMapping("solve")
     public void solveWithEvolutionaryAlgorithm(@RequestBody EvolutionarySolverParameters parameters) {
         List<ProblemInstance> instances = problemInstanceRepository.findAllByExperimentId(parameters.getExperimentId());
-        Class<? extends OneTrainTransferSolver> solverClass = getSolverClass(parameters.getSolverClass());
-        instances.parallelStream().forEach(instance -> {
+        Class<? extends EvolutionarySolver> solverClass = getSolverClass(parameters.getSolverClass());
+        List<HistoricalEvolutionData> historicalData = instances.parallelStream().map(instance -> {
             List<Map<Passenger, Integer>> knownExactSolutions = getExactSolutions(instance);
 
             try {
-                Constructor<? extends OneTrainTransferSolver> con = solverClass.getConstructor(OneTrainTransferProblem.class, knownExactSolutions.getClass());
-                OneTrainTransferSolver solver = con.newInstance(instance.getProblem(), knownExactSolutions);
-                HashMap<Passenger, Integer> resultMapping = solver.solve();
+                Constructor<? extends EvolutionarySolver> con = solverClass.getConstructor(OneTrainTransferProblem.class, knownExactSolutions.getClass());
+                EvolutionarySolver solver = con.newInstance(instance.getProblem(), knownExactSolutions);
+                SolutionAndHistoryData result = solver.solveAndGenerateHistoricalData();
                 CostComputer costComputer = new CostComputer(instance.getProblem());
-                double cost = costComputer.computeCost(resultMapping);
+                double cost = costComputer.computeCost(result.getPassengerMapping());
                 instance.getFeatureDescription().setAlgorithmCost(cost, solverClass);
+
+                fillInInstanceData(result.getHistoricalData(), instance);
+                historicalEvolutionDataRepository.save(result.getHistoricalData());
                 System.out.println("Finish solving " + instance.getInstanceId());
+                return result.getHistoricalData();
             } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
             }
-        });
+            return null;
+        }).toList();
 
         problemInstanceRepository.saveAll(instances);
+        historicalEvolutionDataRepository.saveAll(historicalData);
     }
 
 
     //TODO potential future change to be able to give parameters to solver
-    private Class<? extends OneTrainTransferSolver> getSolverClass(String solverName) {
+    private Class<? extends EvolutionarySolver> getSolverClass(String solverName) {
         try {
-            return Class.forName(solverName).asSubclass(OneTrainTransferSolver.class);
+            return Class.forName(solverName).asSubclass(EvolutionarySolver.class);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -83,5 +94,10 @@ public class EvolutionarySolverController {
     private Map<Integer, Passenger> getPassengerOfId(ProblemInstance instance) {
         return instance.getProblem().getPassengers().stream()
             .collect(Collectors.toMap(Passenger::getId, passenger -> passenger));
+    }
+
+    private void fillInInstanceData(HistoricalEvolutionData data, ProblemInstance instance) {
+        data.setInstanceId(instance.getInstanceId());
+        data.setExperimentId(instance.getExperimentId());
     }
 }
