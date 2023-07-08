@@ -19,7 +19,7 @@ public abstract class EvolutionarySolver extends OneTrainTransferSolver {
     protected double bestKnownFitnessScore = Double.MAX_VALUE;
     protected HistoricalEvolutionData historicalData;
 
-    public EvolutionarySolver(OneTrainTransferProblem problem) {
+    public EvolutionarySolver(OneTrainTransferProblem problem, String solverName) {
         super(problem);
         historicalData = new HistoricalEvolutionData();
     }

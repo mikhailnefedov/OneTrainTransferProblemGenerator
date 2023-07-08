@@ -21,7 +21,7 @@ public class KnownSolutionsEvolutionarySolver extends EvolutionarySolver {
     private Individual bestKnownIndividual;
 
     public KnownSolutionsEvolutionarySolver(OneTrainTransferProblem problem, ArrayList<HashMap<Passenger, Integer>> knownSolutions) {
-        super(problem);
+        super(problem, KnownSolutionsEvolutionarySolver.class.getSimpleName());
 
         carriagePositionHelper = new RailCarriagePositionHelper(problem.getTrain());
         costComputer = new CostComputer(problem);
