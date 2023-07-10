@@ -4,6 +4,7 @@ import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProble
 import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.solvers.CostComputer;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriagePositionHelper;
+import com.github.onetraintransferproblemgenerator.solvers.RandomPassengerOrderSolver;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.Individual;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.SolutionAndHistoryData;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.Crossover;
@@ -13,37 +14,26 @@ import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operator
 import java.util.*;
 
 /**
- * Starts from known heuristic solutions
+ * Starts from randomly generated in order solutions
  */
-public class KnownSolutionsEvolutionarySolver extends EvolutionarySolver {
+public class RandomSolutionsEvolutionarySolver extends EvolutionarySolver {
 
     private RailCarriagePositionHelper carriagePositionHelper;
     private List<HashMap<Passenger, Integer>> knownSolutions;
     private Crossover crossover;
     private Mutation mutation;
+    private RandomPassengerOrderSolver randomPassengerOrderSolver;
 
-    public KnownSolutionsEvolutionarySolver(OneTrainTransferProblem problem, ArrayList<HashMap<Passenger, Integer>> knownSolutions) {
-        super(problem, KnownSolutionsEvolutionarySolver.class.getSimpleName());
+
+    public RandomSolutionsEvolutionarySolver(OneTrainTransferProblem problem, ArrayList<HashMap<Passenger, Integer>> knownSolutions) {
+        super(problem, RandomSolutionsEvolutionarySolver.class.getSimpleName());
 
         carriagePositionHelper = new RailCarriagePositionHelper(problem.getTrain());
         costComputer = new CostComputer(problem);
         this.knownSolutions = knownSolutions;
         crossover = new Crossover(problem, carriagePositionHelper);
         mutation = new Mutation();
-    }
-
-    private List<Individual> initializeStartPopulation() {
-        List<Individual> individuals = new ArrayList<>();
-        while (individuals.size() < POPULATION_SIZE) {
-            for (HashMap<Passenger, Integer> solution : knownSolutions) {
-                individuals.add(createIndividual(solution));
-                if (individuals.size() == POPULATION_SIZE)
-                    break;
-            }
-        }
-        updateBestKnownIndividual(individuals);
-
-        return individuals;
+        randomPassengerOrderSolver = new RandomPassengerOrderSolver(problem);
     }
 
     @Override
@@ -76,4 +66,16 @@ public class KnownSolutionsEvolutionarySolver extends EvolutionarySolver {
         }
         return new SolutionAndHistoryData(bestKnownIndividual.getPassengerRailCarriageMapping(), historicalData);
     }
+
+    private List<Individual> initializeStartPopulation() {
+        List<Individual> individuals = new ArrayList<>();
+        while (individuals.size() < POPULATION_SIZE) {
+            HashMap<Passenger, Integer> solution = randomPassengerOrderSolver.solve();
+            individuals.add(createIndividual(solution));
+        }
+        updateBestKnownIndividual(individuals);
+
+        return individuals;
+    }
+
 }

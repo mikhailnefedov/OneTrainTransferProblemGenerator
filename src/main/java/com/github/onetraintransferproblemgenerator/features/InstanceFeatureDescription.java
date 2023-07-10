@@ -4,6 +4,7 @@ import com.github.onetraintransferproblemgenerator.helpers.Tuple;
 import com.github.onetraintransferproblemgenerator.serialization.CsvName;
 import com.github.onetraintransferproblemgenerator.solvers.*;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.KnownSolutionsEvolutionarySolver;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.RandomSolutionsEvolutionarySolver;
 import com.github.onetraintransferproblemgenerator.solvers.greedyall.GreedyAllPassengersSolver;
 import lombok.Data;
 
@@ -50,6 +51,8 @@ public class InstanceFeatureDescription {
     private double longestRidesFirstCost = Double.NaN;
     @CsvName(column = "algo_greedyPassengerReverseOrder")
     private double greedyPassengerReverseOrderCost = Double.NaN;
+    @CsvName(column = "algo_randomSolutionsEvolutionaryCost")
+    private double randomSolutionsEvolutionaryCost = Double.NaN;
 
     public void setAlgorithmCost(double cost, Class<? extends OneTrainTransferSolver> solverClass) {
         if (solverClass.equals(FirstAvailableCarriageSolver.class)) {
@@ -66,6 +69,8 @@ public class InstanceFeatureDescription {
             setLongestRidesFirstCost(cost);
         } else if (solverClass.equals(GreedyPassengerReverseOrderSolver.class)) {
             setGreedyPassengerReverseOrderCost(cost);
+        } else if (solverClass.equals(RandomSolutionsEvolutionarySolver.class)) {
+            setRandomSolutionsEvolutionaryCost(cost);
         }
     }
 
