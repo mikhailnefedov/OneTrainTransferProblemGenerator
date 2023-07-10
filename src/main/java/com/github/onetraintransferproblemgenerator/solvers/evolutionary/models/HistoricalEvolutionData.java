@@ -18,6 +18,10 @@ public class HistoricalEvolutionData {
     private String solverName;
     private List<Double> costData = new ArrayList<>();
 
+    public HistoricalEvolutionData(String solverName) {
+        this.solverName = solverName;
+    }
+
     public void addBestCost(double cost) {
         costData.add(cost);
     }
