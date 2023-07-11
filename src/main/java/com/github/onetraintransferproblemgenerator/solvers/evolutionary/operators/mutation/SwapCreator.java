@@ -17,7 +17,7 @@ public class SwapCreator {
                 .toList();
     }
 
-    public static List<PassengerSwap> getPassengerSwaps(Individual individual, Passenger passenger) {
+    public static List<PassengerSwap> createPassengerSwaps(Individual individual, Passenger passenger) {
         Map<Integer, List<Passenger>> possiblePassengerSwaps = getPossiblePassengerSwapPartners(individual, passenger);
 
         return possiblePassengerSwaps.entrySet().stream().map(entry -> {
