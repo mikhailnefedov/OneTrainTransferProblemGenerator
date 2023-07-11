@@ -7,7 +7,7 @@ import com.github.onetraintransferproblemgenerator.solvers.RailCarriagePositionH
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.Individual;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.SolutionAndHistoryData;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.Crossover;
-import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.Mutation;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.mutation.FreeCapacitySwapMutation;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.TournamentSelection;
 
 import java.util.*;
@@ -20,7 +20,7 @@ public class KnownSolutionsEvolutionarySolver extends EvolutionarySolver {
     private RailCarriagePositionHelper carriagePositionHelper;
     private List<HashMap<Passenger, Integer>> knownSolutions;
     private Crossover crossover;
-    private Mutation mutation;
+    private FreeCapacitySwapMutation freeCapacitySwapMutation;
 
     public KnownSolutionsEvolutionarySolver(OneTrainTransferProblem problem, ArrayList<HashMap<Passenger, Integer>> knownSolutions) {
         super(problem, KnownSolutionsEvolutionarySolver.class.getSimpleName());
@@ -29,7 +29,7 @@ public class KnownSolutionsEvolutionarySolver extends EvolutionarySolver {
         costComputer = new CostComputer(problem);
         this.knownSolutions = knownSolutions;
         crossover = new Crossover(problem, carriagePositionHelper);
-        mutation = new Mutation();
+        freeCapacitySwapMutation = new FreeCapacitySwapMutation();
     }
 
     private List<Individual> initializeStartPopulation() {
@@ -65,7 +65,7 @@ public class KnownSolutionsEvolutionarySolver extends EvolutionarySolver {
 
                 double randomDouble = random.nextDouble();
                 if (randomDouble < MUTATION_RATE)
-                    mutation.mutate(child);
+                    freeCapacitySwapMutation.mutate(child);
 
                 double fitness = costComputer.computeCost(child.getPassengerRailCarriageMapping());
                 child.setFitness(fitness);
