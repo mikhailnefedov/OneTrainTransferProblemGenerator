@@ -8,6 +8,7 @@ import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRepository;
 import com.github.onetraintransferproblemgenerator.solvers.CostComputer;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.EvolutionarySolver;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.SolverConfiguration;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.HistoricalEvolutionData;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.SolutionAndHistoryData;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,14 +43,14 @@ public class EvolutionarySolverController {
             List<Map<Passenger, Integer>> knownExactSolutions = getExactSolutions(instance);
 
             try {
-                Constructor<? extends EvolutionarySolver> con = solverClass.getConstructor(OneTrainTransferProblem.class, knownExactSolutions.getClass());
-                EvolutionarySolver solver = con.newInstance(instance.getProblem(), knownExactSolutions);
+                Constructor<? extends EvolutionarySolver> con = solverClass.getConstructor(OneTrainTransferProblem.class, knownExactSolutions.getClass(), SolverConfiguration.class);
+                EvolutionarySolver solver = con.newInstance(instance.getProblem(), knownExactSolutions, parameters.getSolverConfiguration());
                 SolutionAndHistoryData result = solver.solveAndGenerateHistoricalData();
                 CostComputer costComputer = new CostComputer(instance.getProblem());
                 double cost = costComputer.computeCost(result.getPassengerMapping());
                 instance.getFeatureDescription().setAlgorithmCost(cost, solverClass);
 
-                fillInInstanceData(result.getHistoricalData(), instance);
+                fillInInstanceData(result.getHistoricalData(), instance, parameters.getSolverConfiguration());
                 historicalEvolutionDataRepository.save(result.getHistoricalData());
                 System.out.println("Finish solving " + instance.getInstanceId());
                 return result.getHistoricalData();
@@ -96,8 +97,9 @@ public class EvolutionarySolverController {
             .collect(Collectors.toMap(Passenger::getId, passenger -> passenger));
     }
 
-    private void fillInInstanceData(HistoricalEvolutionData data, ProblemInstance instance) {
+    private void fillInInstanceData(HistoricalEvolutionData data, ProblemInstance instance, SolverConfiguration solverConfiguration) {
         data.setInstanceId(instance.getInstanceId());
         data.setExperimentId(instance.getExperimentId());
+        data.setSolverConfiguration(solverConfiguration.getConfigurationAsString());
     }
 }

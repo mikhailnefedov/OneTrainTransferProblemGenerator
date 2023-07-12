@@ -16,6 +16,7 @@ public class HistoricalEvolutionData {
     private String experimentId;
     private String instanceId;
     private String solverName;
+    private String solverConfiguration;
     private List<Double> costData = new ArrayList<>();
 
     public HistoricalEvolutionData(String solverName) {
