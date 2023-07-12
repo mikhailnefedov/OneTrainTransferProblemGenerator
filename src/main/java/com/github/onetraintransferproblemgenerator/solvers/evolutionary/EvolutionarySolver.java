@@ -15,19 +15,26 @@ import java.util.List;
 public abstract class EvolutionarySolver extends OneTrainTransferSolver {
 
     //Configuration of evolutionary algorithms
-    protected final int POPULATION_SIZE = 50;
-    protected final int PARENTS_COUNT = 20;
-    protected final int CHILDREN_COUNT = 50;
-    protected final int GENERATION_COUNT = 200;
-    protected final double MUTATION_RATE = 0.3;
+    protected int populationSize;
+    protected int parentsCount;
+    protected int childrenCount;
+    protected int generationCount;
+    protected double mutationRate;
 
     protected CostComputer costComputer;
     protected Individual bestKnownIndividual;
     protected double bestKnownFitnessScore = Double.MAX_VALUE;
     protected HistoricalEvolutionData historicalData;
 
-    public EvolutionarySolver(OneTrainTransferProblem problem, String solverName) {
+    public EvolutionarySolver(OneTrainTransferProblem problem, String solverName, SolverConfiguration solverConfiguration) {
         super(problem);
+
+        populationSize = solverConfiguration.getPopulationSize();
+        parentsCount = solverConfiguration.getParentsCount();
+        childrenCount = solverConfiguration.getChildrenCount();
+        generationCount = solverConfiguration.getGenerationCount();
+        mutationRate = solverConfiguration.getMutationRate();
+
         historicalData = new HistoricalEvolutionData(solverName);
     }
 
