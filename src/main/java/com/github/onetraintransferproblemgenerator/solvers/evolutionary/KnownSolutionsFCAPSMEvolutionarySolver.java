@@ -8,6 +8,7 @@ import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.I
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.SolutionAndHistoryData;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.Crossover;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.TournamentSelection;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.mutation.FreeCapacityAndPassengerSwapMutation;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.mutation.Mutation;
 
 import java.util.ArrayList;
@@ -15,26 +16,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Starts from known heuristic solutions
- */
-public class KnownSolutionsEvolutionarySolver extends EvolutionarySolver {
+public class KnownSolutionsFCAPSMEvolutionarySolver extends EvolutionarySolver {
 
-    private RailCarriagePositionHelper carriagePositionHelper;
-    private List<HashMap<Passenger, Integer>> knownSolutions;
     private final Crossover crossover;
     private final Mutation mutation;
+    private RailCarriagePositionHelper carriagePositionHelper;
+    private List<HashMap<Passenger, Integer>> knownSolutions;
 
-    public KnownSolutionsEvolutionarySolver(OneTrainTransferProblem problem,
-                                            ArrayList<HashMap<Passenger, Integer>> knownSolutions,
-                                            SolverConfiguration solverConfiguration) {
-        super(problem, KnownSolutionsEvolutionarySolver.class.getSimpleName(), solverConfiguration);
+    public KnownSolutionsFCAPSMEvolutionarySolver(OneTrainTransferProblem problem,
+                                                  ArrayList<HashMap<Passenger, Integer>> knownSolutions,
+                                                  SolverConfiguration solverConfiguration) {
+        super(problem, KnownSolutionsFCMEvolutionarySolver.class.getSimpleName(), solverConfiguration);
 
         carriagePositionHelper = new RailCarriagePositionHelper(problem.getTrain());
         costComputer = new CostComputer(problem);
         this.knownSolutions = knownSolutions;
         crossover = new Crossover(problem, carriagePositionHelper);
-        mutation = solverConfiguration.getMutation();
+        mutation = new FreeCapacityAndPassengerSwapMutation();
     }
 
     private List<Individual> initializeStartPopulation() {
