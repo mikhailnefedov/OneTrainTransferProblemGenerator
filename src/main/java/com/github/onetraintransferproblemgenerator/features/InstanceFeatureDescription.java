@@ -3,8 +3,9 @@ package com.github.onetraintransferproblemgenerator.features;
 import com.github.onetraintransferproblemgenerator.helpers.Tuple;
 import com.github.onetraintransferproblemgenerator.serialization.CsvName;
 import com.github.onetraintransferproblemgenerator.solvers.*;
-import com.github.onetraintransferproblemgenerator.solvers.evolutionary.KnownSolutionsEvolutionarySolver;
-import com.github.onetraintransferproblemgenerator.solvers.evolutionary.RandomSolutionsEvolutionarySolver;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.KnownSolutionsFCAPSMEvolutionarySolver;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.KnownSolutionsFCMEvolutionarySolver;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.RandomSolutionsFCMEvolutionarySolver;
 import com.github.onetraintransferproblemgenerator.solvers.greedyall.GreedyAllPassengersSolver;
 import lombok.Data;
 
@@ -45,14 +46,16 @@ public class InstanceFeatureDescription {
     private double greedyAllPassengerCost = Double.NaN;
     @CsvName(column = "algo_shortestRidesFirstCost")
     private double shortestRidesFirstCost = Double.NaN;
-    @CsvName(column = "algo_knownSolutionsEvolutionaryCost")
-    private double knownSolutionsEvolutionaryCost = Double.NaN;
     @CsvName(column = "algo_longestRidesFirstCost")
     private double longestRidesFirstCost = Double.NaN;
     @CsvName(column = "algo_greedyPassengerReverseOrder")
     private double greedyPassengerReverseOrderCost = Double.NaN;
-    @CsvName(column = "algo_randomSolutionsEvolutionaryCost")
-    private double randomSolutionsEvolutionaryCost = Double.NaN;
+    @CsvName(column = "algo_randomSolutionsFCMEvolutionaryCost")
+    private double randomSolutionsFCMEvolutionaryCost = Double.NaN;
+    @CsvName(column = "algo_knownSolutionsFCMEvolutionaryCost")
+    private double knownSolutionsFCMEvolutionaryCost = Double.NaN;
+    @CsvName(column = "algo_knownSolutionsFCAPSMEvolutionaryCost")
+    private double knownSolutionsFCAPSMEvolutionaryCost = Double.NaN;
 
     public void setAlgorithmCost(double cost, Class<? extends OneTrainTransferSolver> solverClass) {
         if (solverClass.equals(FirstAvailableCarriageSolver.class)) {
@@ -63,14 +66,16 @@ public class InstanceFeatureDescription {
             setGreedyAllPassengerCost(cost);
         } else if (solverClass.equals(ShortestRidesFirstSolver.class)) {
             setShortestRidesFirstCost(cost);
-        } else if (solverClass.equals(KnownSolutionsEvolutionarySolver.class)) {
-            setKnownSolutionsEvolutionaryCost(cost);
+        } else if (solverClass.equals(KnownSolutionsFCMEvolutionarySolver.class)) {
+            setKnownSolutionsFCMEvolutionaryCost(cost);
         } else if (solverClass.equals(LongestRidesFirstSolver.class)) {
             setLongestRidesFirstCost(cost);
         } else if (solverClass.equals(GreedyPassengerReverseOrderSolver.class)) {
             setGreedyPassengerReverseOrderCost(cost);
-        } else if (solverClass.equals(RandomSolutionsEvolutionarySolver.class)) {
-            setRandomSolutionsEvolutionaryCost(cost);
+        } else if (solverClass.equals(RandomSolutionsFCMEvolutionarySolver.class)) {
+            setRandomSolutionsFCMEvolutionaryCost(cost);
+        } else if (solverClass.equals(KnownSolutionsFCAPSMEvolutionarySolver.class)) {
+            setKnownSolutionsFCAPSMEvolutionaryCost(cost);
         }
     }
 

@@ -4,11 +4,11 @@ import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProble
 import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.solvers.CostComputer;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriagePositionHelper;
-import com.github.onetraintransferproblemgenerator.solvers.RandomPassengerOrderSolver;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.Individual;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.SolutionAndHistoryData;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.Crossover;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.TournamentSelection;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.mutation.FreeCapacitySwapMutation;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.operators.mutation.Mutation;
 
 import java.util.ArrayList;
@@ -17,26 +17,39 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Starts from randomly generated in order solutions
+ * Starts from known heuristic solutions and uses free capacity swap mutations
  */
-public class RandomSolutionsEvolutionarySolver extends EvolutionarySolver {
+public class KnownSolutionsFCMEvolutionarySolver extends EvolutionarySolver {
 
     private RailCarriagePositionHelper carriagePositionHelper;
+    private List<HashMap<Passenger, Integer>> knownSolutions;
     private final Crossover crossover;
     private final Mutation mutation;
-    private RandomPassengerOrderSolver randomPassengerOrderSolver;
 
-
-    public RandomSolutionsEvolutionarySolver(OneTrainTransferProblem problem,
-                                             ArrayList<HashMap<Passenger, Integer>> knownSolutions,
-                                             SolverConfiguration solverConfiguration) {
-        super(problem, RandomSolutionsEvolutionarySolver.class.getSimpleName(), solverConfiguration);
+    public KnownSolutionsFCMEvolutionarySolver(OneTrainTransferProblem problem,
+                                               ArrayList<HashMap<Passenger, Integer>> knownSolutions,
+                                               SolverConfiguration solverConfiguration) {
+        super(problem, KnownSolutionsFCMEvolutionarySolver.class.getSimpleName(), solverConfiguration);
 
         carriagePositionHelper = new RailCarriagePositionHelper(problem.getTrain());
         costComputer = new CostComputer(problem);
+        this.knownSolutions = knownSolutions;
         crossover = new Crossover(problem, carriagePositionHelper);
-        mutation = solverConfiguration.getMutation();
-        randomPassengerOrderSolver = new RandomPassengerOrderSolver(problem);
+        mutation = new FreeCapacitySwapMutation();
+    }
+
+    private List<Individual> initializeStartPopulation() {
+        List<Individual> individuals = new ArrayList<>();
+        while (individuals.size() < populationSize) {
+            for (HashMap<Passenger, Integer> solution : knownSolutions) {
+                individuals.add(createIndividual(solution));
+                if (individuals.size() == populationSize)
+                    break;
+            }
+        }
+        updateBestKnownIndividual(individuals);
+
+        return individuals;
     }
 
     @Override
@@ -69,16 +82,4 @@ public class RandomSolutionsEvolutionarySolver extends EvolutionarySolver {
         }
         return new SolutionAndHistoryData(bestKnownIndividual.getPassengerRailCarriageMapping(), historicalData);
     }
-
-    private List<Individual> initializeStartPopulation() {
-        List<Individual> individuals = new ArrayList<>();
-        while (individuals.size() < populationSize) {
-            HashMap<Passenger, Integer> solution = randomPassengerOrderSolver.solve();
-            individuals.add(createIndividual(solution));
-        }
-        updateBestKnownIndividual(individuals);
-
-        return individuals;
-    }
-
 }
