@@ -4,5 +4,9 @@ import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.H
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+import java.util.List;
+
 public interface HistoricalEvolutionDataRepository extends MongoRepository<HistoricalEvolutionData, ObjectId> {
+
+    List<HistoricalEvolutionData> findAllByExperimentId(String experimentId);
 }
