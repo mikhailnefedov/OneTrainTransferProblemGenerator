@@ -47,12 +47,20 @@ public abstract class EvolutionarySolver extends OneTrainTransferSolver {
         return individual;
     }
 
-    protected void updateBestKnownIndividual(List<Individual> individuals) {
+    /**
+     *
+     * @param individuals
+     * @return true if there is a new best individual
+     */
+    protected boolean updateBestKnownIndividual(List<Individual> individuals) {
         Individual bestIndividual = individuals.stream().min(Comparator.comparing(Individual::getFitness)).get();
+        boolean newBestIndividual = false;
         if (bestIndividual.getFitness() < bestKnownFitnessScore) {
             bestKnownFitnessScore = bestIndividual.getFitness();
             bestKnownIndividual = bestIndividual;
+            newBestIndividual = true;
         }
         historicalData.addBestCost(bestKnownFitnessScore);
+        return newBestIndividual;
     }
 }

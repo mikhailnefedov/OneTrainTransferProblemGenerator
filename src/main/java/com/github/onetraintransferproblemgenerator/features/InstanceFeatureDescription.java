@@ -4,6 +4,7 @@ import com.github.onetraintransferproblemgenerator.helpers.Tuple;
 import com.github.onetraintransferproblemgenerator.serialization.CsvName;
 import com.github.onetraintransferproblemgenerator.solvers.*;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.KnownSolutionsFCAPSMEvolutionarySolver;
+import com.github.onetraintransferproblemgenerator.solvers.evolutionary.KnownSolutionsFCAPSMNITEvolutionarySolver;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.KnownSolutionsFCMEvolutionarySolver;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.RandomSolutionsFCMEvolutionarySolver;
 import com.github.onetraintransferproblemgenerator.solvers.greedyall.GreedyAllPassengersSolver;
@@ -56,6 +57,8 @@ public class InstanceFeatureDescription {
     private double knownSolutionsFCMEvolutionaryCost = Double.NaN;
     @CsvName(column = "algo_knownSolutionsFCAPSMEvolutionaryCost")
     private double knownSolutionsFCAPSMEvolutionaryCost = Double.NaN;
+    @CsvName(column = "algo_knownSolutionsFCAPSMNITEvolutionaryCost")
+    private double knownSolutionsFCAPSMNITEvolutionaryCost = Double.NaN;
 
     public void setAlgorithmCost(double cost, Class<? extends OneTrainTransferSolver> solverClass) {
         if (solverClass.equals(FirstAvailableCarriageSolver.class)) {
@@ -76,6 +79,8 @@ public class InstanceFeatureDescription {
             setRandomSolutionsFCMEvolutionaryCost(cost);
         } else if (solverClass.equals(KnownSolutionsFCAPSMEvolutionarySolver.class)) {
             setKnownSolutionsFCAPSMEvolutionaryCost(cost);
+        } else if (solverClass.equals(KnownSolutionsFCAPSMNITEvolutionarySolver.class)) {
+            setKnownSolutionsFCAPSMNITEvolutionaryCost(cost);
         }
     }
 
