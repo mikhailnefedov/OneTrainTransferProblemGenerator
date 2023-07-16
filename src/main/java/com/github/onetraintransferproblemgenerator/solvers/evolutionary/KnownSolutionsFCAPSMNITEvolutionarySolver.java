@@ -16,37 +16,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-public class KnownSolutionsFCAPSMEvolutionarySolver extends EvolutionarySolver {
+/**
+ * FCAPSM: FreeCapacityAndPassengerSwapMutation and NIT No Improvement Termination
+ */
+public class KnownSolutionsFCAPSMNITEvolutionarySolver extends EvolutionarySolver {
 
     private final Crossover crossover;
     private final Mutation mutation;
     private RailCarriagePositionHelper carriagePositionHelper;
     private List<HashMap<Passenger, Integer>> knownSolutions;
+    private int noImprovementCount = 0;
+    private int generationsWithoutImprovement;
 
-    public KnownSolutionsFCAPSMEvolutionarySolver(OneTrainTransferProblem problem,
+    public KnownSolutionsFCAPSMNITEvolutionarySolver(OneTrainTransferProblem problem,
                                                   ArrayList<HashMap<Passenger, Integer>> knownSolutions,
                                                   SolverConfiguration solverConfiguration) {
-        super(problem, KnownSolutionsFCAPSMEvolutionarySolver.class.getSimpleName(), solverConfiguration);
+        super(problem, KnownSolutionsFCAPSMNITEvolutionarySolver.class.getSimpleName(), solverConfiguration);
 
         carriagePositionHelper = new RailCarriagePositionHelper(problem.getTrain());
         costComputer = new CostComputer(problem);
         this.knownSolutions = knownSolutions;
         crossover = new Crossover(problem, carriagePositionHelper);
         mutation = new FreeCapacityAndPassengerSwapMutation();
-    }
-
-    private List<Individual> initializeStartPopulation() {
-        List<Individual> individuals = new ArrayList<>();
-        while (individuals.size() < populationSize) {
-            for (HashMap<Passenger, Integer> solution : knownSolutions) {
-                individuals.add(createIndividual(solution));
-                if (individuals.size() == populationSize)
-                    break;
-            }
-        }
-        updateBestKnownIndividual(individuals);
-
-        return individuals;
+        generationsWithoutImprovement = solverConfiguration.getGenerationsWithoutImprovement();
     }
 
     @Override
@@ -57,7 +49,7 @@ public class KnownSolutionsFCAPSMEvolutionarySolver extends EvolutionarySolver {
     @Override
     public SolutionAndHistoryData solveAndGenerateHistoricalData() {
         List<Individual> generation = initializeStartPopulation();
-        for (int i = 1; i <= generationCount; i++) {
+        while(noImprovementCount <= generationsWithoutImprovement) {
             List<Individual> parents = TournamentSelection.select(generation, parentsCount);
             Random random = new Random();
             List<Individual> children = new ArrayList<>();
@@ -75,8 +67,28 @@ public class KnownSolutionsFCAPSMEvolutionarySolver extends EvolutionarySolver {
                 children.add(child);
             }
             generation = children;
-            updateBestKnownIndividual(generation);
+            boolean newBestIndividual = updateBestKnownIndividual(generation);
+            if (newBestIndividual) {
+                noImprovementCount = 0;
+            } else {
+                noImprovementCount++;
+            }
         }
         return new SolutionAndHistoryData(bestKnownIndividual.getPassengerRailCarriageMapping(), historicalData);
     }
+
+    private List<Individual> initializeStartPopulation() {
+        List<Individual> individuals = new ArrayList<>();
+        while (individuals.size() < populationSize) {
+            for (HashMap<Passenger, Integer> solution : knownSolutions) {
+                individuals.add(createIndividual(solution));
+                if (individuals.size() == populationSize)
+                    break;
+            }
+        }
+        updateBestKnownIndividual(individuals);
+
+        return individuals;
+    }
+
 }

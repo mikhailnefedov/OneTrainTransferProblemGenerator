@@ -9,6 +9,7 @@ public class SolverConfiguration {
     private int childrenCount = 50;
     private int generationCount = 200;
     private double mutationRate = 0.3;
+    private int generationsWithoutImprovement;
 
 
     public String getConfigurationAsString() {
