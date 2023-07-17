@@ -29,24 +29,25 @@ public class Crossover {
         int crossoverPoint = random.nextInt(1, stationCount);
 
         List<Passenger> passengersFromFirstParent =
-                problem.getPassengers().stream().filter(p -> p.getInStation() < crossoverPoint).toList();
+            problem.getPassengers().stream().filter(p -> p.getInStation() < crossoverPoint).toList();
         List<Passenger> passengersFromSecondParent =
-                problem.getPassengers().stream().filter(p -> p.getInStation() >= crossoverPoint).toList();
+            problem.getPassengers().stream().filter(p -> p.getInStation() >= crossoverPoint).toList();
 
         Individual child = new Individual(problem);
         for (Passenger passenger : passengersFromFirstParent) {
             child.addPassengerWithRailCarriageId(passenger, parent1.getRailCarriageIdOfPassenger(passenger));
         }
-        passengersFromSecondParent =
-                passengersFromSecondParent.stream().sorted(Comparator.comparing(Passenger::getInStation)).toList();
-        for (Passenger passenger : passengersFromSecondParent) {
-            List<Integer> greedyRailCarriages = railCarriagePositionHelper.getDistancesForRailCarriages(passenger).stream()
+
+        passengersFromSecondParent.stream()
+            .sorted(Comparator.comparing(Passenger::getInStation))
+            .forEach(passenger -> {
+                List<Integer> greedyRailCarriages = railCarriagePositionHelper.getDistancesForRailCarriages(passenger).stream()
                     .map(RailCarriageDistance::getRailCarriageId)
                     .collect(Collectors.toList());
-            int railCarriageIdInSecondParent = parent2.getPassengerRailCarriageMapping().get(passenger);
-            swapRailCarriageIntoFirstPlace(greedyRailCarriages, railCarriageIdInSecondParent);
-            child.addPassengerWithoutRailCarriage(passenger, greedyRailCarriages);
-        }
+                int railCarriageIdInSecondParent = parent2.getPassengerRailCarriageMapping().get(passenger);
+                swapRailCarriageIntoFirstPlace(greedyRailCarriages, railCarriageIdInSecondParent);
+                child.addPassengerWithoutRailCarriage(passenger, greedyRailCarriages);
+            });
 
         return child;
     }

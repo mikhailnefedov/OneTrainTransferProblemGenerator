@@ -19,7 +19,7 @@ public class Individual {
 
     public Individual(OneTrainTransferProblem problem) {
         initializePassengerMap(problem);
-        passengerRailCarriageMapping = new HashMap<>();
+        passengerRailCarriageMapping = new HashMap<>(problem.getPassengers().size(), 1.0f);
     }
 
     public Individual(HashMap<Passenger, Integer> passengerRailCarriageMapping, OneTrainTransferProblem problem) {
@@ -27,7 +27,7 @@ public class Individual {
         for (Passenger passenger : passengerRailCarriageMapping.keySet()) {
             int railCarriageId = passengerRailCarriageMapping.get(passenger);
             for (int stationId = passenger.getInStation(); stationId < passenger.getOutStation(); stationId++) {
-                passengersOfRailCarriageOfInStation.get(stationId).get(railCarriageId).addPassenger(passenger);
+                passengersOfRailCarriageOfInStation.get(stationId).get(railCarriageId).addPassenger();
             }
         }
         this.passengerRailCarriageMapping = passengerRailCarriageMapping;
@@ -45,19 +45,13 @@ public class Individual {
     }
 
     public int getRailCarriageIdOfPassenger(Passenger passenger) {
-        try {
-            return passengerRailCarriageMapping.get(passenger);
-        } catch (Exception e) {
-            int a = 2+2;
-            System.out.println(e);
-        }
-        return 0;
+        return passengerRailCarriageMapping.get(passenger);
     }
 
     public void addPassengerWithRailCarriageId(Passenger passenger, int railCarriageId) {
         passengerRailCarriageMapping.put(passenger, railCarriageId);
         for (int stationId = passenger.getInStation(); stationId < passenger.getOutStation(); stationId++) {
-            passengersOfRailCarriageOfInStation.get(stationId).get(railCarriageId).addPassenger(passenger);
+            passengersOfRailCarriageOfInStation.get(stationId).get(railCarriageId).addPassenger();
         }
     }
 

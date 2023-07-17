@@ -41,13 +41,13 @@ class PassengerSwap extends Swap {
 
     private void removePassengerFromPassengersOfRailCarriageMapping(Individual individual, Passenger passenger, int railCarriageId) {
         for (int stationId = passenger.getInStation(); stationId < passenger.getOutStation(); stationId++) {
-            individual.getPassengersOfRailCarriageOfInStation().get(stationId).get(railCarriageId).removePassenger(passenger);
+            individual.getPassengersOfRailCarriageOfInStation().get(stationId).get(railCarriageId).removePassenger();
         }
     }
 
     private void addPassengerToPassengersOfRailCarriageMapping(Individual individual, Passenger passenger, int railCarriageId) {
         for (int stationId = passenger.getInStation(); stationId < passenger.getOutStation(); stationId++) {
-            individual.getPassengersOfRailCarriageOfInStation().get(stationId).get(railCarriageId).addPassenger(passenger);
+            individual.getPassengersOfRailCarriageOfInStation().get(stationId).get(railCarriageId).addPassenger();
         }
     }
 }
