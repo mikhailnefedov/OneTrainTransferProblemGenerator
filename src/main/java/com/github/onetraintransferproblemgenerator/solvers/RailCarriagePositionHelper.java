@@ -74,10 +74,10 @@ public class RailCarriagePositionHelper {
         HashMap<Integer, Integer> resultMap = new HashMap<>();
         HashMap<Integer, Integer> railCarriagePositions = railCarriagePositionsOfStations.get(stationId);
 
-        for (Integer railCarriageId : railCarriagePositions.keySet()) {
-            int carriagePosition = railCarriagePositions.get(railCarriageId);
-            resultMap.put(railCarriageId, Math.abs(carriagePosition - position));
-        }
+        railCarriagePositions.entrySet().forEach(entry -> {
+            int carriagePosition = entry.getValue();
+            resultMap.put(entry.getKey(), Math.abs(carriagePosition - position));
+        });
         return resultMap;
     }
 }

@@ -18,8 +18,8 @@ class FreeCapacitySwap extends Swap {
         individual.getPassengerRailCarriageMapping().put(passenger, newRailCarriageId);
 
         for (int stationId = passenger.getInStation(); stationId < passenger.getOutStation(); stationId++) {
-            individual.getPassengersOfRailCarriageOfInStation().get(stationId).get(lastRailCarriageId).removePassenger(passenger);
-            individual.getPassengersOfRailCarriageOfInStation().get(stationId).get(newRailCarriageId).addPassenger(passenger);
+            individual.getPassengersOfRailCarriageOfInStation().get(stationId).get(lastRailCarriageId).removePassenger();
+            individual.getPassengersOfRailCarriageOfInStation().get(stationId).get(newRailCarriageId).addPassenger();
         }
     }
 }
