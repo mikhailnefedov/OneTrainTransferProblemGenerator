@@ -29,10 +29,10 @@ public class GreedyAllPassengersSolver extends OneTrainTransferSolver {
         List<Tuple<Passenger, List<RailCarriageDistance>>> passengersAndTheirRailCarriageDistances = problem.getPassengers().stream()
                 .map(p -> {
                     List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistancesForRailCarriages(p);
-                    railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCombinedDistances));
+                    railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCost));
                     return new Tuple<>(p, railCarriageDistances);
                 })
-                .sorted(Comparator.comparingInt(t -> t.getRight().get(0).getCombinedDistances()))
+                .sorted(Comparator.comparingDouble(t -> t.getRight().get(0).getCost()))
                 .collect(Collectors.toList());
 
         for (Tuple<Passenger, List<RailCarriageDistance>> tuple : passengersAndTheirRailCarriageDistances) {

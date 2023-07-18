@@ -39,7 +39,7 @@ public class GreedyPassengerReverseOrderSolver extends OneTrainTransferSolver {
     private void seatPassengersInTrain(List<Passenger> passengers) {
         for (Passenger passenger : passengers) {
             List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistancesForRailCarriages(passenger);
-            railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCombinedDistances));
+            railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCost));
             for (RailCarriageDistance railCarriageDistance : railCarriageDistances) {
                 if (capacityStorage.isBoardingPossible(railCarriageDistance.getRailCarriageId())) {
                     capacityStorage.inPassenger(railCarriageDistance.getRailCarriageId(), passenger);
