@@ -51,7 +51,6 @@ public class EvolutionarySolverController {
                 instance.getFeatureDescription().setAlgorithmCost(cost, solverClass);
 
                 fillInInstanceData(result.getHistoricalData(), instance, parameters.getSolverConfiguration());
-                historicalEvolutionDataRepository.save(result.getHistoricalData());
                 System.out.println("Finish solving " + instance.getInstanceId());
                 return result.getHistoricalData();
             } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
