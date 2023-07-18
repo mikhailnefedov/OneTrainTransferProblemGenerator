@@ -5,7 +5,6 @@ import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProble
 import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.solvers.greedyall.SectionCapacityRailCarriageStorage;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +37,7 @@ public class LongestRidesFirstSolver extends OneTrainTransferSolver {
 
         for (Passenger passenger : passengers) {
             List<RailCarriageDistance> railCarriageDistances = carriagePositionHelper.getDistancesForRailCarriages(passenger);
-            railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCombinedDistances));
+            railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCost));
 
             for (RailCarriageDistance railCarriageDistance : railCarriageDistances) {
                 if (sectionCapacityRailCarriageStorage.isBoardingPossible(railCarriageDistance.getRailCarriageId(), passenger)) {

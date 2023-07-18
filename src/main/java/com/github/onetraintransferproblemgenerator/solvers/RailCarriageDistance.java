@@ -8,12 +8,12 @@ import lombok.Data;
 public
 class RailCarriageDistance {
     private int railCarriageId;
-    private int combinedDistances;
+    private double cost;
     private int inDistance;
     private int outDistance;
 
     public RailCarriageDistance(int railCarriageId, int inDistance, int outDistance) {
-        combinedDistances = inDistance + outDistance;
+        cost = Math.pow(inDistance, 2) + Math.pow(outDistance, 2);
         this.railCarriageId = railCarriageId;
         this.inDistance = inDistance;
         this.outDistance = outDistance;
