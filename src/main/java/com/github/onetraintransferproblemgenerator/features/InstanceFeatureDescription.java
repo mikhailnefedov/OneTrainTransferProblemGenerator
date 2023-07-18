@@ -39,8 +39,8 @@ public class InstanceFeatureDescription {
     private double avgCongestion;
     @CsvName(column = "feature_decisionPoints")
     private double decisionPoints;
-    @CsvName(column = "algo_firstAvailableCarriage")
-    private double firstAvailableCarriageCost = Double.NaN;
+    @CsvName(column = "algo_fillRailCarriages")
+    private double fillRailCarriagesCost = Double.NaN;
     @CsvName(column = "algo_greedyPassengerOrder")
     private double greedyPassengerOrderCost = Double.NaN;
     @CsvName(column = "algo_greedyAllPassenger")
@@ -61,8 +61,8 @@ public class InstanceFeatureDescription {
     private double knownSolutionsFCAPSMNITEvolutionaryCost = Double.NaN;
 
     public void setAlgorithmCost(double cost, Class<? extends OneTrainTransferSolver> solverClass) {
-        if (solverClass.equals(FirstAvailableCarriageSolver.class)) {
-            setFirstAvailableCarriageCost(cost);
+        if (solverClass.equals(FillRailCarriagesSolver.class)) {
+            setFillRailCarriagesCost(cost);
         } else if (solverClass.equals(GreedyPassengerOrderSolver.class)) {
             setGreedyPassengerOrderCost(cost);
         } else if (solverClass.equals(GreedyAllPassengersSolver.class)) {

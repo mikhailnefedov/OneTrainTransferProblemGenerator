@@ -7,9 +7,9 @@ import com.github.onetraintransferproblemgenerator.models.RailCarriage;
 import java.util.HashMap;
 import java.util.List;
 
-public class FirstAvailableCarriageSolver extends OneTrainTransferSolver {
+public class FillRailCarriagesSolver extends OneTrainTransferSolver {
 
-    public FirstAvailableCarriageSolver(OneTrainTransferProblem problem) {
+    public FillRailCarriagesSolver(OneTrainTransferProblem problem) {
         super(problem);
     }
 
