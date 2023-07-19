@@ -17,7 +17,7 @@ public class SimpleGenerator implements OneTrainTransferProblemGenerator {
     private final int maxRailCarriageCapacity = 100;
 
     private final double minCongestion = 0.05;
-    private final double maxCongestion = 0.95;
+    private final double maxCongestion = 1.0;
     private final double congestionIncrement = 0.05;
 
     private final Random random;
@@ -52,10 +52,10 @@ public class SimpleGenerator implements OneTrainTransferProblemGenerator {
     private Train generateTrain() {
         Train train = new Train();
         int railCarriageCount = random.nextInt(minRailCarriages, maxRailCarriages + 1);
-        int capacity = random.nextInt(maxRailCarriageCapacity);
         for (int i = 1; i <= railCarriageCount; i++) {
             RailCarriage railCarriage = new RailCarriage();
             railCarriage.setSequenceNumber(i);
+            int capacity = random.nextInt(maxRailCarriageCapacity);
             railCarriage.setCapacity(capacity);
             train.getRailCarriages().add(railCarriage);
         }
