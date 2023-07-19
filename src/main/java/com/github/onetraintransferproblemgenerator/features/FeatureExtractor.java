@@ -9,16 +9,30 @@ import java.util.List;
 
 public class FeatureExtractor {
 
+    /**
+     * Extracts features into already existing description
+     */
+    public static void extract(InstanceFeatureDescription description, OneTrainTransferProblem problem) {
+        setDescriptionFields(description, problem);
+    }
+
+    /**
+     * Extracts new instance feature description
+     */
     public static InstanceFeatureDescription extract(String instanceId, OneTrainTransferProblem problem) {
         InstanceFeatureDescription description = new InstanceFeatureDescription();
         description.setInstanceId(instanceId);
+        setDescriptionFields(description, problem);
+        return description;
+    }
+
+    private static void setDescriptionFields(InstanceFeatureDescription description, OneTrainTransferProblem problem) {
         description.setStationCount(getStationCount(problem));
         setPassengerFeatures(description, problem);
         description.setDirectionChangeCount(getDirectionChangeCount(problem));
         setRailCarriageCapacities(description, problem);
         setCongestion(description, problem);
         description.setDecisionPoints(getDecisionPointRatio(problem));
-        return description;
     }
 
     private static int getDirectionChangeCount(OneTrainTransferProblem problem) {
