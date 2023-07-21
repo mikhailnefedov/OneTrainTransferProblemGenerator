@@ -1,5 +1,8 @@
 package com.github.onetraintransferproblemgenerator.solvers.evolutionary;
 
+import com.github.onetraintransferproblemgenerator.exceptions.NotEnoughTrainCapacityException;
+import lombok.SneakyThrows;
+
 public class RailCarriageSectionSet {
 
     private int capacity;
@@ -8,9 +11,14 @@ public class RailCarriageSectionSet {
         this.capacity = capacity;
     }
 
+    @SneakyThrows
     public void addPassenger() {
-        if (capacity > 0)
+        if (capacity > 0) {
             capacity -= 1;
+        } else {
+            throw new NotEnoughTrainCapacityException(capacity);
+        }
+
     }
 
     public boolean hasFreeCapacity() {

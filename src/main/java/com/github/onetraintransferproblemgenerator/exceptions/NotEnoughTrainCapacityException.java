@@ -8,4 +8,8 @@ public class NotEnoughTrainCapacityException extends Exception {
     public NotEnoughTrainCapacityException(OneTrainTransferProblem faultyInstance, StationTuple station, int faultyCapacity) {
         super(faultyInstance.toString() + ";" + station.toString() + ";" + faultyCapacity);
     }
+
+    public NotEnoughTrainCapacityException(int faultyCapacity) {
+        super(String.valueOf(faultyCapacity));
+    }
 }

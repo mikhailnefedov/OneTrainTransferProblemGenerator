@@ -18,12 +18,11 @@ class PassengerSwap extends Swap {
     @Override
     void makeSwap(Individual individual, Passenger passenger) {
         int oldRailCarriageId = individual.getPassengerRailCarriageMapping().get(passenger);
-        updatePassengerRailCarriageMapping(individual, passenger, oldRailCarriageId);
-
+        updateSolutionMapping(individual, passenger, oldRailCarriageId);
         updatePassengersOfRailCarriageMapping(individual, passenger, oldRailCarriageId);
     }
 
-    private void updatePassengerRailCarriageMapping(Individual individual, Passenger passenger, int oldRailCarriageId) {
+    private void updateSolutionMapping(Individual individual, Passenger passenger, int oldRailCarriageId) {
         individual.getPassengerRailCarriageMapping().remove(passenger);
         passengersToSwap.forEach(p -> individual.getPassengerRailCarriageMapping().remove(p));
 
@@ -31,6 +30,9 @@ class PassengerSwap extends Swap {
         passengersToSwap.forEach(p -> individual.getPassengerRailCarriageMapping().put(p, oldRailCarriageId));
     }
 
+    /**
+     * Updates helper maps
+     */
     private void updatePassengersOfRailCarriageMapping(Individual individual, Passenger passenger, int oldRailCarriageId) {
         removePassengerFromPassengersOfRailCarriageMapping(individual, passenger, oldRailCarriageId);
         passengersToSwap.forEach(p -> removePassengerFromPassengersOfRailCarriageMapping(individual, passenger, newRailCarriageId));
