@@ -37,8 +37,8 @@ public class InstanceFeatureDescription {
     private double stdDevRailCarriageCapacity;
     @CsvName(column = "feature_avgCongestion")
     private double avgCongestion;
-    @CsvName(column = "feature_decisionPoints")
-    private double decisionPoints;
+    @CsvName(column = "feature_blockedPassengerRatio")
+    private double blockedPassengerRatio;
     @CsvName(column = "algo_fillRailCarriages")
     private double fillRailCarriagesCost = Double.NaN;
     @CsvName(column = "algo_greedyPassengerOrder")

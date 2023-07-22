@@ -2,9 +2,14 @@ package com.github.onetraintransferproblemgenerator.features;
 
 import com.github.onetraintransferproblemgenerator.models.DirectionOfTravel;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
+import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.models.RailCarriage;
+import com.github.onetraintransferproblemgenerator.solvers.RailCarriageDistance;
+import com.github.onetraintransferproblemgenerator.solvers.RailCarriagePositionHelper;
+import com.github.onetraintransferproblemgenerator.solvers.SeatReservationStorage;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class FeatureExtractor {
@@ -32,7 +37,7 @@ public class FeatureExtractor {
         description.setDirectionChangeCount(getDirectionChangeCount(problem));
         setRailCarriageCapacities(description, problem);
         setCongestion(description, problem);
-        description.setDecisionPoints(getDecisionPointRatio(problem));
+        description.setBlockedPassengerRatio(getBlockedPassengerRatio(problem));
     }
 
     private static int getDirectionChangeCount(OneTrainTransferProblem problem) {
@@ -124,18 +129,52 @@ public class FeatureExtractor {
         return congestions;
     }
 
-    private static double getDecisionPointRatio(OneTrainTransferProblem problem) {
-        double decisionPointSum = 0;
+    private static double getBlockedPassengerRatio(OneTrainTransferProblem problem) {
+        int totalPassengers = problem.getPassengers().size();
+        double blockedPassengers = 0.0;
 
-        int passengersOnBoard = 0;
+        RailCarriagePositionHelper railCarriagePositionHelper = new RailCarriagePositionHelper(problem.getTrain());
+        SeatReservationStorage capacityStorage = new SeatReservationStorage(problem.getTrain());
 
-        for (int stationId : problem.getTrain().getStationIds()) {
-            passengersOnBoard -= problem.getOutPassengersOfStation(stationId).size();
-            int newPassengers = problem.getInPassengersOfStation(stationId).size();
-            decisionPointSum += passengersOnBoard * newPassengers;
-            passengersOnBoard += newPassengers;
+        List<Integer> stationIds = problem.getTrain().getStationIds();
+
+        for (int stationId : stationIds) {
+            letPassengersOutOfTrain(capacityStorage, problem.getOutPassengersOfStation(stationId));
+            blockedPassengers += seatPassengersInTrain(capacityStorage, railCarriagePositionHelper, problem.getInPassengersOfStation(stationId));
         }
 
-        return decisionPointSum;
+        return blockedPassengers / totalPassengers;
     }
+
+    private static void letPassengersOutOfTrain(SeatReservationStorage capacityStorage,
+                                                List<Passenger> passengers) {
+        passengers.forEach(passenger -> {
+            try {
+                capacityStorage.outPassenger(passenger);
+            } catch (NullPointerException ignored) {
+
+            }
+        });
+    }
+
+    private static int seatPassengersInTrain(SeatReservationStorage capacityStorage,
+                                       RailCarriagePositionHelper railCarriagePositionHelper,
+                                       List<Passenger> passengers) {
+        int blockedPassengers = 0;
+
+        for (Passenger passenger : passengers) {
+            List<RailCarriageDistance> railCarriageDistances = railCarriagePositionHelper.getDistancesForRailCarriages(passenger);
+            railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCost));
+            for (RailCarriageDistance railCarriageDistance : railCarriageDistances) {
+                if (capacityStorage.isBoardingPossible(railCarriageDistance.getRailCarriageId())) {
+                    capacityStorage.inPassenger(railCarriageDistance.getRailCarriageId(), passenger);
+                } else {
+                    blockedPassengers++;
+                }
+                break;
+            }
+        }
+        return blockedPassengers;
+    }
+
 }
