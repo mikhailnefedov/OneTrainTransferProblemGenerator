@@ -38,7 +38,7 @@ class PassengerSwap extends Swap {
         passengersToSwap.forEach(p -> removePassengerFromPassengersOfRailCarriageMapping(individual, passenger, newRailCarriageId));
 
         addPassengerToPassengersOfRailCarriageMapping(individual, passenger, newRailCarriageId);
-        passengersToSwap.forEach(p -> addPassengerToPassengersOfRailCarriageMapping(individual, passenger, oldRailCarriageId));
+        passengersToSwap.forEach(p -> addPassengerToPassengersOfRailCarriageMapping(individual, p, oldRailCarriageId));
     }
 
     private void removePassengerFromPassengersOfRailCarriageMapping(Individual individual, Passenger passenger, int railCarriageId) {
