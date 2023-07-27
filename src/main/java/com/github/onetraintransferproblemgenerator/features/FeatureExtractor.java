@@ -1,9 +1,6 @@
 package com.github.onetraintransferproblemgenerator.features;
 
-import com.github.onetraintransferproblemgenerator.models.DirectionOfTravel;
-import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
-import com.github.onetraintransferproblemgenerator.models.Passenger;
-import com.github.onetraintransferproblemgenerator.models.RailCarriage;
+import com.github.onetraintransferproblemgenerator.models.*;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriageDistance;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriagePositionHelper;
 import com.github.onetraintransferproblemgenerator.solvers.SeatReservationStorage;
@@ -108,10 +105,20 @@ public class FeatureExtractor {
     private static void setCongestion(InstanceFeatureDescription description, OneTrainTransferProblem problem) {
         List<Double> congestions = getCongestionsOfSubRoutes(problem);
         description.setAvgCongestion(getAverageCongestion(congestions));
+        description.setTotalCongestion(getTotalCongestion(problem));
     }
 
     private static double getAverageCongestion(List<Double> congestions) {
         return congestions.stream().mapToDouble(d -> d).average().orElse(0.0);
+    }
+
+    private static double getTotalCongestion(OneTrainTransferProblem problem) {
+        int availableSections = problem.getTrain().getTotalCapacity() * (problem.getTrain().getStationCount() - 1);
+        int usedSections = problem.getPassengers().stream()
+            .map(passenger -> passenger.getOutStation() - passenger.getInStation())
+            .reduce(Integer::sum)
+            .get();
+        return (double) usedSections / availableSections;
     }
 
     private static List<Double> getCongestionsOfSubRoutes(OneTrainTransferProblem problem) {

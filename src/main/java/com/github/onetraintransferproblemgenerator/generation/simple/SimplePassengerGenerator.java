@@ -49,6 +49,7 @@ public class SimplePassengerGenerator {
             int startStation = possibleStartStations.get(random.nextInt(possibleStartStations.size()));
             int lastPossiblePenultimateStation = getPenultimateStation(startStation);
             int lastStation = random.nextInt(startStation + 1, lastPossiblePenultimateStation + 2);
+
             updateFreeCapacitiesFromStation(startStation, lastStation - 1);
 
             Passenger p = new Passenger();
@@ -62,6 +63,17 @@ public class SimplePassengerGenerator {
             passengerId++;
             availableRouteSectionCount -= lastStation - startStation;
         }
+
+        if (availableRouteSectionCount < 0) {
+            int removeRouteSections = Math.abs(availableRouteSectionCount);
+            Passenger passengerWithSmallerRoute = passengers.stream()
+                .filter(passenger -> (passenger.getOutStation() - passenger.getInStation()) > removeRouteSections)
+                .findFirst()
+                .get();
+
+            passengerWithSmallerRoute.setOutStation(passengerWithSmallerRoute.getOutStation() - removeRouteSections);
+        }
+
         return passengers;
     }
 
