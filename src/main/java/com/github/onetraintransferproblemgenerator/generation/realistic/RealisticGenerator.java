@@ -156,6 +156,16 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
             passengerId++;
             availableRouteSectionCount-= lastStation - startStation;
         }
+
+        if (availableRouteSectionCount < 0) {
+            int removeRouteSections = Math.abs(availableRouteSectionCount);
+            Passenger passengerWithSmallerRoute = passengers.stream()
+                .filter(passenger -> (passenger.getOutStation() - passenger.getInStation()) > removeRouteSections)
+                .findFirst()
+                .get();
+
+            passengerWithSmallerRoute.setOutStation(passengerWithSmallerRoute.getOutStation() - removeRouteSections);
+        }
         return passengers;
     }
 
