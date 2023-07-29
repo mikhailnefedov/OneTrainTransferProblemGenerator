@@ -79,7 +79,7 @@ public class ExpandInstanceSpaceGenerationController {
     private List<Tuple<ProblemInstance, SimpleMatrix>> initializeKnownInstancesWithTheirCoordinates(InitializeExpandInstanceSpaceParameters parameters) {
         List<ProblemInstance> problemInstances =
                 problemInstanceRepository.findAllByExperimentId(parameters.getExperimentId());
-        PrelimResponse prelimData = getPrelimData(problemInstances, parameters);
+        OldPrelimResponse prelimData = getPrelimData(problemInstances, parameters);
 
         List<List<Tuple<String, Double>>> featureVectors = problemInstances.stream()
                 .map(instance -> instance.getFeatureDescription().getFeatureVector(parameters.getFeatureNames()))
@@ -93,7 +93,7 @@ public class ExpandInstanceSpaceGenerationController {
                 .toList();
     }
 
-    private PrelimResponse getPrelimData(List<ProblemInstance> problemInstances, InitializeExpandInstanceSpaceParameters parameters) {
+    private OldPrelimResponse getPrelimData(List<ProblemInstance> problemInstances, InitializeExpandInstanceSpaceParameters parameters) {
         PrelimRequest data = new PrelimRequest();
         data.setInstances(problemInstances);
         data.setFeatureNames(parameters.getFeatureNames());
@@ -101,7 +101,7 @@ public class ExpandInstanceSpaceGenerationController {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<PrelimRequest> request = new HttpEntity<>(data, headers);
-        return restTemplate.postForEntity(PYTHON_BACKEND_URL + "/prelimdata", request, PrelimResponse.class)
+        return restTemplate.postForEntity(PYTHON_BACKEND_URL + "/prelimdata", request, OldPrelimResponse.class)
                 .getBody();
     }
 
