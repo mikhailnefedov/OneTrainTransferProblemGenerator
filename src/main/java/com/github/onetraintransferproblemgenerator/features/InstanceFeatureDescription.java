@@ -102,6 +102,22 @@ public class InstanceFeatureDescription {
                 .collect(Collectors.toList());
     }
 
+    public Double getValueByFeatureName(String featureName) {
+        List<Field> declaredFields = List.of(InstanceFeatureDescription.class.getDeclaredFields());
+        return declaredFields.stream()
+            .peek(f -> f.setAccessible(true))
+            .filter(f -> f.getName().contains(featureName))
+            .map(f -> {
+                try {
+                    return Double.parseDouble(f.get(this).toString());
+                } catch (IllegalAccessException | NumberFormatException ignored) {
+                }
+                return null;
+            })
+            .findFirst()
+            .get();
+    }
+
     public List<Tuple<String, Double>> getAlgorithmCosts() {
         List<Field> declaredFields = List.of(InstanceFeatureDescription.class.getDeclaredFields());
         return declaredFields.stream()

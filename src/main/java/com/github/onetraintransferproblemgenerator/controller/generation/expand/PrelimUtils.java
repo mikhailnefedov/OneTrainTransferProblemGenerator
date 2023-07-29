@@ -1,5 +1,6 @@
 package com.github.onetraintransferproblemgenerator.controller.generation.expand;
 
+import com.github.onetraintransferproblemgenerator.helpers.MathUtils;
 import com.github.onetraintransferproblemgenerator.helpers.Tuple;
 
 import java.util.ArrayList;
@@ -10,25 +11,25 @@ public class PrelimUtils {
 
     List<Double> means;
     List<Double> stdDeviations;
-    PrelimResponse prelimData;
+    OldPrelimResponse prelimData;
 
     public PrelimUtils() {
 
     }
 
-    public List<List<Double>> doPrelim(List<List<Tuple<String, Double>>> featureVectors, PrelimResponse prelimResponse) {
-        this.prelimData = prelimResponse;
+    public List<List<Double>> doPrelim(List<List<Tuple<String, Double>>> featureVectors, OldPrelimResponse oldPrelimResponse) {
+        this.prelimData = oldPrelimResponse;
 
         List<List<Double>> transformedFeatureVectors = featureVectors.stream()
                 .map(featureVector ->
                         featureVector.stream().map(tuple -> {
-                            PrelimData featurePrelimData = prelimResponse.getPrelimData(tuple.getLeft());
-                            double tmp = boundOutliers(tuple.getRight(), featurePrelimData);
-                            return boxcox(tmp, featurePrelimData.getLambda());
+                            OldPrelimData featureOldPrelimData = oldPrelimResponse.getPrelimData(tuple.getLeft());
+                            double tmp = boundOutliers(tuple.getRight(), featureOldPrelimData);
+                            return boxcox(tmp, featureOldPrelimData.getLambda());
                         }).collect(Collectors.toList())
                 )
                 .toList();
-        standardize(transformedFeatureVectors, prelimResponse.getFeatureData().size());
+        standardize(transformedFeatureVectors, oldPrelimResponse.getFeatureData().size());
         return transformedFeatureVectors;
     }
 
@@ -39,21 +40,21 @@ public class PrelimUtils {
     public List<Double> doPrelimOnSingleFeatureVector(List<Tuple<String, Double>> featureVector) {
         List<Double> transformedFeatureVector = featureVector.stream()
                 .map(tuple -> {
-                    PrelimData prelimDataOfFeature = prelimData.getPrelimData(tuple.getLeft());
-                    double tmp = boundOutliers(tuple.getRight(), prelimDataOfFeature);
-                    return boxcox(tmp, prelimDataOfFeature.getLambda());
+                    OldPrelimData oldPrelimDataOfFeature = prelimData.getPrelimData(tuple.getLeft());
+                    double tmp = boundOutliers(tuple.getRight(), oldPrelimDataOfFeature);
+                    return boxcox(tmp, oldPrelimDataOfFeature.getLambda());
                 }).collect(Collectors.toList());
         standardizeSingleFeatureVector(transformedFeatureVector);
         return transformedFeatureVector;
     }
 
-    private double boundOutliers(double featureValue, PrelimData prelimData) {
-        if (featureValue < prelimData.getColumnMin()) {
-            featureValue = prelimData.getFeatureMin();
-        } else if (featureValue > prelimData.getColumnMax()) {
-            featureValue = prelimData.getColumnMax();
+    private double boundOutliers(double featureValue, OldPrelimData oldPrelimData) {
+        if (featureValue < oldPrelimData.getColumnMin()) {
+            featureValue = oldPrelimData.getFeatureMin();
+        } else if (featureValue > oldPrelimData.getColumnMax()) {
+            featureValue = oldPrelimData.getColumnMax();
         }
-        return featureValue + 1 - prelimData.getFeatureMin();
+        return featureValue + 1 - oldPrelimData.getFeatureMin();
     }
 
     /**
@@ -74,24 +75,15 @@ public class PrelimUtils {
         for (int i = 0; i < featureCount; i++) {
             int column = i;
             List<Double> featureValues = featureVectors.stream().map(vector -> vector.get(column)).toList();
-            double mean = featureValues.stream().mapToDouble(value -> value).average().orElse(0.0);
+            double mean = MathUtils.computeMean(featureValues);
             means.add(mean);
-            double stdDeviation = computeStandardDeviation(featureValues, mean);
+            double stdDeviation = MathUtils.computeStandardDeviation(featureValues, mean);
             stdDeviations.add(stdDeviation);
 
             for (List<Double> featureVector : featureVectors) {
                 featureVector.set(i, zeroMeanUnitVariance(featureVector.get(i), mean, stdDeviation));
             }
         }
-    }
-
-    private double computeStandardDeviation(List<Double> values, double mean) {
-        double variance = values.stream()
-                .map(value -> Math.pow(value - mean, 2))
-                .reduce(Double::sum)
-                .orElse(0.0) / values.size();
-        variance = Double.isNaN(variance) ? 0 : variance;
-        return Math.sqrt(variance);
     }
 
     private double zeroMeanUnitVariance(double value, double mean, double stdDeviation) {
