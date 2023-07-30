@@ -1,6 +1,7 @@
 package com.github.onetraintransferproblemgenerator.controller.generation.expandv2;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
@@ -8,6 +9,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Data
+@NoArgsConstructor
 public class PrelimInformation {
 
     @Id
