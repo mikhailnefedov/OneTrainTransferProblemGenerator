@@ -4,9 +4,7 @@ import com.github.onetraintransferproblemgenerator.controller.generation.expandv
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import java.util.List;
-
 public interface PrelimInformationRepository extends MongoRepository<PrelimInformation, ObjectId> {
 
-    List<PrelimInformation> findAllByExperimentId(String experimentId);
+    PrelimInformation findByExperimentId(String experimentId);
 }
