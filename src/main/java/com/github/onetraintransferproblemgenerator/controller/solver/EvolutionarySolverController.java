@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -62,8 +63,28 @@ public class EvolutionarySolverController {
             return null;
         }).toList();
 
+        handleKnownSolutionsSolverAndZeroBlockedPassengerRatio(instances, solverClass);
+
         problemInstanceRepository.saveAll(instances);
         historicalEvolutionDataRepository.saveAll(historicalData);
+    }
+
+    private void handleKnownSolutionsSolverAndZeroBlockedPassengerRatio(List<ProblemInstance> instances, Class<? extends EvolutionarySolver> solverClass) {
+        if (solverClass.getName().contains("KnownSolutions")) {
+            instances.stream()
+                .filter(instance -> instance.getFeatureDescription().getBlockedPassengerRatio() == 0.0)
+                .toList()
+                .parallelStream()
+                .forEach(instance -> {
+                    CostComputer costComputer = new CostComputer(instance.getProblem());
+                    List<Map<Passenger, Integer>> knownExactSolutions = getExactSolutions(instance);
+                    double minKnownCost = knownExactSolutions.stream()
+                        .map(solution -> costComputer.computeCost((HashMap<Passenger, Integer>) solution))
+                        .min(Double::compareTo)
+                        .get();
+                    instance.getFeatureDescription().setAlgorithmCost(minKnownCost, solverClass);
+                });
+        }
     }
 
 
