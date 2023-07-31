@@ -54,7 +54,7 @@ public class FeatureExtractor {
 
     private static void setPassengerFeatures(InstanceFeatureDescription description, OneTrainTransferProblem problem) {
         description.setTotalPassengerCount(getTotalPassengerCount(problem));
-        description.setAvgPassengerCount(getAveragePassengerCount(problem));
+        description.setPassengerRatio(getPassengerRatio(problem));
         description.setAvgPassengerRouteLength(getAveragePassengerRouteLength(problem));
     }
 
@@ -62,8 +62,10 @@ public class FeatureExtractor {
         return problem.getPassengers().size();
     }
 
-    private static double getAveragePassengerCount(OneTrainTransferProblem problem) {
-        return (double) getTotalPassengerCount(problem) / getStationCount(problem);
+    private static double getPassengerRatio(OneTrainTransferProblem problem) {
+        int stations = getStationCount(problem) - 1;
+        int totalCapacity = stations *  problem.getTrain().getTotalCapacity();
+        return (double) getTotalPassengerCount(problem) / totalCapacity;
     }
 
     private static double getAveragePassengerRouteLength(OneTrainTransferProblem problem) {
@@ -117,7 +119,7 @@ public class FeatureExtractor {
         int usedSections = problem.getPassengers().stream()
             .map(passenger -> passenger.getOutStation() - passenger.getInStation())
             .reduce(Integer::sum)
-            .get();
+            .orElse(0);
         return (double) usedSections / availableSections;
     }
 
