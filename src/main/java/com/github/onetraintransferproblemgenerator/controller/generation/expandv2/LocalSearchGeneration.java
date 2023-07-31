@@ -11,4 +11,6 @@ public class LocalSearchGeneration {
     private double[][] transposedProjectionMatrix;
     private double targetX;
     private double targetY;
+    private int iterations;
+    private int localSearchRounds;
 }

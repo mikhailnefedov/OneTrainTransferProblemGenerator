@@ -9,17 +9,6 @@ import java.util.Random;
 
 public class SimpleGenerator implements OneTrainTransferProblemGenerator {
 
-    private final int POSITION_COUNT = 14;
-    private final int minStationCount = 3;
-    private final int maxStationCount = 24;
-    private final int minRailCarriages = 1;
-    private final int maxRailCarriages = 8;
-    private final int maxRailCarriageCapacity = 100;
-
-    private final double minCongestion = 0.05;
-    private final double maxCongestion = 1.0;
-    private final double congestionIncrement = 0.05;
-
     private final Random random;
 
     public SimpleGenerator() {
@@ -39,7 +28,7 @@ public class SimpleGenerator implements OneTrainTransferProblemGenerator {
 
     private List<Station> generateStations() {
         ArrayList<Station> stations = new ArrayList<>();
-        int stationCount = random.nextInt(minStationCount, maxStationCount + 1);
+        int stationCount = random.nextInt(MIN_STATION_COUNT, MAX_STATION_COUNT + 1);
         for (int i = 1; i <= stationCount; i++) {
             Station station = new Station();
             station.setId(i);
@@ -51,11 +40,11 @@ public class SimpleGenerator implements OneTrainTransferProblemGenerator {
 
     private Train generateTrain() {
         Train train = new Train();
-        int railCarriageCount = random.nextInt(minRailCarriages, maxRailCarriages + 1);
+        int railCarriageCount = random.nextInt(MIN_RAIL_CARRIAGES, MAX_RAIL_CARRIAGES + 1);
         for (int i = 1; i <= railCarriageCount; i++) {
             RailCarriage railCarriage = new RailCarriage();
             railCarriage.setSequenceNumber(i);
-            int capacity = random.nextInt(maxRailCarriageCapacity);
+            int capacity = random.nextInt(MAX_RAIL_CARRIAGE_CAPACITY);
             railCarriage.setCapacity(capacity);
             train.getRailCarriages().add(railCarriage);
         }
@@ -79,7 +68,7 @@ public class SimpleGenerator implements OneTrainTransferProblemGenerator {
 
     private List<Passenger> generatePassengers(Train train) {
         SimplePassengerGenerator passengerGenerator =
-                new SimplePassengerGenerator(minCongestion, maxCongestion, congestionIncrement, POSITION_COUNT, train);
+                new SimplePassengerGenerator(MIN_CONGESTION, MAX_CONGESTION, CONGESTION_INCREMENT, POSITION_COUNT, train);
         return passengerGenerator.generatePassengers();
     }
 

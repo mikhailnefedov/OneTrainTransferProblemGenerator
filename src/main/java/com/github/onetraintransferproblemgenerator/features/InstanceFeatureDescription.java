@@ -27,8 +27,8 @@ public class InstanceFeatureDescription {
     private int directionChangeCount;
     @CsvName(column = "feature_totalPassengerCount")
     private int totalPassengerCount;
-    @CsvName(column = "feature_avgPassengerCount")
-    private double avgPassengerCount;
+    @CsvName(column = "feature_passengerRatio")
+    private double passengerRatio;
     @CsvName(column = "feature_avgPassengerRouteLength")
     private double avgPassengerRouteLength;
     @CsvName(column = "feature_avgRailCarriageCapacity")

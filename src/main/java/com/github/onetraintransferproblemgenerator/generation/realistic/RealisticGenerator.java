@@ -19,7 +19,6 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
                     3, 0.2)
     );
 
-    private final int maxStationCount = 24;
     private Random random;
     private Map<Integer, Integer> freeCapacityFromStation;
 
@@ -46,7 +45,7 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
     }
 
     private List<Station> generateStations(Train train) {
-        int stationCount = random.nextInt(2, maxStationCount + 1);
+        int stationCount = random.nextInt(MIN_STATION_COUNT, MAX_STATION_COUNT + 1);
         Map<Integer, List<Station>> appropriateStations = getAppropriateStationsForTrain(train.getCarriageCount());
         List<Integer> stationClassProbabilityList = generateProbabilityList();
 
@@ -182,13 +181,10 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
     private int computeAvailableRouteSections(com.github.onetraintransferproblemgenerator.models.Train trainModel) {
         int totalCapacity = trainModel.getTotalCapacity();
         int stationCount = trainModel.getStationCount();
-
-        double min = 0.05;
-        double max = 1.0;
-        double increment = 0.02;
-        double randomValue = min + (max - min) * random.nextDouble();
-        randomValue = randomValue / increment;
-        double totalCongestion = Math.floor(randomValue) * increment;
+        
+        double randomValue = MIN_CONGESTION + (MAX_CONGESTION - MIN_CONGESTION) * random.nextDouble();
+        randomValue = randomValue / CONGESTION_INCREMENT;
+        double totalCongestion = Math.floor(randomValue) * CONGESTION_INCREMENT;
 
         return (int) (totalCapacity * (stationCount - 1) * totalCongestion);
     }
@@ -235,8 +231,4 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
         }
     }
 
-    public static void main(String[] args) {
-        RealisticGenerator generator = new RealisticGenerator();
-        generator.generate();
-    }
 }
