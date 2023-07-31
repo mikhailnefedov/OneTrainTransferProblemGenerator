@@ -18,7 +18,7 @@ public class FreeCapacityAndPassengerSwapMutation implements Mutation {
             Passenger passenger = chooseRandomPassenger(individual);
 
             List<? extends Swap> freeCapacitySwaps = SwapCreator.createSwapsWithFreeCapacity(individual, passenger);
-            List<? extends Swap> passengerSwaps = SwapCreator.createPassengerSwaps(individual, passenger);
+            List<? extends Swap> passengerSwaps = SwapCreator.createPassengerSwap(individual, passenger);
             List<Swap> swaps = new ArrayList<>();
             swaps.addAll(freeCapacitySwaps);
             swaps.addAll(passengerSwaps);
