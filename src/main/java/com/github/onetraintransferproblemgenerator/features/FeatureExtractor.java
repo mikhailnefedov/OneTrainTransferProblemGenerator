@@ -105,13 +105,7 @@ public class FeatureExtractor {
     }
 
     private static void setCongestion(InstanceFeatureDescription description, OneTrainTransferProblem problem) {
-        List<Double> congestions = getCongestionsOfSubRoutes(problem);
-        description.setAvgCongestion(getAverageCongestion(congestions));
         description.setTotalCongestion(getTotalCongestion(problem));
-    }
-
-    private static double getAverageCongestion(List<Double> congestions) {
-        return congestions.stream().mapToDouble(d -> d).average().orElse(0.0);
     }
 
     private static double getTotalCongestion(OneTrainTransferProblem problem) {
@@ -121,21 +115,6 @@ public class FeatureExtractor {
             .reduce(Integer::sum)
             .orElse(0);
         return (double) usedSections / availableSections;
-    }
-
-    private static List<Double> getCongestionsOfSubRoutes(OneTrainTransferProblem problem) {
-        double trainCapacity = problem.getTrain().getTotalCapacity();
-        double currentPassengerCount = 0;
-        List<Double> congestions = new ArrayList<>();
-
-        for (Integer stationId : problem.getTrain().getStationIds()) {
-            double congestion = currentPassengerCount / trainCapacity;
-            congestion = Double.isNaN(congestion) ? 0.0 : congestion;
-            congestions.add(congestion);
-            currentPassengerCount += problem.getInPassengersOfStation(stationId).size();
-            currentPassengerCount -= problem.getOutPassengersOfStation(stationId).size();
-        }
-        return congestions;
     }
 
     private static double getBlockedPassengerRatio(OneTrainTransferProblem problem) {
