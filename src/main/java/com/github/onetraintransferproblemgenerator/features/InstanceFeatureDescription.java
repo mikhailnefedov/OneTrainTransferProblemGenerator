@@ -35,8 +35,6 @@ public class InstanceFeatureDescription {
     private double avgRailCarriageCapacity;
     @CsvName(column = "feature_stdDevRailCarriageCapacity")
     private double stdDevRailCarriageCapacity;
-    @CsvName(column = "feature_avgCongestion")
-    private double avgCongestion;
     @CsvName(column = "feature_totalCongestion")
     private double totalCongestion;
     @CsvName(column = "feature_blockedPassengerRatio")
