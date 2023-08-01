@@ -28,17 +28,27 @@ public class SwapCreator {
     private static Tuple<Integer, List<Passenger>> getPassengerSwapCombination(Individual individual, Passenger passenger) {
         int railCarriageId = individual.getRailCarriageIdOfPassenger(passenger);
 
-        List<Passenger> possibleSwapPassengers = individual.getPassengerRailCarriageMapping().keySet().stream()
+        Map<Integer, List<Passenger>> swapPassengersOfRailCarriage = individual.getPassengerRailCarriageMapping().keySet().stream()
             .filter(p -> p.getInStation() >= passenger.getInStation() &&
-                p.getOutStation() <= passenger.getOutStation() &&
-                individual.getPassengerRailCarriageMapping().get(p) != railCarriageId)
-            .toList();
-        if (possibleSwapPassengers.size() > 0) {
-            Random random = new Random();
-            Passenger possibleSwapPartner = possibleSwapPassengers.get(random.nextInt(possibleSwapPassengers.size()));
-            List<Passenger> otherPassengersOfRailCarriage = individual.getPassengerRailCarriageMapping().entrySet().stream().filter(entry -> entry.getValue() == railCarriageId).map(entry -> entry.getKey()).toList();
+                p.getOutStation() <= passenger.getOutStation())
+            .collect(Collectors.groupingBy(p -> individual.getPassengerRailCarriageMapping().get(p)));
+        swapPassengersOfRailCarriage.remove(railCarriageId);
 
-            return new Tuple<>(railCarriageId, tryToCreatePassengerSwapCombination(individual, railCarriageId, possibleSwapPartner, otherPassengersOfRailCarriage, passenger.getInStation(), passenger.getOutStation() - 1));
+        if (swapPassengersOfRailCarriage.size() == 0) {
+            return null;
+        }
+
+        Random random = new Random();
+        List<Integer> railCarriageIds = new ArrayList<>(swapPassengersOfRailCarriage.keySet());
+        int swapRailCarriageId = railCarriageIds.get(random.nextInt(railCarriageIds.size()));
+
+        List<Passenger> possibleSwapPassengers = swapPassengersOfRailCarriage.get(swapRailCarriageId);
+
+        if (possibleSwapPassengers.size() > 0) {
+            Passenger possibleSwapPartner = possibleSwapPassengers.get(random.nextInt(possibleSwapPassengers.size()));
+            possibleSwapPassengers.remove(possibleSwapPartner);
+
+            return new Tuple<>(railCarriageId, tryToCreatePassengerSwapCombination(individual, railCarriageId, possibleSwapPartner, possibleSwapPassengers, passenger.getInStation(), passenger.getOutStation() - 1));
         } else {
             return null;
         }
@@ -51,7 +61,7 @@ public class SwapCreator {
         otherPassengersOfRailCarriageId = otherPassengersOfRailCarriageId.stream().filter(p -> p.getOutStation() <= swapPartner.getInStation() || p.getInStation() >= swapPartner.getOutStation()).toList();
         Map<Integer, List<Passenger>> passengersOfInStation = otherPassengersOfRailCarriageId.stream().collect(Collectors.groupingBy(Passenger::getInStation));
 
-        List<Passenger> swapPartners = new ArrayList<>(List.of(swapPartner));
+        List<Passenger> swapPartners = new ArrayList<>();
         Random random = new Random();
         if (swapPartner.getInStation() != inStation) {
             List<List<Passenger>> combinationsBeforeInStation = getCombinations(inStation, swapPartner.getInStation() - 1, inStationsWithFreeCapacity, passengersOfInStation);
@@ -71,6 +81,7 @@ public class SwapCreator {
             swapPartners.addAll(passengers);
         }
         swapPartners.removeAll(Collections.singleton(null));
+        swapPartners.add(swapPartner);
         return swapPartners;
     }
 
