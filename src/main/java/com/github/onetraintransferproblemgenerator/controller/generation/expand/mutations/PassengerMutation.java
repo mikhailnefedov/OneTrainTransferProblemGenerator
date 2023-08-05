@@ -1,4 +1,4 @@
-package com.github.onetraintransferproblemgenerator.controller.generation.expandv2.mutations;
+package com.github.onetraintransferproblemgenerator.controller.generation.expand.mutations;
 
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 

@@ -1,6 +1,6 @@
-package com.github.onetraintransferproblemgenerator.controller.generation.expandv2.mutations;
+package com.github.onetraintransferproblemgenerator.controller.generation.expand.mutations;
 
-import com.github.onetraintransferproblemgenerator.controller.generation.expandv2.LocalSearchIndividual;
+import com.github.onetraintransferproblemgenerator.controller.generation.expand.LocalSearchIndividual;
 import com.github.onetraintransferproblemgenerator.helpers.Tuple;
 import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.models.StationTuple;

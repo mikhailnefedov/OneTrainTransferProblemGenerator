@@ -1,8 +1,6 @@
-package com.github.onetraintransferproblemgenerator.controller.generation.expandv2;
+package com.github.onetraintransferproblemgenerator.controller.generation.expand;
 
-import com.github.onetraintransferproblemgenerator.controller.generation.expand.PrelimRequest;
-import com.github.onetraintransferproblemgenerator.controller.generation.expand.ProjectionUtils;
-import com.github.onetraintransferproblemgenerator.controller.generation.expandv2.mutations.LocalSearchMutation;
+import com.github.onetraintransferproblemgenerator.controller.generation.expand.mutations.LocalSearchMutation;
 import com.github.onetraintransferproblemgenerator.features.FeatureExtractor;
 import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
 import com.github.onetraintransferproblemgenerator.helpers.MathUtils;
@@ -75,8 +73,8 @@ public class LocalSearchController {
             List<Double> values = problemInstances.stream()
                 .map(instance -> {
                     double rawValue = instance.getFeatureDescription().getValueByFeatureName(featureName);
-                    double tmp = PrelimUtilsV2.boundOutliers(rawValue, entry.getValue());
-                    return PrelimUtilsV2.boxCoxTransformation(tmp, entry.getValue().getLambda());
+                    double tmp = PrelimUtils.boundOutliers(rawValue, entry.getValue());
+                    return PrelimUtils.boxCoxTransformation(tmp, entry.getValue().getLambda());
                 })
                 .toList();
 
@@ -91,15 +89,15 @@ public class LocalSearchController {
     @PostMapping("generate")
     void generateNewInstances(@RequestBody LocalSearchGeneration localSearchGeneration) {
         PrelimInformation prelimInformation = prelimInformationRepository.findByExperimentId(localSearchGeneration.getExperimentId());
-        PrelimUtilsV2 prelimUtilsV2 = new PrelimUtilsV2(prelimInformation);
-        List<LocalSearchIndividual> startPopulation = getNearestInstancesToTarget(localSearchGeneration, prelimUtilsV2);
+        PrelimUtils prelimUtils = new PrelimUtils(prelimInformation);
+        List<LocalSearchIndividual> startPopulation = getNearestInstancesToTarget(localSearchGeneration, prelimUtils);
         LocalSearchMutation mutation = getMutation(localSearchGeneration);
 
         for (int i = 0; i < localSearchGeneration.getLocalSearchRounds(); i++) {
             for (int j = 0; j < startPopulation.size(); j++) {
                 LocalSearchIndividual newIndividual = startPopulation.get(i).deepClone();
                 mutation.mutate(newIndividual);
-                newIndividual = recomputeFeatures(localSearchGeneration, prelimUtilsV2, newIndividual);
+                newIndividual = recomputeFeatures(localSearchGeneration, prelimUtils, newIndividual);
 
                 if (newIndividual.getFitness() <= startPopulation.get(i).getFitness()) {
                     startPopulation.set(i, newIndividual);
@@ -125,27 +123,27 @@ public class LocalSearchController {
         return null; //TODO: better error handling?
     }
 
-    private List<LocalSearchIndividual> getNearestInstancesToTarget(LocalSearchGeneration localSearchGeneration, PrelimUtilsV2 prelimUtilsV2) {
+    private List<LocalSearchIndividual> getNearestInstancesToTarget(LocalSearchGeneration localSearchGeneration, PrelimUtils prelimUtils) {
         List<ProblemInstance> problemInstances = problemInstanceRepository.findAllByExperimentId(localSearchGeneration.getExperimentId());
 
         return problemInstances.stream()
-            .map(instance -> convertToLocalSearchIndividual(localSearchGeneration, prelimUtilsV2, instance))
+            .map(instance -> convertToLocalSearchIndividual(localSearchGeneration, prelimUtils, instance))
             .sorted(Comparator.comparing(LocalSearchIndividual::getFitness))
             .limit(POPULATION_COUNT)
             .collect(Collectors.toList());
     }
 
-    private LocalSearchIndividual convertToLocalSearchIndividual(LocalSearchGeneration localSearchGeneration, PrelimUtilsV2 prelimUtilsV2, ProblemInstance instance) {
+    private LocalSearchIndividual convertToLocalSearchIndividual(LocalSearchGeneration localSearchGeneration, PrelimUtils prelimUtils, ProblemInstance instance) {
         List<Tuple<String, Double>> featureVector = instance.getFeatureDescription().getFeatureVector(localSearchGeneration.getFeatureNames());
-        List<Double> transformedFeatureVector = prelimUtilsV2.doPrelimSingleFeatureVector(featureVector);
+        List<Double> transformedFeatureVector = prelimUtils.doPrelimSingleFeatureVector(featureVector);
         SimpleMatrix coords = ProjectionUtils.projectSingleFeatureVector(transformedFeatureVector, localSearchGeneration.getTransposedProjectionMatrix());
         double distance = MathUtils.computeDistance(localSearchGeneration.getTargetX(), localSearchGeneration.getTargetY(), coords);
         return new LocalSearchIndividual(instance, coords, distance);
     }
 
-    private LocalSearchIndividual recomputeFeatures(LocalSearchGeneration localSearchGeneration, PrelimUtilsV2 prelimUtilsV2,
+    private LocalSearchIndividual recomputeFeatures(LocalSearchGeneration localSearchGeneration, PrelimUtils prelimUtils,
                                                     LocalSearchIndividual individual) {
-        return convertToLocalSearchIndividual(localSearchGeneration, prelimUtilsV2, individual.getProblemInstance());
+        return convertToLocalSearchIndividual(localSearchGeneration, prelimUtils, individual.getProblemInstance());
     }
 
     private void saveNewInstances(List<LocalSearchIndividual> population) {
