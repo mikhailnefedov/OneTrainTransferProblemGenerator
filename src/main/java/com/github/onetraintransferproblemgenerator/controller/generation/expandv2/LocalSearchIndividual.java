@@ -1,6 +1,7 @@
 package com.github.onetraintransferproblemgenerator.controller.generation.expandv2;
 
 import com.github.onetraintransferproblemgenerator.controller.generation.expand.StationCapacityTracker;
+import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import lombok.Data;
 import org.ejml.simple.SimpleMatrix;
@@ -23,15 +24,15 @@ public class LocalSearchIndividual {
         this.fitness = fitness;
     }
 
-    //TODO Expand with necessary methods
-    /**
-     * public LocalSearchIndividual deepClone() {
-     *         ProblemInstance copy = problemInstance.deepClone();
-     *         return new LocalSearchIndividual(copy, coordinates);
-     *     }
-     *
-     public void addPassenger(Passenger p) {
-     problemInstance.getProblem().getPassengers().add(p);
-     stationCapacityTracker.addPassenger(p);
-     }*/
+
+    public LocalSearchIndividual deepClone() {
+        ProblemInstance copy = problemInstance.deepClone();
+        return new LocalSearchIndividual(copy, coordinates, fitness);
+    }
+
+
+    public void addPassenger(Passenger p) {
+        problemInstance.getProblem().getPassengers().add(p);
+        stationCapacityTracker.addPassenger(p);
+    }
 }
