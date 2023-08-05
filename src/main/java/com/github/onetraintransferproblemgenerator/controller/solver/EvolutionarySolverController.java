@@ -41,7 +41,7 @@ public class EvolutionarySolverController {
         List<ProblemInstance> instances = problemInstanceRepository.findAllByExperimentId(parameters.getExperimentId());
         Class<? extends EvolutionarySolver> solverClass = getSolverClass(parameters.getSolverClass());
         List<HistoricalEvolutionData> historicalData = instances.stream()
-            .filter(instance -> instance.getFeatureDescription().getBlockedPassengerRatio() > 0.0)
+            .filter(instance -> instance.getFeatureDescription().getBlockedPassengerRatio() == 0.0)
             .toList()
             .parallelStream().map(instance -> {
             List<Map<Passenger, Integer>> knownExactSolutions = getExactSolutions(instance);
