@@ -41,6 +41,20 @@ public class StationCapacityTracker {
         }
     }
 
+    public void removeOneSeat() {
+        for (Integer stationId : freeCapacityFromStation.keySet()) {
+            int currentCapacity = freeCapacityFromStation.get(stationId);
+            freeCapacityFromStation.put(stationId, currentCapacity - 1);
+        }
+    }
+
+    public void addOneSeat() {
+        for (Integer stationId : freeCapacityFromStation.keySet()) {
+            int currentCapacity = freeCapacityFromStation.get(stationId);
+            freeCapacityFromStation.put(stationId, currentCapacity + 1);
+        }
+    }
+
     /**
      * @return tuple containing inStation and outStation
      */
@@ -56,6 +70,7 @@ public class StationCapacityTracker {
             if (isPossibleStartStation(stationId, foundStart)) {
                 foundStart = true;
                 startStation = stationId;
+                penultimateStation = stationId;
             } else if (isOutStation(stationId, foundStart)) {
                 foundStart = false;
                 availableRides.add(new Tuple<>(startStation, penultimateStation));
