@@ -1,4 +1,4 @@
-package com.github.onetraintransferproblemgenerator.controller.generation.expandv2;
+package com.github.onetraintransferproblemgenerator.controller.generation.expand;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

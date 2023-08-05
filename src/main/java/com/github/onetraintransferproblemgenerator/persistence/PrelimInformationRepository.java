@@ -1,6 +1,6 @@
 package com.github.onetraintransferproblemgenerator.persistence;
 
-import com.github.onetraintransferproblemgenerator.controller.generation.expandv2.PrelimInformation;
+import com.github.onetraintransferproblemgenerator.controller.generation.expand.PrelimInformation;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

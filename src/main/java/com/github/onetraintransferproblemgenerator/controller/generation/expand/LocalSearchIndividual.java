@@ -1,6 +1,5 @@
-package com.github.onetraintransferproblemgenerator.controller.generation.expandv2;
+package com.github.onetraintransferproblemgenerator.controller.generation.expand;
 
-import com.github.onetraintransferproblemgenerator.controller.generation.expand.StationCapacityTracker;
 import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import lombok.Data;
