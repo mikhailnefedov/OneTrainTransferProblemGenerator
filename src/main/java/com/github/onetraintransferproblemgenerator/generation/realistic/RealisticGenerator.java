@@ -25,6 +25,7 @@ public class RealisticGenerator implements OneTrainTransferProblemGenerator {
     public RealisticGenerator() {
         stations = RealisticDataReader.getStations();
         trains = RealisticDataReader.getTrains();
+        List<Integer> capacities = trains.stream().map(x -> x.getCarriageData().stream().map(Train.CarriageData::getCapacity).reduce(Integer::sum).get()).toList();
 
         random = new Random();
     }

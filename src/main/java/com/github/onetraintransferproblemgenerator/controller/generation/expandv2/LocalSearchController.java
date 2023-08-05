@@ -31,7 +31,7 @@ public class LocalSearchController {
     private final PrelimInformationRepository prelimInformationRepository;
     private final RestTemplate restTemplate;
     private final String PYTHON_BACKEND_URL = "http://localhost:5000";
-    private final int POPULATION_COUNT = 20;
+    private final int POPULATION_COUNT = 800;
 
     public LocalSearchController(ProblemInstanceRepository problemInstanceRepository,
                                  PrelimInformationRepository prelimInformationRepository) {

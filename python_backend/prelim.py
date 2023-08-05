@@ -42,3 +42,29 @@ def get_normalization_lambdas(array: np.ndarray):
     pt = PowerTransformer(method="box-cox", standardize=True)
     pt.fit(array)
     return pt.lambdas_
+
+
+def bound_outliers(value, min_value, max_value, feature_min):
+    if value < min_value:
+        return min_value
+    if value > max_value:
+        return max_value
+    return value + 1 - feature_min
+
+
+def box_cox(value, lmbda):
+    if lmbda == 0:
+        return np.log(lmbda)
+    else:
+        return (np.power(value, lmbda) - 1) / lmbda
+
+
+def zero_mean_unit_variance(value, mean, std_deviation):
+    value -= mean
+    return value / std_deviation
+
+
+def do_prelim_on_single_feature(value, prelim_data):
+    tmp = bound_outliers(value, prelim_data["columnMin"], prelim_data["columnMax"], prelim_data["featureMin"])
+    tmp = box_cox(tmp, prelim_data["lambda"])
+    return zero_mean_unit_variance(tmp, prelim_data["mean"], prelim_data["stdDeviation"])
