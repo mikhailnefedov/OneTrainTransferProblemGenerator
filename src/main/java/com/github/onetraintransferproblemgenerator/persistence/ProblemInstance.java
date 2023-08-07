@@ -30,6 +30,8 @@ public class ProblemInstance {
     private OneTrainTransferProblem problem;
     private InstanceFeatureDescription featureDescription;
     private HashMap<String, Map<Integer, Integer>> solverSolutions;
+    private HashMap<String, String> additionalInformation = new HashMap<>();
+
 
     public ProblemInstance(OneTrainTransferProblem problem, String experimentId, Class generator, String instanceId) {
         this.problem = problem;
@@ -37,6 +39,7 @@ public class ProblemInstance {
         this.source = generator.getSimpleName();
         this.instanceId = instanceId;
         solverSolutions = new HashMap<>();
+        additionalInformation = new HashMap<>();
 
         featureDescription = new InstanceFeatureDescription();
     }
@@ -52,7 +55,7 @@ public class ProblemInstance {
 
     public ProblemInstance deepClone() {
         ProblemInstance copy = new ProblemInstance();
-        copy.setId(id);
+        copy.setInstanceId(instanceId);
         copy.setExperimentId(experimentId);
         copy.setProblem(problem.deepCopy());
         copy.setFeatureDescription(featureDescription);

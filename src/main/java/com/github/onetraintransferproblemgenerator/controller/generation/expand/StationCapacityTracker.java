@@ -8,6 +8,7 @@ import com.github.onetraintransferproblemgenerator.models.Train;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StationCapacityTracker {
 
@@ -61,38 +62,39 @@ public class StationCapacityTracker {
     public List<Tuple<Integer, Integer>> getAvailableRides() {
         List<Tuple<Integer, Integer>> availableRides = new ArrayList<>();
 
-        List<Integer> stationIds = freeCapacityFromStation.keySet().stream().toList();
+        List<Integer> stationIds = freeCapacityFromStation.keySet().stream().sorted().toList();
+        List<Integer> stationIdsWithCapacity = stationIds.stream()
+            .filter(stationId -> freeCapacityFromStation.get(stationId) > 0)
+            .toList();
 
-        int startStation = 0;
-        int penultimateStation = 0;
-        boolean foundStart = false;
-        for (Integer stationId : stationIds) {
-            if (isPossibleStartStation(stationId, foundStart)) {
-                foundStart = true;
-                startStation = stationId;
-                penultimateStation = stationId;
-            } else if (isOutStation(stationId, foundStart)) {
-                foundStart = false;
+        if (stationIdsWithCapacity.size() == 0) {
+            return availableRides;
+        }
+        if (stationIdsWithCapacity.size() == 1) {
+            int startStation = stationIdsWithCapacity.get(0);
+            availableRides.add(new Tuple<>(startStation, startStation + 1));
+            return availableRides;
+        }
+
+        int startStation = stationIdsWithCapacity.get(0);
+        int penultimateStation = stationIdsWithCapacity.get(0);
+        for (int i = 1; i < stationIdsWithCapacity.size(); i++) {
+            if (stationIdsWithCapacity.get(i) != penultimateStation + 1) {
                 availableRides.add(new Tuple<>(startStation, penultimateStation));
-            } else if (isTransitStation(stationId, foundStart)) {
-                penultimateStation = stationId;
+                startStation = stationIdsWithCapacity.get(i);
+                penultimateStation = stationIdsWithCapacity.get(i);
+            } else {
+                penultimateStation += 1;
             }
         }
 
+        if (penultimateStation == stationIds.get(stationIds.size() - 1)) {
+            availableRides.add(new Tuple<>(startStation, penultimateStation));
+        }
+
         availableRides.forEach(startPenultimateTuple ->
-                startPenultimateTuple.setRight(startPenultimateTuple.getRight() + 1));
+            startPenultimateTuple.setRight(startPenultimateTuple.getRight() + 1));
         return availableRides;
     }
 
-    private boolean isPossibleStartStation(int stationId, boolean foundStart) {
-        return !foundStart && freeCapacityFromStation.get(stationId) > 0;
-    }
-
-    private boolean isOutStation(int stationId, boolean foundStart) {
-        return foundStart && freeCapacityFromStation.get(stationId) == 0;
-    }
-
-    private boolean isTransitStation(int stationId, boolean foundStart) {
-        return foundStart && freeCapacityFromStation.get(stationId) > 0;
-    }
 }

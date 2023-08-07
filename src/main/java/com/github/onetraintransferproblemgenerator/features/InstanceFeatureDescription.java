@@ -21,8 +21,6 @@ public class InstanceFeatureDescription {
     private String instanceId;
     @CsvName(column = "Source")
     private String source;
-    @CsvName(column = "feature_stationCount")
-    private int stationCount;
     @CsvName(column = "feature_directionChangeCount")
     private int directionChangeCount;
     @CsvName(column = "feature_totalPassengerCount")
@@ -49,16 +47,18 @@ public class InstanceFeatureDescription {
     private double shortestRidesFirstCost = Double.NaN;
     @CsvName(column = "algo_longestRidesFirstCost")
     private double longestRidesFirstCost = Double.NaN;
-    @CsvName(column = "algo_greedyPassengerReverseOrder")
-    private double greedyPassengerReverseOrderCost = Double.NaN;
     @CsvName(column = "algo_randomSolutionsFCMEvolutionaryCost")
     private double randomSolutionsFCMEvolutionaryCost = Double.NaN;
     @CsvName(column = "algo_knownSolutionsFCMEvolutionaryCost")
     private double knownSolutionsFCMEvolutionaryCost = Double.NaN;
+    /**
+    @CsvName(column = "algo_greedyPassengerReverseOrder")
+    private double greedyPassengerReverseOrderCost = Double.NaN;
     @CsvName(column = "algo_knownSolutionsFCAPSMEvolutionaryCost")
     private double knownSolutionsFCAPSMEvolutionaryCost = Double.NaN;
     @CsvName(column = "algo_knownSolutionsFCAPSMNITEvolutionaryCost")
     private double knownSolutionsFCAPSMNITEvolutionaryCost = Double.NaN;
+    */
 
     public void setAlgorithmCost(double cost, Class<? extends OneTrainTransferSolver> solverClass) {
         if (solverClass.equals(FillRailCarriagesSolver.class)) {
@@ -74,13 +74,13 @@ public class InstanceFeatureDescription {
         } else if (solverClass.equals(LongestRidesFirstSolver.class)) {
             setLongestRidesFirstCost(cost);
         } else if (solverClass.equals(GreedyPassengerReverseOrderSolver.class)) {
-            setGreedyPassengerReverseOrderCost(cost);
+            //setGreedyPassengerReverseOrderCost(cost);
         } else if (solverClass.equals(RandomSolutionsFCMEvolutionarySolver.class)) {
             setRandomSolutionsFCMEvolutionaryCost(cost);
         } else if (solverClass.equals(KnownSolutionsFCAPSMEvolutionarySolver.class)) {
-            setKnownSolutionsFCAPSMEvolutionaryCost(cost);
+            //setKnownSolutionsFCAPSMEvolutionaryCost(cost);
         } else if (solverClass.equals(KnownSolutionsFCAPSMNITEvolutionarySolver.class)) {
-            setKnownSolutionsFCAPSMNITEvolutionaryCost(cost);
+            //setKnownSolutionsFCAPSMNITEvolutionaryCost(cost);
         }
     }
 
