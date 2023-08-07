@@ -29,7 +29,6 @@ public class FeatureExtractor {
     }
 
     private static void setDescriptionFields(InstanceFeatureDescription description, OneTrainTransferProblem problem) {
-        description.setStationCount(getStationCount(problem));
         setPassengerFeatures(description, problem);
         description.setDirectionChangeCount(getDirectionChangeCount(problem));
         setRailCarriageCapacities(description, problem);

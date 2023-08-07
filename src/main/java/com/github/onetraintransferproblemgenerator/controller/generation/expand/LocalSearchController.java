@@ -90,6 +90,15 @@ public class LocalSearchController {
     void generateNewInstances(@RequestBody LocalSearchGeneration localSearchGeneration) {
         PrelimInformation prelimInformation = prelimInformationRepository.findByExperimentId(localSearchGeneration.getExperimentId());
         PrelimUtils prelimUtils = new PrelimUtils(prelimInformation);
+
+        for (int i = 0; i < localSearchGeneration.getIterations(); i++) {
+            doLocalSearchRound(localSearchGeneration, prelimUtils);
+        }
+
+        System.out.println("Ended local search generation");
+    }
+
+    private void doLocalSearchRound(LocalSearchGeneration localSearchGeneration, PrelimUtils prelimUtils) {
         List<LocalSearchIndividual> startPopulation = getNearestInstancesToTarget(localSearchGeneration, prelimUtils);
         LocalSearchMutation mutation = getMutation(localSearchGeneration);
 
@@ -105,13 +114,11 @@ public class LocalSearchController {
             }
         }
         List<LocalSearchIndividual> newIndividuals = startPopulation.stream().filter(individual -> individual.getProblemInstance().getId() == null).toList();
-        saveNewInstances(newIndividuals);
-
-        System.out.println("Ended local search");
+        saveNewInstances(newIndividuals, localSearchGeneration.getMutationName());
     }
 
     private LocalSearchMutation getMutation(LocalSearchGeneration localSearchGeneration) {
-        String modulePath = "com.github.onetraintransferproblemgenerator.controller.generation.expandv2.mutations";
+        String modulePath = "com.github.onetraintransferproblemgenerator.controller.generation.expand.mutations";
         try {
             Class<? extends LocalSearchMutation> cls = Class.forName(modulePath + "." + localSearchGeneration.getMutationName())
                 .asSubclass(LocalSearchMutation.class);
@@ -143,15 +150,17 @@ public class LocalSearchController {
 
     private LocalSearchIndividual recomputeFeatures(LocalSearchGeneration localSearchGeneration, PrelimUtils prelimUtils,
                                                     LocalSearchIndividual individual) {
+        FeatureExtractor.extract(individual.getProblemInstance().getFeatureDescription(), individual.getProblemInstance().getProblem());
         return convertToLocalSearchIndividual(localSearchGeneration, prelimUtils, individual.getProblemInstance());
     }
 
-    private void saveNewInstances(List<LocalSearchIndividual> population) {
+    private void saveNewInstances(List<LocalSearchIndividual> population, String mutationType) {
         List<ProblemInstance> newInstances = population.stream()
             .map(LocalSearchIndividual::getProblemInstance)
             .peek(individual -> {
                 String instanceId = "mutated_" + individual.getInstanceId();
                 individual.setInstanceId(instanceId);
+                individual.getAdditionalInformation().put("mutationType", mutationType);
                 InstanceFeatureDescription description = FeatureExtractor.extract(instanceId, individual.getProblem());
                 individual.setFeatureDescription(description);
                 String source = "LocalSearchController";
