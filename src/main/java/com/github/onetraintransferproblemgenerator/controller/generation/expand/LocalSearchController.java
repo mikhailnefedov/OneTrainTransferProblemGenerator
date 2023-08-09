@@ -8,6 +8,7 @@ import com.github.onetraintransferproblemgenerator.helpers.Tuple;
 import com.github.onetraintransferproblemgenerator.persistence.PrelimInformationRepository;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRepository;
+import com.github.onetraintransferproblemgenerator.validation.InstanceValidator;
 import org.ejml.simple.SimpleMatrix;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -114,6 +115,7 @@ public class LocalSearchController {
             }
         }
         List<LocalSearchIndividual> newIndividuals = startPopulation.stream().filter(individual -> individual.getProblemInstance().getId() == null).toList();
+        newIndividuals.forEach(ind -> InstanceValidator.validateInstance(ind.getProblemInstance().getProblem()));
         saveNewInstances(newIndividuals, localSearchGeneration.getMutationName());
     }
 
@@ -158,10 +160,12 @@ public class LocalSearchController {
         List<ProblemInstance> newInstances = population.stream()
             .map(LocalSearchIndividual::getProblemInstance)
             .peek(individual -> {
-                String instanceId = "mutated_" + individual.getInstanceId();
-                individual.setInstanceId(instanceId);
+                String oldInstanceId = individual.getInstanceId();
+                String newInstanceId = "m" + oldInstanceId;
+                individual.setInstanceId(newInstanceId);
                 individual.getAdditionalInformation().put("mutationType", mutationType);
-                InstanceFeatureDescription description = FeatureExtractor.extract(instanceId, individual.getProblem());
+                individual.getAdditionalInformation().put("predecessor", oldInstanceId);
+                InstanceFeatureDescription description = FeatureExtractor.extract(newInstanceId, individual.getProblem());
                 individual.setFeatureDescription(description);
                 String source = "LocalSearchController";
                 individual.getFeatureDescription().setSource(source);

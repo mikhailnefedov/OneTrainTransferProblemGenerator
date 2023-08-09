@@ -47,7 +47,7 @@ public class AddPassengerMutation extends PassengerMutation {
 
         int startStation = randomRide.getLeft();
         int lastStation = randomRide.getRight();
-        int randomLastStation = random.nextInt(startStation, lastStation + 1);
+        int randomLastStation = random.nextInt(startStation + 1, lastStation + 1);
         return new Tuple<>(startStation, randomLastStation);
     }
 }
