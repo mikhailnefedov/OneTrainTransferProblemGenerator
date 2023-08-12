@@ -101,6 +101,7 @@ public class LocalSearchController {
 
     private void doLocalSearchRound(LocalSearchGeneration localSearchGeneration, PrelimUtils prelimUtils) {
         List<LocalSearchIndividual> startPopulation = getNearestInstancesToTarget(localSearchGeneration, prelimUtils);
+        List<SimpleMatrix> originalCoordinates = startPopulation.stream().map(LocalSearchIndividual::getCoordinates).toList();
         LocalSearchMutation mutation = getMutation(localSearchGeneration);
 
         for (int i = 0; i < localSearchGeneration.getLocalSearchRounds(); i++) {
@@ -114,7 +115,10 @@ public class LocalSearchController {
                 }
             }
         }
-        List<LocalSearchIndividual> newIndividuals = startPopulation.stream().filter(individual -> individual.getProblemInstance().getId() == null).toList();
+        List<LocalSearchIndividual> newIndividuals = startPopulation.stream()
+            .filter(individual -> individual.getProblemInstance().getId() == null)
+            .filter(individual -> uniqueInstanceInInstanceSpace(individual, originalCoordinates))
+            .toList();
         newIndividuals.forEach(ind -> InstanceValidator.validateInstance(ind.getProblemInstance().getProblem()));
         saveNewInstances(newIndividuals, localSearchGeneration.getMutationName());
     }
@@ -154,6 +158,18 @@ public class LocalSearchController {
                                                     LocalSearchIndividual individual) {
         FeatureExtractor.extract(individual.getProblemInstance().getFeatureDescription(), individual.getProblemInstance().getProblem());
         return convertToLocalSearchIndividual(localSearchGeneration, prelimUtils, individual.getProblemInstance());
+    }
+
+    private boolean uniqueInstanceInInstanceSpace(LocalSearchIndividual individual, List<SimpleMatrix> originalCoordinates) {
+        double tolerance = 0.01;
+        SimpleMatrix coords = individual.getCoordinates();
+
+        return originalCoordinates.stream().noneMatch(origCoords ->
+            ((coords.get(0) < origCoords.get(0) && coords.get(0) + tolerance > origCoords.get(0)) ||
+                (coords.get(0) > origCoords.get(0) && coords.get(0) - tolerance < origCoords.get(0))) &&
+                ((coords.get(1) < origCoords.get(1) && coords.get(1) + tolerance > origCoords.get(1)) ||
+                    (coords.get(1) > origCoords.get(1) && coords.get(1) - tolerance < origCoords.get(1)))
+        );
     }
 
     private void saveNewInstances(List<LocalSearchIndividual> population, String mutationType) {
