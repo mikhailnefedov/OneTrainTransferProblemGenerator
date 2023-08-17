@@ -64,7 +64,8 @@ public class FeatureExtractor {
     private static double getPassengerRatio(OneTrainTransferProblem problem) {
         int stations = getStationCount(problem) - 1;
         int totalCapacity = stations *  problem.getTrain().getTotalCapacity();
-        return (double) getTotalPassengerCount(problem) / totalCapacity;
+        double passengerRatio = (double) getTotalPassengerCount(problem) / totalCapacity;
+        return Double.isNaN(passengerRatio) ? 0.0 : passengerRatio;
     }
 
     private static double getAveragePassengerRouteLength(OneTrainTransferProblem problem) {
@@ -113,7 +114,8 @@ public class FeatureExtractor {
             .map(passenger -> passenger.getOutStation() - passenger.getInStation())
             .reduce(Integer::sum)
             .orElse(0);
-        return (double) usedSections / availableSections;
+        double totalCongestion = (double) usedSections / availableSections;
+        return Double.isNaN(totalCongestion) ? 0.0 : totalCongestion;
     }
 
     private static double getBlockedPassengerRatio(OneTrainTransferProblem problem) {
@@ -129,8 +131,8 @@ public class FeatureExtractor {
             letPassengersOutOfTrain(capacityStorage, problem.getOutPassengersOfStation(stationId));
             blockedPassengers += seatPassengersInTrain(capacityStorage, railCarriagePositionHelper, problem.getInPassengersOfStation(stationId));
         }
-
-        return blockedPassengers / totalPassengers;
+        double blockedPassengerRatio = blockedPassengers / totalPassengers;
+        return Double.isNaN(blockedPassengerRatio) ? 0.0 : blockedPassengerRatio;
     }
 
     private static void letPassengersOutOfTrain(SeatReservationStorage capacityStorage,
