@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,36 +41,19 @@ public class EvolutionarySolverController {
     public void solveWithEvolutionaryAlgorithm(@RequestBody EvolutionarySolverParameters parameters) {
         List<ProblemInstance> instances = problemInstanceRepository.findAllByExperimentId(parameters.getExperimentId());
         Class<? extends EvolutionarySolver> solverClass = getSolverClass(parameters.getSolverClass());
-        List<HistoricalEvolutionData> historicalData = instances.stream()
-            .filter(instance -> instance.getFeatureDescription().getBlockedPassengerRatio() == 0.0)
-            .toList()
-            .parallelStream().map(instance -> {
-            List<Map<Passenger, Integer>> knownExactSolutions = getExactSolutions(instance);
 
-            try {
-                Constructor<? extends EvolutionarySolver> con = solverClass.getConstructor(OneTrainTransferProblem.class, knownExactSolutions.getClass(), SolverConfiguration.class);
-                EvolutionarySolver solver = con.newInstance(instance.getProblem(), knownExactSolutions, parameters.getSolverConfiguration());
-                SolutionAndHistoryData result = solver.solveAndGenerateHistoricalData();
-                CostComputer costComputer = new CostComputer(instance.getProblem());
-                double cost = costComputer.computeCost(result.getPassengerMapping());
-                instance.getFeatureDescription().setAlgorithmCost(cost, solverClass);
-
-                fillInInstanceData(result.getHistoricalData(), instance, parameters.getSolverConfiguration());
-                System.out.println("Finish solving " + instance.getInstanceId());
-                return result.getHistoricalData();
-            } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }).toList();
-
-        handleKnownSolutionsSolverAndZeroBlockedPassengerRatio(instances, solverClass);
+        assert solverClass != null;
+        List<HistoricalEvolutionData> historicalData = new ArrayList<>();
+        historicalData.addAll(handleZeroBlockedPassengerRatio(parameters, instances, solverClass));
+        historicalData.addAll(handleGTEZeroBlockedPassengerRatio(parameters, instances, solverClass));
 
         problemInstanceRepository.saveAll(instances);
         historicalEvolutionDataRepository.saveAll(historicalData);
     }
 
-    private void handleKnownSolutionsSolverAndZeroBlockedPassengerRatio(List<ProblemInstance> instances, Class<? extends EvolutionarySolver> solverClass) {
+    private List<HistoricalEvolutionData> handleZeroBlockedPassengerRatio(EvolutionarySolverParameters parameters,
+                                                                          List<ProblemInstance> instances,
+                                                                          Class<? extends EvolutionarySolver> solverClass) {
         if (solverClass.getName().contains("KnownSolutions")) {
             instances.stream()
                 .filter(instance -> instance.getFeatureDescription().getBlockedPassengerRatio() == 0.0)
@@ -84,8 +68,46 @@ public class EvolutionarySolverController {
                         .get();
                     instance.getFeatureDescription().setAlgorithmCost(minKnownCost, solverClass);
                 });
+            return new ArrayList<>();
+        } else {
+            return instances.stream()
+                .filter(instance -> instance.getFeatureDescription().getBlockedPassengerRatio() == 0.0)
+                .toList()
+                .parallelStream()
+                .map(instance -> solveInstance(parameters, solverClass, instance)).collect(Collectors.toList());
         }
     }
+
+    private List<HistoricalEvolutionData> handleGTEZeroBlockedPassengerRatio(EvolutionarySolverParameters parameters,
+                                                                             List<ProblemInstance> instances,
+                                                                             Class<? extends EvolutionarySolver> solverClass) {
+        return instances.stream()
+            .filter(instance -> instance.getFeatureDescription().getBlockedPassengerRatio() > 0.0)
+            .toList()
+            .parallelStream().map(instance -> solveInstance(parameters, solverClass, instance)).toList();
+    }
+
+    private HistoricalEvolutionData solveInstance(EvolutionarySolverParameters parameters, Class<? extends EvolutionarySolver> solverClass, ProblemInstance instance) {
+        List<Map<Passenger, Integer>> knownExactSolutions = getExactSolutions(instance);
+
+        try {
+            Constructor<? extends EvolutionarySolver> con = solverClass.getConstructor(OneTrainTransferProblem.class, knownExactSolutions.getClass(), SolverConfiguration.class);
+            EvolutionarySolver solver = con.newInstance(instance.getProblem(), knownExactSolutions, parameters.getSolverConfiguration());
+            SolutionAndHistoryData result = solver.solveAndGenerateHistoricalData();
+            CostComputer costComputer = new CostComputer(instance.getProblem());
+            double cost = costComputer.computeCost(result.getPassengerMapping());
+            instance.getFeatureDescription().setAlgorithmCost(cost, solverClass);
+
+            fillInInstanceData(result.getHistoricalData(), instance, parameters.getSolverConfiguration());
+            System.out.println("Finish solving " + instance.getInstanceId());
+            return result.getHistoricalData();
+        } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 
 
     //TODO potential future change to be able to give parameters to solver
