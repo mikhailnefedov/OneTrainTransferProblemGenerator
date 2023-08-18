@@ -1,12 +1,13 @@
 package com.github.onetraintransferproblemgenerator.generation.realistic;
 
+import com.github.onetraintransferproblemgenerator.generation.BaseGenerator;
 import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
 import com.github.onetraintransferproblemgenerator.models.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class RealisticGenerator implements OneTrainTransferProblemGenerator {
+public class RealisticGenerator extends BaseGenerator {
 
     private List<Station> stations;
     private List<Train> trains;

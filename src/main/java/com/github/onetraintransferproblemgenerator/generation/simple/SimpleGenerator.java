@@ -1,5 +1,6 @@
 package com.github.onetraintransferproblemgenerator.generation.simple;
 
+import com.github.onetraintransferproblemgenerator.generation.BaseGenerator;
 import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
 import com.github.onetraintransferproblemgenerator.models.*;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class SimpleGenerator implements OneTrainTransferProblemGenerator {
+public class SimpleGenerator extends BaseGenerator {
 
     private final Random random;
 
