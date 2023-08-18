@@ -49,6 +49,10 @@ public class StationCapacityTracker {
         }
     }
 
+    public int getFreeCapacityFromStation(int stationId) {
+        return freeCapacityFromStation.get(stationId);
+    }
+
     public void addOneSeat() {
         for (Integer stationId : freeCapacityFromStation.keySet()) {
             int currentCapacity = freeCapacityFromStation.get(stationId);

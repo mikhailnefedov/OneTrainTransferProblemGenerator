@@ -5,13 +5,15 @@ import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.models.RailCarriage;
 import com.github.onetraintransferproblemgenerator.models.Train;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-//TODO: first developed helper for solvers, may be refactored to use newer helpers, because only works in order by going
-//through each station sequentially
+/**
+ * First developed helper for solvers. Only works in order by going through each station sequentially
+ */
 public class SeatReservationStorage {
 
     private final HashMap<Integer, Integer> freeCapacityOfRailCarriages;
@@ -46,6 +48,20 @@ public class SeatReservationStorage {
         freeCapacityOfRailCarriages.put(railCarriageId, newCapacity);
 
         return railCarriageId;
+    }
+
+    public List<Passenger> getConflictedPassengers() {
+        List<Integer> overfilledRailCarriages = new ArrayList<>();
+        for (Integer railCarriageId : freeCapacityOfRailCarriages.keySet()) {
+            if (freeCapacityOfRailCarriages.get(railCarriageId) < 0) {
+                overfilledRailCarriages.add(railCarriageId);
+            }
+        }
+
+        return railCarriageOfPassenger.entrySet().stream()
+            .filter(entry -> overfilledRailCarriages.contains(entry.getValue()))
+            .map(Map.Entry::getKey)
+            .toList();
     }
 
 }
