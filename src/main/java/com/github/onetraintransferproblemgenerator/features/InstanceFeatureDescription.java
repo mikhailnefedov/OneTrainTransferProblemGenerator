@@ -37,6 +37,8 @@ public class InstanceFeatureDescription {
     private double totalCongestion;
     @CsvName(column = "feature_blockedPassengerRatio")
     private double blockedPassengerRatio;
+    @CsvName(column = "feature_conflictFreePassengerSeatingRatio")
+    private double conflictFreePassengerSeatingRatio;
     @CsvName(column = "algo_fillRailCarriages")
     private double fillRailCarriagesCost = Double.NaN;
     @CsvName(column = "algo_greedyPassengerOrder")

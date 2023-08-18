@@ -1,13 +1,17 @@
 package com.github.onetraintransferproblemgenerator.features;
 
-import com.github.onetraintransferproblemgenerator.models.*;
+import com.github.onetraintransferproblemgenerator.models.DirectionOfTravel;
+import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
+import com.github.onetraintransferproblemgenerator.models.Passenger;
+import com.github.onetraintransferproblemgenerator.models.RailCarriage;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriageDistance;
 import com.github.onetraintransferproblemgenerator.solvers.RailCarriagePositionHelper;
 import com.github.onetraintransferproblemgenerator.solvers.SeatReservationStorage;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class FeatureExtractor {
 
@@ -34,6 +38,7 @@ public class FeatureExtractor {
         setRailCarriageCapacities(description, problem);
         setCongestion(description, problem);
         description.setBlockedPassengerRatio(getBlockedPassengerRatio(problem));
+        description.setConflictFreePassengerSeatingRatio(getConflictFreePassengerSeatingRatio(problem));
     }
 
     private static int getDirectionChangeCount(OneTrainTransferProblem problem) {
@@ -63,16 +68,16 @@ public class FeatureExtractor {
 
     private static double getPassengerRatio(OneTrainTransferProblem problem) {
         int stations = getStationCount(problem) - 1;
-        int totalCapacity = stations *  problem.getTrain().getTotalCapacity();
+        int totalCapacity = stations * problem.getTrain().getTotalCapacity();
         double passengerRatio = (double) getTotalPassengerCount(problem) / totalCapacity;
         return Double.isNaN(passengerRatio) ? 0.0 : passengerRatio;
     }
 
     private static double getAveragePassengerRouteLength(OneTrainTransferProblem problem) {
         int routeLengthSum = problem.getPassengers().stream()
-                .map(p -> p.getOutStation() - p.getInStation())
-                .reduce(Integer::sum)
-                .orElse(0);
+            .map(p -> p.getOutStation() - p.getInStation())
+            .reduce(Integer::sum)
+            .orElse(0);
         double avgPassengerRouteLength = (double) routeLengthSum / problem.getPassengers().size();
         return Double.isNaN(avgPassengerRouteLength) ? 0.0 : avgPassengerRouteLength;
     }
@@ -97,9 +102,9 @@ public class FeatureExtractor {
 
     private static double getStandardDeviationRailCarriageCapacity(OneTrainTransferProblem problem, double mean) {
         double variance = problem.getTrain().getRailCarriages().stream()
-                .map(rC -> Math.pow(rC.getCapacity() - mean, 2))
-                .reduce(Double::sum)
-                .orElse(0.0) / problem.getTrain().getRailCarriages().size();
+            .map(rC -> Math.pow(rC.getCapacity() - mean, 2))
+            .reduce(Double::sum)
+            .orElse(0.0) / problem.getTrain().getRailCarriages().size();
         variance = Double.isNaN(variance) ? 0 : variance;
         return Math.sqrt(variance);
     }
@@ -147,8 +152,8 @@ public class FeatureExtractor {
     }
 
     private static int seatPassengersInTrain(SeatReservationStorage capacityStorage,
-                                       RailCarriagePositionHelper railCarriagePositionHelper,
-                                       List<Passenger> passengers) {
+                                             RailCarriagePositionHelper railCarriagePositionHelper,
+                                             List<Passenger> passengers) {
         int blockedPassengers = 0;
 
         for (Passenger passenger : passengers) {
@@ -164,6 +169,49 @@ public class FeatureExtractor {
             }
         }
         return blockedPassengers;
+    }
+
+    private static double getConflictFreePassengerSeatingRatio(OneTrainTransferProblem problem) {
+        List<Passenger> passengers = problem.getPassengers();
+        Map<Passenger, Boolean> conflictFreePassengerMap = passengers.stream().collect(Collectors.toMap(p -> p, p -> true));
+
+        Map<Integer, Boolean> noCapacityCarriage = problem.getTrain().getRailCarriages().stream()
+            .collect(Collectors.toMap(RailCarriage::getSequenceNumber, rc -> rc.getCapacity() == 0));
+
+        RailCarriagePositionHelper railCarriagePositionHelper = new RailCarriagePositionHelper(problem.getTrain());
+        SeatReservationStorage capacityStorage = new SeatReservationStorage(problem.getTrain());
+
+        List<Integer> stationIds = problem.getTrain().getStationIds();
+
+        for (int stationId : stationIds) {
+            letPassengersOutOfTrain(capacityStorage, problem.getOutPassengersOfStation(stationId));
+            seatPassengersInTrainWithoutAbidingCapacityConstraints(capacityStorage, railCarriagePositionHelper, problem.getInPassengersOfStation(stationId), noCapacityCarriage);
+            List<Passenger> conflictedPassengers = capacityStorage.getConflictedPassengers();
+            for (Passenger confPassenger : conflictedPassengers) {
+                conflictFreePassengerMap.put(confPassenger, false);
+            }
+        }
+
+        double conflictFreePassengerCount =
+            conflictFreePassengerMap.entrySet().stream().filter(Map.Entry::getValue).toList().size();
+
+        double conflictFreePassengerSeatingRatio = conflictFreePassengerCount / passengers.size();
+        return Double.isNaN(conflictFreePassengerSeatingRatio) ? 0.0 : conflictFreePassengerSeatingRatio;
+    }
+
+    private static void seatPassengersInTrainWithoutAbidingCapacityConstraints(SeatReservationStorage capacityStorage,
+                                             RailCarriagePositionHelper railCarriagePositionHelper,
+                                             List<Passenger> passengers, Map<Integer, Boolean> noCapacityCarriage) {
+        for (Passenger passenger : passengers) {
+            List<RailCarriageDistance> railCarriageDistances = railCarriagePositionHelper.getDistancesForRailCarriages(passenger);
+            railCarriageDistances.sort(Comparator.comparing(RailCarriageDistance::getCost));
+            for (RailCarriageDistance railCarriageDistance : railCarriageDistances) {
+                if (! noCapacityCarriage.get(railCarriageDistance.getRailCarriageId())) {
+                    capacityStorage.inPassenger(railCarriageDistance.getRailCarriageId(), passenger);
+                    break;
+                }
+            }
+        }
     }
 
 }
