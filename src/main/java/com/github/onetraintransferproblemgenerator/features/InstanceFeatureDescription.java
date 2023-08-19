@@ -39,8 +39,6 @@ public class InstanceFeatureDescription {
     private double blockedPassengerRatio;
     @CsvName(column = "feature_conflictFreePassengerSeatingRatio")
     private double conflictFreePassengerSeatingRatio;
-    @CsvName(column = "algo_fillRailCarriages")
-    private double fillRailCarriagesCost = Double.NaN;
     @CsvName(column = "algo_greedyPassengerOrder")
     private double greedyPassengerOrderCost = Double.NaN;
     @CsvName(column = "algo_greedyAllPassenger")
@@ -63,9 +61,7 @@ public class InstanceFeatureDescription {
     */
 
     public void setAlgorithmCost(double cost, Class<? extends OneTrainTransferSolver> solverClass) {
-        if (solverClass.equals(FillRailCarriagesSolver.class)) {
-            setFillRailCarriagesCost(cost);
-        } else if (solverClass.equals(GreedyPassengerOrderSolver.class)) {
+        if (solverClass.equals(GreedyPassengerOrderSolver.class)) {
             setGreedyPassengerOrderCost(cost);
         } else if (solverClass.equals(GreedyAllPassengersSolver.class)) {
             setGreedyAllPassengerCost(cost);
