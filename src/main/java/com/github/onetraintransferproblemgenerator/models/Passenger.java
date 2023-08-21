@@ -22,4 +22,14 @@ public class Passenger {
      * target position at target platform where passenger want to leave station/transfer to other train
      */
     private int outPosition;
+
+    public Passenger deepClone() {
+        Passenger copy = new Passenger();
+        copy.setId(id);
+        copy.setInStation(inStation);
+        copy.setInPosition(inPosition);
+        copy.setOutStation(outStation);
+        copy.setOutPosition(outPosition);
+        return copy;
+    }
 }

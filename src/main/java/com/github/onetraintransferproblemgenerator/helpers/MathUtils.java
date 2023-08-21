@@ -28,4 +28,11 @@ public class MathUtils {
 
         return Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
     }
+
+    public static double computeDistance(double point1X, double point1Y, double point2X,  double point2Y) {
+        double deltaX = Math.abs(point1X - point2X);
+        double deltaY = Math.abs(point1Y - point2Y);
+
+        return Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+    }
 }
