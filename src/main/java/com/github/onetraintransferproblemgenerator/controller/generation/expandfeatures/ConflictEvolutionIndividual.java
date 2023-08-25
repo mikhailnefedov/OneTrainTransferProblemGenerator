@@ -2,15 +2,11 @@ package com.github.onetraintransferproblemgenerator.controller.generation.expand
 
 import com.github.onetraintransferproblemgenerator.helpers.MathUtils;
 import com.github.onetraintransferproblemgenerator.models.Passenger;
+import com.github.onetraintransferproblemgenerator.models.RailCarriage;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Data
@@ -20,6 +16,7 @@ public class ConflictEvolutionIndividual {
     private ProblemInstance problemInstance;
     private List<Double> originalCoordinates = new ArrayList<>();
     private double fitness;
+    private boolean possibleToCreateConflicts = false;
 
     public ConflictEvolutionIndividual deepClone() {
         ConflictEvolutionIndividual copyInd = new ConflictEvolutionIndividual();
@@ -57,12 +54,39 @@ public class ConflictEvolutionIndividual {
         originalCoordinates.add(conflictFreePassengerSeatingRatio);
     }
 
-    public double computeAndSetFitness() {
+    public double computeAndSetFitness(ConflictCoordinate targetPoint) {
         double blockedPassengerRatio = problemInstance.getFeatureDescription().getBlockedPassengerRatio();
         double conflictFreePassengerSeatingRatio = problemInstance.getFeatureDescription().getConflictFreePassengerSeatingRatio();
 
-        fitness =
+        double distanceToOrigin =
             MathUtils.computeDistance(originalCoordinates.get(0), originalCoordinates.get(1), blockedPassengerRatio, conflictFreePassengerSeatingRatio);
+        double distanceToTargetPoint =
+            MathUtils.computeDistance(targetPoint.getBlockedPassengerRatio(), targetPoint.getConflictFreePassengerSeatingRatio(), blockedPassengerRatio, conflictFreePassengerSeatingRatio);
+
+        double maxOriginRatio = -0.5;
+        double minTargetRatio = 0.5;
+
+        fitness = maxOriginRatio * distanceToOrigin + minTargetRatio * distanceToTargetPoint;
+
         return fitness;
+    }
+
+    public void computePossibleToCreateConflicts() {
+        int minCarriageSize = problemInstance.getProblem().getTrain()
+            .getRailCarriages().stream()
+            .min(Comparator.comparingInt(RailCarriage::getCapacity))
+            .get()
+            .getCapacity();
+
+        List<Integer> stationIds = problemInstance.getProblem().getTrain().getStationIds();
+
+        for (Integer stationId : stationIds) {
+            minCarriageSize += problemInstance.getProblem().getOutPassengersOfStation(stationId).size();
+            minCarriageSize -= problemInstance.getProblem().getInPassengersOfStation(stationId).size();
+
+            if (minCarriageSize < 0) {
+                possibleToCreateConflicts = true;
+            }
+        }
     }
 }

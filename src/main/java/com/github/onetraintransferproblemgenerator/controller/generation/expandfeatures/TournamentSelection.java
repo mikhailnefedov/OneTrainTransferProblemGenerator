@@ -16,7 +16,7 @@ public class TournamentSelection {
             ConflictEvolutionIndividual currentWinner = individuals.get(random.nextInt(individuals.size()));
             for (int j = 0; j < TOURNAMENTS_COUNT; j++) {
                 ConflictEvolutionIndividual challenger = individuals.get(random.nextInt(individuals.size()));
-                if (challenger.getFitness() > currentWinner.getFitness()) {
+                if (challenger.getFitness() < currentWinner.getFitness()) {
                     currentWinner = challenger;
                 }
             }
