@@ -27,6 +27,7 @@ public class ConflictEvolutionController {
     private final int GENERATION_COUNT = 200;
     private final ConflictEvolutionDataRepository conflictEvolutionDataRepository;
     private List<ConflictCoordinate> targetPoints;
+    private ConflictEvolutionMutation mutation;
 
     public ConflictEvolutionController(ConflictEvolutionDataRepository conflictEvolutionDataRepository) {
         this.conflictEvolutionDataRepository = conflictEvolutionDataRepository;
@@ -46,16 +47,27 @@ public class ConflictEvolutionController {
     @PostMapping("evolution")
     void init(@RequestBody ConflictEvolutionParameters parameters) {
 
+        configureMutation(parameters.getMutationName());
+
         List<ConflictEvolutionData> data =
             IntStream.range(1, parameters.getInstanceCount() + 1).boxed().toList()
-            .parallelStream()
-            .map(i -> {
-                String instanceId = INSTANCE_ID_PREFIX + i;
-                return applyConflictEvolution(parameters.getExperimentId(), instanceId);
-            })
-            .toList();
+                .parallelStream()
+                .map(i -> {
+                    String instanceId = INSTANCE_ID_PREFIX + i;
+                    return applyConflictEvolution(parameters.getExperimentId(), instanceId);
+                })
+                .filter(Objects::nonNull)
+                .toList();
 
         conflictEvolutionDataRepository.saveAll(data);
+    }
+
+    private void configureMutation(String mutationName) {
+        if (mutationName.equals("MoveInOrOutPositionMutation")) {
+            mutation = new MoveInOrOutPositionMutation();
+        } else {
+            mutation = new ChangeOptimalRailCarriageMutation();
+        }
     }
 
     private BaseGenerator configureGenerator() {
@@ -122,7 +134,10 @@ public class ConflictEvolutionController {
         List<ConflictEvolutionIndividual> startPopulation = createStartPopulation(startIndividual);
         data.setStartGeneration(startPopulation.stream().map(ConflictCoordinate::convertFromIndividual).toList());
 
-        System.out.println(instanceId + ": " + startIndividual.isPossibleToCreateConflicts());
+        if (!startIndividual.isPossibleToCreateConflicts())
+            return null;
+
+        System.out.println("Conflict Evolution of isntance: " + instanceId);
 
         for (ConflictCoordinate targetPoint : targetPoints) {
             List<ConflictEvolutionIndividual> population = startPopulation;
@@ -135,7 +150,7 @@ public class ConflictEvolutionController {
                 for (int j = 0; j < POPULATION_SIZE; j++) {
                     ConflictEvolutionIndividual child = doCrossover(parents.get(j), parents.get(j + 1));
                     if (random.nextDouble() < MUTATION_RATE) {
-                        MoveInOrOutPositionMutation.doMutation(child);
+                        mutation.mutate(child);
                     }
 
                     InstanceFeatureDescription description1 = FeatureExtractor.extract(instanceId, child.getProblemInstance().getProblem());
