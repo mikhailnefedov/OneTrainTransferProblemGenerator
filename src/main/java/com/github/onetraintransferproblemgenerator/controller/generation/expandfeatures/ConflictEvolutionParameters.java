@@ -6,4 +6,5 @@ import lombok.Data;
 public class ConflictEvolutionParameters {
     private String experimentId;
     private int instanceCount;
+    private String mutationName;
 }

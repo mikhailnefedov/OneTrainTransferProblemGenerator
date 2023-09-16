@@ -5,9 +5,9 @@ import com.github.onetraintransferproblemgenerator.models.Passenger;
 import java.util.List;
 import java.util.Random;
 
-public class MoveInOrOutPositionMutation {
+public class MoveInOrOutPositionMutation implements ConflictEvolutionMutation {
 
-    public static void doMutation(ConflictEvolutionIndividual individual) {
+    public void mutate(ConflictEvolutionIndividual individual) {
         Random random = new Random();
         List<Passenger> passengers = individual.getProblemInstance().getProblem().getPassengers();
 
@@ -34,7 +34,7 @@ public class MoveInOrOutPositionMutation {
     private static int movePosition(int currentPosition, int maxPosition, Random random) {
         if (currentPosition == 1) {
             return 2;
-        } else if (currentPosition == maxPosition - 1) {
+        } else if (currentPosition >= maxPosition - 1) {
             return currentPosition - 1;
         } else {
             double randomDouble = random.nextDouble();
