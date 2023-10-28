@@ -1,0 +1,6002 @@
+[
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": false,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": true,
+    "shortestRidesFirst": true,
+    "longestRidesFirst": true
+  },
+  {
+    "greedyPassengerOrder": true,
+    "greedyAllPassenger": false,
+    "shortestRidesFirst": false,
+    "longestRidesFirst": false
+  }
+]

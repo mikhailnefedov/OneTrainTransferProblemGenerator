@@ -189,6 +189,21 @@
     ]
   },
   {
+    "id": "20230100902",
+    "trainType": "ICE 3 neo",
+    "carriageCount": 8,
+    "carriageData": [
+      { "carriageType": "Bpmdzf", "carriageId": 1, "capacity": 51 },
+      { "carriageType": "Bpmz", "carriageId": 2, "capacity": 76 },
+      { "carriageType": "Bpmz", "carriageId": 3, "capacity": 76 },
+      { "carriageType": "Bpmz", "carriageId": 4, "capacity": 76 },
+      { "carriageType": "Bpmbsz", "carriageId": 5, "capacity": 38 },
+      { "carriageType": "BRpmz", "carriageId": 6, "capacity": 23 },
+      { "carriageType": "Apmz", "carriageId": 7, "capacity": 54 },
+      { "carriageType": "Apmzf", "carriageId": 8, "capacity": 45 }
+    ]
+  },
+  {
     "id": "20230200586",
     "trainType": "ICE-T",
     "carriageCount": 14,

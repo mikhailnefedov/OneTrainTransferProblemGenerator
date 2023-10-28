@@ -32,7 +32,6 @@ public class ProblemInstance {
     private HashMap<String, Map<Integer, Integer>> solverSolutions;
     private HashMap<String, String> additionalInformation = new HashMap<>();
 
-
     public ProblemInstance(OneTrainTransferProblem problem, String experimentId, Class generator, String instanceId) {
         this.problem = problem;
         this.experimentId = experimentId;

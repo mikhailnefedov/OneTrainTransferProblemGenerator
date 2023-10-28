@@ -21,6 +21,8 @@ public class InstanceFeatureDescription {
     private String instanceId;
     @CsvName(column = "Source")
     private String source;
+    @CsvName(column = "feature_stationCount")
+    private int stationCount;
     @CsvName(column = "feature_directionChangeCount")
     private int directionChangeCount;
     @CsvName(column = "feature_totalPassengerCount")
