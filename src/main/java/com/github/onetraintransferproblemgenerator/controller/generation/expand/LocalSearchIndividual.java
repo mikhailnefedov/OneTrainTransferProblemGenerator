@@ -34,4 +34,9 @@ public class LocalSearchIndividual {
         problemInstance.getProblem().getPassengers().add(p);
         stationCapacityTracker.addPassenger(p);
     }
+
+    public void removePassenger(Passenger p) {
+        problemInstance.getProblem().getPassengers().remove(p);
+        stationCapacityTracker.removePassenger(p);
+    }
 }

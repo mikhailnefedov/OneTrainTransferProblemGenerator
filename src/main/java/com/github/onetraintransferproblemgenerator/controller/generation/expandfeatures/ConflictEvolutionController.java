@@ -2,12 +2,11 @@ package com.github.onetraintransferproblemgenerator.controller.generation.expand
 
 import com.github.onetraintransferproblemgenerator.features.FeatureExtractor;
 import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
-import com.github.onetraintransferproblemgenerator.generation.BaseGenerator;
-import com.github.onetraintransferproblemgenerator.generation.simple.SimpleGenerator;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
 import com.github.onetraintransferproblemgenerator.models.StationTuple;
 import com.github.onetraintransferproblemgenerator.persistence.ConflictEvolutionDataRepository;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @RestController
 @RequestMapping("conflict")
@@ -31,35 +29,17 @@ public class ConflictEvolutionController {
 
     public ConflictEvolutionController(ConflictEvolutionDataRepository conflictEvolutionDataRepository) {
         this.conflictEvolutionDataRepository = conflictEvolutionDataRepository;
-        targetPoints = new ArrayList<>(List.of(
-            new ConflictCoordinate(0.0, 1.0),
-            new ConflictCoordinate(0.5, 1.0),
-            new ConflictCoordinate(1.0, 1.0),
-            new ConflictCoordinate(1.0, 0.5),
-            new ConflictCoordinate(1.0, 0.0),
-            new ConflictCoordinate(0.5, 0.0),
-            new ConflictCoordinate(0.0, 0.0),
-            new ConflictCoordinate(0.0, 0.5)
-        ));
     }
 
-
-    @PostMapping("evolution")
+    @PostMapping(value = "evolution", consumes = "application/json")
     void init(@RequestBody ConflictEvolutionParameters parameters) {
 
         configureMutation(parameters.getMutationName());
+        targetPoints = parameters.getConflictCoordinates();
 
-        List<ConflictEvolutionData> data =
-            IntStream.range(1, parameters.getInstanceCount() + 1).boxed().toList()
-                .parallelStream()
-                .map(i -> {
-                    String instanceId = INSTANCE_ID_PREFIX + i;
-                    return applyConflictEvolution(parameters.getExperimentId(), instanceId);
-                })
-                .filter(Objects::nonNull)
-                .toList();
+        ConflictEvolutionData data = applyConflictEvolution(parameters.getExperimentId(), parameters.getInstance().convertToProblemInstance());
 
-        conflictEvolutionDataRepository.saveAll(data);
+        conflictEvolutionDataRepository.save(data);
     }
 
     private void configureMutation(String mutationName) {
@@ -70,18 +50,21 @@ public class ConflictEvolutionController {
         }
     }
 
-    private BaseGenerator configureGenerator() {
-        BaseGenerator generator = new SimpleGenerator();
-        generator.setMIN_CONGESTION(0.8);
-        return generator;
-    }
+    /**
+     * private BaseGenerator configureGenerator() {
+     * BaseGenerator generator = new SimpleGenerator();
+     * generator.setMIN_CONGESTION(0.8);
+     * return generator;
+     * }
+     */
 
-    private ConflictEvolutionIndividual createStartIndividual(BaseGenerator generator, String experimentId) {
-        OneTrainTransferProblem problem = generator.generate();
-        InstanceFeatureDescription description = FeatureExtractor.extract(INSTANCE_ID_PREFIX, problem);
+    private ConflictEvolutionIndividual createStartIndividual(ProblemInstance instance, String experimentId) {
+        instance.setExperimentId(experimentId);
+        OneTrainTransferProblem problem = instance.getProblem();
+        //InstanceFeatureDescription description = instance.getFeatureDescription();
 
-        ProblemInstance instance = new ProblemInstance(problem, experimentId, this.getClass(), INSTANCE_ID_PREFIX);
-        instance.setFeatureDescription(description);
+        //ProblemInstance instance = new ProblemInstance(problem, experimentId, this.getClass(), INSTANCE_ID_PREFIX);
+        //instance.setFeatureDescription(description);
 
         ConflictEvolutionIndividual individual = new ConflictEvolutionIndividual();
         computeMaxPositionOfStations(individual, problem);
@@ -122,14 +105,11 @@ public class ConflictEvolutionController {
         return startPopulation;
     }
 
-    private ConflictEvolutionData applyConflictEvolution(String experimentId, String instanceId) {
+    private ConflictEvolutionData applyConflictEvolution(String experimentId, ProblemInstance instance) {
         Random random = new Random();
+        ConflictEvolutionData data = new ConflictEvolutionData(experimentId, instance.getInstanceId());
 
-        ConflictEvolutionData data = new ConflictEvolutionData(experimentId, instanceId);
-
-        BaseGenerator generator = configureGenerator();
-
-        ConflictEvolutionIndividual startIndividual = createStartIndividual(generator, experimentId);
+        ConflictEvolutionIndividual startIndividual = createStartIndividual(instance, experimentId);
         data.setStartCoordinates(ConflictCoordinate.convertFromIndividual(startIndividual));
         List<ConflictEvolutionIndividual> startPopulation = createStartPopulation(startIndividual);
         data.setStartGeneration(startPopulation.stream().map(ConflictCoordinate::convertFromIndividual).toList());
@@ -137,9 +117,10 @@ public class ConflictEvolutionController {
         if (!startIndividual.isPossibleToCreateConflicts())
             return null;
 
-        System.out.println("Conflict Evolution of isntance: " + instanceId);
-
+        String instanceId = instance.getInstanceId();
+        System.out.println("Conflict Evolution of instance: " + instanceId);
         for (ConflictCoordinate targetPoint : targetPoints) {
+            System.out.println("Conflict Evolution for target point: " + targetPoint);
             List<ConflictEvolutionIndividual> population = startPopulation;
             double currentBestFitness = getBestIndividual(population).getFitness();
             data.initNewCoordinateHistory();
@@ -163,6 +144,7 @@ public class ConflictEvolutionController {
                 if (bestIndividual.getFitness() < currentBestFitness) {
                     data.addCoordinate(bestIndividual);
                     currentBestFitness = bestIndividual.getFitness();
+                    System.out.println("Found better individual");
                 }
             }
         }

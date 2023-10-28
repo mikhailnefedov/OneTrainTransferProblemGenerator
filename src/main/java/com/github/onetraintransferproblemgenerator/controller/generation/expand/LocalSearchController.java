@@ -21,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,7 +37,8 @@ public class LocalSearchController {
     private final PrelimInformationRepository prelimInformationRepository;
     private final RestTemplate restTemplate;
     private final String PYTHON_BACKEND_URL = "http://localhost:5000";
-    private final int POPULATION_COUNT = 30;
+    private final int POPULATION_COUNT = 10;
+    private final double DELTA = 0.02;
 
     public LocalSearchController(ProblemInstanceRepository problemInstanceRepository,
                                  PrelimInformationRepository prelimInformationRepository) {
@@ -92,26 +94,26 @@ public class LocalSearchController {
         PrelimInformation prelimInformation = prelimInformationRepository.findByExperimentId(localSearchGeneration.getExperimentId());
         PrelimUtils prelimUtils = new PrelimUtils(prelimInformation);
 
-        for (int i = 0; i < localSearchGeneration.getIterations(); i++) {
-            doLocalSearchRound(localSearchGeneration, prelimUtils);
+        for (int i = 0; i < localSearchGeneration.getLocalSearchRounds(); i++) {
+            doLocalSearchIteration(localSearchGeneration, prelimUtils);
         }
 
         System.out.println("Ended local search generation");
     }
 
-    private void doLocalSearchRound(LocalSearchGeneration localSearchGeneration, PrelimUtils prelimUtils) {
+    private void doLocalSearchIteration(LocalSearchGeneration localSearchGeneration, PrelimUtils prelimUtils) {
         List<LocalSearchIndividual> startPopulation = getNearestInstancesToTarget(localSearchGeneration, prelimUtils);
         List<SimpleMatrix> originalCoordinates = startPopulation.stream().map(LocalSearchIndividual::getCoordinates).toList();
         LocalSearchMutation mutation = getMutation(localSearchGeneration);
 
-        for (int i = 0; i < localSearchGeneration.getLocalSearchRounds(); i++) {
+        for (int i = 0; i < localSearchGeneration.getIterations(); i++) {
             for (int j = 0; j < startPopulation.size(); j++) {
-                LocalSearchIndividual newIndividual = startPopulation.get(i).deepClone();
+                LocalSearchIndividual newIndividual = startPopulation.get(j).deepClone();
                 mutation.mutate(newIndividual);
                 newIndividual = recomputeFeatures(localSearchGeneration, prelimUtils, newIndividual);
 
-                if (newIndividual.getFitness() <= startPopulation.get(i).getFitness()) {
-                    startPopulation.set(i, newIndividual);
+                if (newIndividual.getFitness() <= startPopulation.get(j).getFitness()) {
+                    startPopulation.set(j, newIndividual);
                 }
             }
         }
@@ -161,14 +163,13 @@ public class LocalSearchController {
     }
 
     private boolean uniqueInstanceInInstanceSpace(LocalSearchIndividual individual, List<SimpleMatrix> originalCoordinates) {
-        double tolerance = 0.01;
         SimpleMatrix coords = individual.getCoordinates();
 
         return originalCoordinates.stream().noneMatch(origCoords ->
-            ((coords.get(0) < origCoords.get(0) && coords.get(0) + tolerance > origCoords.get(0)) ||
-                (coords.get(0) > origCoords.get(0) && coords.get(0) - tolerance < origCoords.get(0))) &&
-                ((coords.get(1) < origCoords.get(1) && coords.get(1) + tolerance > origCoords.get(1)) ||
-                    (coords.get(1) > origCoords.get(1) && coords.get(1) - tolerance < origCoords.get(1)))
+            ((coords.get(0) < origCoords.get(0) && coords.get(0) + DELTA > origCoords.get(0)) ||
+                (coords.get(0) > origCoords.get(0) && coords.get(0) - DELTA < origCoords.get(0))) &&
+                ((coords.get(1) < origCoords.get(1) && coords.get(1) + DELTA > origCoords.get(1)) ||
+                    (coords.get(1) > origCoords.get(1) && coords.get(1) - DELTA < origCoords.get(1)))
         );
     }
 

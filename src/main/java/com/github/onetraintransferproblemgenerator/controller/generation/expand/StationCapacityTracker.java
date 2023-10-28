@@ -42,6 +42,15 @@ public class StationCapacityTracker {
         }
     }
 
+    public void removePassenger(Passenger passenger) {
+        int startStation = passenger.getInStation();
+        int penultimateStation = passenger.getOutStation() - 1;
+        for (int i = startStation; i <= penultimateStation; i++) {
+            int freeCapacity = freeCapacityFromStation.get(i);
+            freeCapacityFromStation.put(i, freeCapacity + 1);
+        }
+    }
+
     public void removeOneSeat() {
         for (Integer stationId : freeCapacityFromStation.keySet()) {
             int currentCapacity = freeCapacityFromStation.get(stationId);

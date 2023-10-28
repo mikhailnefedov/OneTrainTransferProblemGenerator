@@ -34,6 +34,7 @@ public class FeatureExtractor {
 
     private static void setDescriptionFields(InstanceFeatureDescription description, OneTrainTransferProblem problem) {
         setPassengerFeatures(description, problem);
+        description.setStationCount(getStationCount(problem));
         description.setDirectionChangeCount(getDirectionChangeCount(problem));
         setRailCarriageCapacities(description, problem);
         setCongestion(description, problem);
@@ -196,7 +197,7 @@ public class FeatureExtractor {
             conflictFreePassengerMap.entrySet().stream().filter(Map.Entry::getValue).toList().size();
 
         double conflictFreePassengerSeatingRatio = conflictFreePassengerCount / passengers.size();
-        return Double.isNaN(conflictFreePassengerSeatingRatio) ? 0.0 : conflictFreePassengerSeatingRatio;
+        return Double.isNaN(conflictFreePassengerSeatingRatio) ? 1.0 : conflictFreePassengerSeatingRatio;
     }
 
     private static void seatPassengersInTrainWithoutAbidingCapacityConstraints(SeatReservationStorage capacityStorage,
