@@ -1,3 +1,15 @@
+# Instructions for docker
+
+To start up use: `docker-compose up`
+
+Unfortunately this part is more in an experimental stage and the whole functionality cannot be guaranteed.
+The spring-boot app doesn't work reliably in a container while the other components seem okay. It is recommended to
+startup the containers and terminate the spring-boot app and run it locally with `mvn spring-boot:run`
+
+
+If there is already a dataset, you can create a database "test" in mongodb and a "probleminstances" collection and 
+import the json data (Can be done with MongoDB Compass). If there is no database, just create some instances with a POST
+
 # Instructions for usage
 
 ! : marking important features

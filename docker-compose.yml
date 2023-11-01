@@ -1,0 +1,27 @@
+version: '3'
+services:
+  spring-boot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+  jupyter-notebook:
+    build:
+      context: .
+      dockerfile: JupyterDockerfile
+    ports:
+      - 8888:8888
+    volumes:
+      - .:/home/jovyan/work
+    command: "start-notebook.sh --NotebookApp.token='' --NotebookApp.password=''"
+  flask-app:
+    build:
+      context: ./python_backend
+      dockerfile: .
+    ports:
+      - 5000:5000
