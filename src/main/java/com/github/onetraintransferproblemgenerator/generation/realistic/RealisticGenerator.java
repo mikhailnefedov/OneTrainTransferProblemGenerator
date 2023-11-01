@@ -1,33 +1,32 @@
 package com.github.onetraintransferproblemgenerator.generation.realistic;
 
 import com.github.onetraintransferproblemgenerator.generation.BaseGenerator;
-import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
 import com.github.onetraintransferproblemgenerator.models.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * generates problems
+ */
 public class RealisticGenerator extends BaseGenerator {
 
-    private List<Station> stations;
-    private List<Train> trains;
     /**
      * Share of station classes along a train route (Sum must be 1.0 and value can only have 2 decimal values)
      */
     private final Map<Integer, Double> stationClassShare = new HashMap<>(
-            Map.of( 1, 0.4,
-                    2, 0.4,
-                    3, 0.2)
+        Map.of(1, 0.4,
+            2, 0.4,
+            3, 0.2)
     );
-
+    private List<Station> stations;
+    private List<Train> trains;
     private Random random;
     private Map<Integer, Integer> freeCapacityFromStation;
 
     public RealisticGenerator() {
         stations = RealisticDataReader.getStations();
         trains = RealisticDataReader.getTrains();
-        List<Integer> capacities = trains.stream().map(x -> x.getCarriageData().stream().map(Train.CarriageData::getCapacity).reduce(Integer::sum).get()).toList();
-
         random = new Random();
     }
 
@@ -63,8 +62,8 @@ public class RealisticGenerator extends BaseGenerator {
 
     private Map<Integer, List<Station>> getAppropriateStationsForTrain(int carriageCount) {
         return stations.stream()
-                .filter(station -> station.getNumberOfPositions() >= carriageCount)
-                .collect(Collectors.groupingBy(Station::getStationClass));
+            .filter(station -> station.getNumberOfPositions() >= carriageCount)
+            .collect(Collectors.groupingBy(Station::getStationClass));
     }
 
     private List<Integer> generateProbabilityList() {
@@ -80,8 +79,8 @@ public class RealisticGenerator extends BaseGenerator {
     private com.github.onetraintransferproblemgenerator.models.Train convertTrainToModel(Train train, List<Station> trainRoute) {
         com.github.onetraintransferproblemgenerator.models.Train trainModel = new com.github.onetraintransferproblemgenerator.models.Train();
         trainModel.setRailCarriages(train.getCarriageData().stream()
-                .map(rC -> new RailCarriage(rC.getCarriageId(), rC.getCapacity()))
-                .collect(Collectors.toList())
+            .map(rC -> new RailCarriage(rC.getCarriageId(), rC.getCapacity()))
+            .collect(Collectors.toList())
         );
 
         trainModel.setStations(convertStations(train, trainRoute));
@@ -155,7 +154,7 @@ public class RealisticGenerator extends BaseGenerator {
             passengers.add(p);
 
             passengerId++;
-            availableRouteSectionCount-= lastStation - startStation;
+            availableRouteSectionCount -= lastStation - startStation;
         }
 
         if (availableRouteSectionCount < 0) {
@@ -183,7 +182,7 @@ public class RealisticGenerator extends BaseGenerator {
     private int computeAvailableRouteSections(com.github.onetraintransferproblemgenerator.models.Train trainModel) {
         int totalCapacity = trainModel.getTotalCapacity();
         int stationCount = trainModel.getStationCount();
-        
+
         double randomValue = MIN_CONGESTION + (MAX_CONGESTION - MIN_CONGESTION) * random.nextDouble();
         randomValue = randomValue / CONGESTION_INCREMENT;
         double totalCongestion = Math.floor(randomValue) * CONGESTION_INCREMENT;

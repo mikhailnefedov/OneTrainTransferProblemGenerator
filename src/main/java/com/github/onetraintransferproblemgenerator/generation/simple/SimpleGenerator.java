@@ -1,13 +1,15 @@
 package com.github.onetraintransferproblemgenerator.generation.simple;
 
 import com.github.onetraintransferproblemgenerator.generation.BaseGenerator;
-import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
 import com.github.onetraintransferproblemgenerator.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Creates problems with random trains, stations and passengers
+ */
 public class SimpleGenerator extends BaseGenerator {
 
     private final Random random;
@@ -69,7 +71,7 @@ public class SimpleGenerator extends BaseGenerator {
 
     private List<Passenger> generatePassengers(Train train) {
         SimplePassengerGenerator passengerGenerator =
-                new SimplePassengerGenerator(MIN_CONGESTION, MAX_CONGESTION, CONGESTION_INCREMENT, POSITION_COUNT, train);
+            new SimplePassengerGenerator(MIN_CONGESTION, MAX_CONGESTION, CONGESTION_INCREMENT, POSITION_COUNT, train);
         return passengerGenerator.generatePassengers();
     }
 

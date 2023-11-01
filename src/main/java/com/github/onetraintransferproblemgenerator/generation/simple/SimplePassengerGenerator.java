@@ -5,7 +5,6 @@ import com.github.onetraintransferproblemgenerator.models.Train;
 
 import java.util.*;
 
-//TODO: Big similarities between this class and passenger generation in .realistic --> better inheritance?/modeling necessary
 public class SimplePassengerGenerator {
 
     /**

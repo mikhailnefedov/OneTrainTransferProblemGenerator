@@ -17,5 +17,8 @@ public abstract class BaseGenerator implements OneTrainTransferProblemGenerator 
     protected int MIN_RAIL_CARRIAGES = 1;
     protected int MAX_RAIL_CARRIAGES = 10;
     protected int MAX_RAIL_CARRIAGE_CAPACITY = 80;
+    /**
+     * max positions of station
+     */
     protected int POSITION_COUNT = 14;
 }
