@@ -21,13 +21,12 @@ import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Other methodology compared to .expand package
+ * Local Search in instance space to close up gaps
  */
 @RestController
 @RequestMapping("localsearch")
@@ -47,6 +46,9 @@ public class LocalSearchController {
         this.restTemplate = new RestTemplate();
     }
 
+    /**
+     * initialization method must be called first to preprocess (prelim) the dataset
+     */
     @PostMapping("init")
     void initExpandInstanceSpace(@RequestBody LocalSearchInitialization initParams) {
         List<ProblemInstance> problemInstances =

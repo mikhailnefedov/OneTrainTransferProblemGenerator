@@ -6,7 +6,6 @@ import com.github.onetraintransferproblemgenerator.persistence.HistoricalEvoluti
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstanceRepository;
 import com.github.onetraintransferproblemgenerator.solvers.evolutionary.models.HistoricalEvolutionData;
-import org.bson.types.ObjectId;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +29,9 @@ public class SolverAnalyzerController {
         this.historicalEvolutionDataRepository = historicalEvolutionDataRepository;
     }
 
+    /**
+     * Show how many instances of dataset have a "good" performance for each algorithm
+     */
     @GetMapping("analyze/{experimentId}")
     public ResponseEntity analyzeExperimentAlgorithmCosts(@PathVariable String experimentId) {
         List<ProblemInstance> instances = problemInstanceRepository.findAllByExperimentId(experimentId);
@@ -63,6 +65,9 @@ public class SolverAnalyzerController {
         return map;
     }
 
+    /**
+     * analyse fitness evolution improvement for the evolutionary algorithms
+     */
     @GetMapping("fitnessimprovement/{experimentId}")
     public ResponseEntity analyzeFitnessImprovementsOfEvolutionaryAlgorithms(@PathVariable String experimentId) {
         List<HistoricalEvolutionData> evolutionData = historicalEvolutionDataRepository.findAllByExperimentId(experimentId);
