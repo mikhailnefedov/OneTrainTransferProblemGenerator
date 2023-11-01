@@ -14,7 +14,7 @@ public class ConflictEvolutionIndividual {
 
     private Map<Integer, Integer> maxPositionOfStation;
     private ProblemInstance problemInstance;
-    private List<Double> originalCoordinates = new ArrayList<>();
+    private OriginalCoordinate originalCoordinate;
     private double fitness;
     private boolean possibleToCreateConflicts = false;
 
@@ -22,7 +22,7 @@ public class ConflictEvolutionIndividual {
         ConflictEvolutionIndividual copyInd = new ConflictEvolutionIndividual();
         copyInd.setProblemInstance(problemInstance.deepClone());
         copyInd.setMaxPositionOfStation(maxPositionOfStation);
-        copyInd.setOriginalCoordinates(new ArrayList<>(originalCoordinates));
+        copyInd.setOriginalCoordinate(originalCoordinate);
         return copyInd;
     }
 
@@ -49,24 +49,35 @@ public class ConflictEvolutionIndividual {
         );
     }
 
-    public void setOriginalCoordinates(double blockedPassengerRatio, double conflictFreePassengerSeatingRatio) {
-        originalCoordinates.add(blockedPassengerRatio);
-        originalCoordinates.add(conflictFreePassengerSeatingRatio);
+    /**
+    public void setOriginalCoordinate(double blockedPassengerRatio, double conflictFreePassengerSeatingRatio) {
+        originalCoordinate.setBlockedPassengerRatio(blockedPassengerRatio);
+        originalCoordinate.setConflictFreePassengerSeatingRatio(conflictFreePassengerSeatingRatio);
     }
+     */
 
     public double computeAndSetFitness(ConflictCoordinate targetPoint) {
         double blockedPassengerRatio = problemInstance.getFeatureDescription().getBlockedPassengerRatio();
         double conflictFreePassengerSeatingRatio = problemInstance.getFeatureDescription().getConflictFreePassengerSeatingRatio();
 
         double distanceToOrigin =
-            MathUtils.computeDistance(originalCoordinates.get(0), originalCoordinates.get(1), blockedPassengerRatio, conflictFreePassengerSeatingRatio);
+            MathUtils.computeDistance(originalCoordinate.getBlockedPassengerRatio(), originalCoordinate.getConflictFreePassengerSeatingRatio(), blockedPassengerRatio, conflictFreePassengerSeatingRatio);
         double distanceToTargetPoint =
             MathUtils.computeDistance(targetPoint.getBlockedPassengerRatio(), targetPoint.getConflictFreePassengerSeatingRatio(), blockedPassengerRatio, conflictFreePassengerSeatingRatio);
+
+        double maxDistanceOriginTarget =
+            MathUtils.computeDistance(targetPoint.getBlockedPassengerRatio(), targetPoint.getConflictFreePassengerSeatingRatio(), originalCoordinate.getBlockedPassengerRatio(), originalCoordinate.getConflictFreePassengerSeatingRatio());
+
+
+        double penalty = 0;
+        if (distanceToOrigin > maxDistanceOriginTarget) {
+            penalty = 42;   //Infinity penalty, is okay here because instances are all in square 1.0 x 1.0
+        }
 
         double maxOriginRatio = -0.5;
         double minTargetRatio = 0.5;
 
-        fitness = maxOriginRatio * distanceToOrigin + minTargetRatio * distanceToTargetPoint;
+        fitness = maxOriginRatio * distanceToOrigin + minTargetRatio * distanceToTargetPoint + penalty;
 
         return fitness;
     }
