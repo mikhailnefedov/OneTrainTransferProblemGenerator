@@ -3,6 +3,8 @@ package com.github.onetraintransferproblemgenerator.controller.generation;
 import com.github.onetraintransferproblemgenerator.features.FeatureExtractor;
 import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
 import com.github.onetraintransferproblemgenerator.generation.OneTrainTransferProblemGenerator;
+import com.github.onetraintransferproblemgenerator.generation.realistic.RealisticGenerator;
+import com.github.onetraintransferproblemgenerator.generation.simple.SimpleGenerator;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
 import com.github.onetraintransferproblemgenerator.models.Passenger;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
@@ -26,6 +28,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Generation of instances
+ */
 @RestController
 @RequestMapping("generation")
 public class GenerationController {
@@ -105,6 +110,7 @@ public class GenerationController {
     }
 
     private void solveInstances(List<ProblemInstance> instances) {
+        System.out.println("Start solving instances");
         instances.parallelStream().forEach(instance -> {
             HashMap<Class<? extends OneTrainTransferSolver>, HashMap<Passenger, Integer>> solverSolutionMapping = new HashMap<>();
             for (String solverName : generationParameters.getSolvers()) {
@@ -121,8 +127,8 @@ public class GenerationController {
             }
             setInstanceAlgorithmCosts(instance, solverSolutionMapping);
             instance.setSolverSolutions(solverSolutionMapping);
-            System.out.println("Finish solving " + instance.getInstanceId());
         });
+        System.out.println("Finish solving instances");
     }
 
     private HashMap<Passenger, Integer> handleEvolutionarySolver(ProblemInstance instance, HashMap<Class<? extends OneTrainTransferSolver>, HashMap<Passenger, Integer>> solverSolutionMapping, Class<? extends OneTrainTransferSolver> solverClass) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {

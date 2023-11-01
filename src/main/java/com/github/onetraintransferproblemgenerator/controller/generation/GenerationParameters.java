@@ -11,9 +11,21 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GenerationParameters {
+    /**
+     * id of experiment to identify dataset
+     */
     private String experimentId;
+    /**
+     * should instances be stored in database?
+     */
     private boolean storeInstances = false;
+    /**
+     * generators and their settings
+     */
     private Map<String, InstanceGeneration> generators;
+    /**
+     * these solvers will be used after the generation to solve instances
+     */
     private List<String> solvers;
 }
 
@@ -21,6 +33,12 @@ public class GenerationParameters {
 @NoArgsConstructor
 @AllArgsConstructor
 class InstanceGeneration {
+    /**
+     * instance count to generate
+     */
     private int instanceCount;
+    /**
+     * prefix of instance ids, e.g. "mk_s_" will lead to "mk_s_1","mk_s_2",...
+     */
     private String idPrefix;
 }
