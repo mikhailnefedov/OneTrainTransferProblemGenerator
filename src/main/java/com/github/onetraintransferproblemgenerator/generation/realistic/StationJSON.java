@@ -5,14 +5,14 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-class Station {
+class StationJSON {
     private String stationName;
     private int stationClass;
     private boolean railhead;
     private int numberOfPositions;
     private List<Integer> accessPositions;
 
-    public Station() {
+    public StationJSON() {
 
     }
 }

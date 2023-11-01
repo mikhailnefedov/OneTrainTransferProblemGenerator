@@ -13,22 +13,22 @@ public class RealisticDataReader {
     private static final String STATIONS_FILE_PATH = "data/stations.json";
     private static final String TRAINS_FILE_PATH = "data/trains.json";
 
-    public static List<Station> getStations() {
+    public static List<StationJSON> getStations() {
         ObjectMapper objectMapper = new ObjectMapper();
-        List<Station> stations = new ArrayList<>();
+        List<StationJSON> stations = new ArrayList<>();
         try {
-            stations = Arrays.asList(objectMapper.readValue(new File(STATIONS_FILE_PATH), Station[].class));
+            stations = Arrays.asList(objectMapper.readValue(new File(STATIONS_FILE_PATH), StationJSON[].class));
         } catch (IOException e) {
             e.printStackTrace();
         }
         return stations;
     }
 
-    public static List<Train> getTrains() {
+    public static List<TrainJSON> getTrains() {
         ObjectMapper objectMapper = new ObjectMapper();
-        List<Train> trains = new ArrayList<>();
+        List<TrainJSON> trains = new ArrayList<>();
         try {
-            trains = Arrays.asList(objectMapper.readValue(new File(TRAINS_FILE_PATH), Train[].class));
+            trains = Arrays.asList(objectMapper.readValue(new File(TRAINS_FILE_PATH), TrainJSON[].class));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-class Train {
+class TrainJSON {
     private String id;
     private String trainType;
     private int carriageCount;
@@ -13,7 +13,6 @@ class Train {
 
     @Data
     public static class CarriageData {
-        private String carriageType;
         private int carriageId;
         private int capacity;
     }

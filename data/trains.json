@@ -1,0 +1,247 @@
+[
+  {
+    "id": "1",
+    "trainType": "ICE-T",
+    "carriageCount": 5,
+    "carriageData": [
+      { "carriageId": 1, "capacity": 41 },
+      { "carriageId": 2, "capacity": 22 },
+      { "carriageId": 3, "capacity": 62 },
+      { "carriageId": 4, "capacity": 62 },
+      { "carriageId": 5, "capacity": 63 }
+    ]
+  },
+  {
+    "id": "2",
+    "trainType": "ICE-T",
+    "carriageCount": 7,
+    "carriageData": [
+      { "carriageId": 1, "capacity": 43 },
+      { "carriageId": 2, "capacity": 59 },
+      { "carriageId": 3, "capacity": 0 },
+      { "carriageId": 4, "capacity": 68 },
+      { "carriageId": 5, "capacity": 68 },
+      { "carriageId": 6, "capacity": 66 },
+      { "carriageId": 7, "capacity": 66 }
+    ]
+  },
+  {
+    "id": "3",
+    "trainType": "",
+    "carriageCount": 10,
+    "carriageData": [
+      { "carriageId": 1, "capacity": 0 },
+      { "carriageId": 2, "capacity": 54 },
+      { "carriageId": 3, "capacity": 54 },
+      { "carriageId": 4, "capacity": 18 },
+      { "carriageId": 5, "capacity": 62 },
+      { "carriageId": 6, "capacity": 75 },
+      { "carriageId": 7, "capacity": 70 },
+      { "carriageId": 8, "capacity": 80 },
+      { "carriageId": 9, "capacity": 80 },
+      { "carriageId": 10, "capacity": 31 }
+    ]
+  },
+  {
+    "id": "4",
+    "trainType": "IC 2",
+    "carriageCount": 6,
+    "carriageData": [
+      { "carriageId": 1, "capacity": 55 },
+      { "carriageId": 2, "capacity": 112 },
+      { "carriageId": 3, "capacity": 112 },
+      { "carriageId": 4, "capacity": 112 },
+      { "carriageId": 5, "capacity": 70 },
+      { "carriageId": 6, "capacity": 0 }
+    ]
+  },
+  {
+    "id": "5",
+    "trainType": "ICE 1 kurz",
+    "carriageCount": 11,
+    "carriageData": [
+      { "carriageId": 1, "capacity": 0 },
+      { "carriageId": 2, "capacity": 56 },
+      { "carriageId": 3, "capacity": 56 },
+      { "carriageId": 4, "capacity": 0 },
+      { "carriageId": 5, "capacity": 43 },
+      { "carriageId": 6, "capacity": 74 },
+      { "carriageId": 7, "capacity": 74 },
+      { "carriageId": 8, "capacity": 74 },
+      { "carriageId": 9, "capacity": 74 },
+      { "carriageId": 10, "capacity": 74 },
+      { "carriageId": 11, "capacity": 0 }
+    ]
+  },
+  {
+    "id": "6",
+    "trainType": "ICE 3",
+    "carriageCount": 16,
+    "carriageData": [
+      { "carriageId": 1, "capacity": 64 },
+      { "carriageId": 2, "capacity": 72 },
+      { "carriageId": 3, "capacity": 72 },
+      { "carriageId": 4, "capacity": 54 },
+      { "carriageId": 5, "capacity": 0 },
+      { "carriageId": 6, "capacity": 62 },
+      { "carriageId": 7, "capacity": 46 },
+      { "carriageId": 8, "capacity": 47 },
+      { "carriageId": 9, "capacity": 64 },
+      { "carriageId": 10, "capacity": 72 },
+      { "carriageId": 11, "capacity": 72 },
+      { "carriageId": 12, "capacity": 54 },
+      { "carriageId": 13, "capacity": 0 },
+      { "carriageId": 14, "capacity": 62 },
+      { "carriageId": 15, "capacity": 46 },
+      { "carriageId": 16, "capacity": 47 }
+    ]
+  },
+  {
+    "id": "7",
+    "trainType": "IC 2K (Stadler KISS)",
+    "carriageCount": 6,
+    "carriageData": [
+      { "carriageId": 1, "capacity": 60 },
+      { "carriageId": 2, "capacity": 83 },
+      { "carriageId": 3, "capacity": 83 },
+      { "carriageId": 4, "capacity": 76 },
+      { "carriageId": 5, "capacity": 71 },
+      { "carriageId": 6, "capacity": 62 }
+    ]
+  },
+  {
+    "id": "8",
+    "trainType": "ICE 4 (13)",
+    "carriageCount": 13,
+    "carriageData": [
+      { "carriageId": 1, "capacity": 59 },
+      { "carriageId": 2, "capacity": 88 },
+      { "carriageId": 3, "capacity": 88 },
+      { "carriageId": 4, "capacity": 88 },
+      { "carriageId": 5, "capacity": 88 },
+      { "carriageId": 6, "capacity": 88 },
+      { "carriageId": 7, "capacity": 88 },
+      { "carriageId": 8, "capacity": 88 },
+      { "carriageId": 9, "capacity": 38 },
+      { "carriageId": 10, "capacity": 21 },
+      { "carriageId": 11, "capacity": 67 },
+      { "carriageId": 12, "capacity": 67 },
+      { "carriageId": 13, "capacity": 50 }
+    ]
+  },
+  {
+    "id": "9",
+    "trainType": "ICE 1)",
+    "carriageCount": 14,
+    "carriageData": [
+      { "carriageId": 1, "capacity": 0 },
+      { "carriageId": 2, "capacity": 56 },
+      { "carriageId": 3, "capacity": 56 },
+      { "carriageId": 4, "capacity": 56 },
+      { "carriageId": 5, "capacity": 35 },
+      { "carriageId": 6, "capacity": 0 },
+      { "carriageId": 7, "capacity": 74 },
+      { "carriageId": 8, "capacity": 74 },
+      { "carriageId": 9, "capacity": 74 },
+      { "carriageId": 10, "capacity": 74 },
+      { "carriageId": 11, "capacity": 74 },
+      { "carriageId": 12, "capacity": 74 },
+      { "carriageId": 13, "capacity": 74 },
+      { "carriageId": 14, "capacity": 0 }
+    ]
+  },
+  {
+    "id": "10",
+    "trainType": "ICE 3 neo",
+    "carriageCount": 8,
+    "carriageData": [
+      { "carriageId": 1, "capacity": 45 },
+      { "carriageId": 2, "capacity": 54 },
+      { "carriageId": 3, "capacity": 23 },
+      { "carriageId": 4, "capacity": 38 },
+      { "carriageId": 5, "capacity": 76 },
+      { "carriageId": 6, "capacity": 76 },
+      { "carriageId": 7, "capacity": 76 },
+      { "carriageId": 8, "capacity": 51 }
+    ]
+  },
+  {
+    "id": "11",
+    "trainType": "ICE 3",
+    "carriageCount": 16,
+    "carriageData": [
+      { "carriageId": 1, "capacity": 51 },
+      { "carriageId": 2, "capacity": 50 },
+      { "carriageId": 3, "capacity": 76 },
+      { "carriageId": 4, "capacity": 0 },
+      { "carriageId": 5, "capacity": 51 },
+      { "carriageId": 6, "capacity": 76 },
+      { "carriageId": 7, "capacity": 76 },
+      { "carriageId": 8, "capacity": 70 },
+      { "carriageId": 9, "capacity": 51 },
+      { "carriageId": 10, "capacity": 50 },
+      { "carriageId": 11, "capacity": 76 },
+      { "carriageId": 12, "capacity": 0 },
+      { "carriageId": 13, "capacity": 51 },
+      { "carriageId": 14, "capacity": 76 },
+      { "carriageId": 15, "capacity": 76 },
+      { "carriageId": 16, "capacity": 70 }
+    ]
+  },
+  {
+    "id": "12",
+    "trainType": "ICE-T",
+    "carriageCount": 14,
+    "carriageData": [
+      { "carriageId": 1, "capacity": 66 },
+      { "carriageId": 2, "capacity": 66 },
+      { "carriageId": 3, "capacity": 68 },
+      { "carriageId": 4, "capacity": 68 },
+      { "carriageId": 5, "capacity": 0 },
+      { "carriageId": 6, "capacity": 59 },
+      { "carriageId": 7, "capacity": 43 },
+      { "carriageId": 8, "capacity": 43 },
+      { "carriageId": 9, "capacity": 59 },
+      { "carriageId": 10, "capacity": 0 },
+      { "carriageId": 11, "capacity": 68 },
+      { "carriageId": 12, "capacity": 68 },
+      { "carriageId": 13, "capacity": 66 },
+      { "carriageId": 14, "capacity": 66 }
+    ]
+  },
+  {
+    "id": "13",
+    "trainType": "",
+    "carriageCount": 8,
+    "carriageData": [
+      { "carriageId": 1, "capacity": 31 },
+      { "carriageId": 2, "capacity": 80 },
+      { "carriageId": 3, "capacity": 80 },
+      { "carriageId": 4, "capacity": 80 },
+      { "carriageId": 5, "capacity": 62 },
+      { "carriageId": 6, "capacity": 18 },
+      { "carriageId": 7, "capacity": 54 },
+      { "carriageId": 8, "capacity": 0 }
+    ]
+  },
+  {
+    "id": "14",
+    "trainType": "",
+    "carriageCount": 13,
+    "carriageData": [
+      { "carriageId": 1, "capacity": 0 },
+      { "carriageId": 2, "capacity": 0 },
+      { "carriageId": 3, "capacity": 54 },
+      { "carriageId": 4, "capacity": 54 },
+      { "carriageId": 5, "capacity": 18 },
+      { "carriageId": 6, "capacity": 62 },
+      { "carriageId": 7, "capacity": 80 },
+      { "carriageId": 8, "capacity": 80 },
+      { "carriageId": 9, "capacity": 80 },
+      { "carriageId": 10, "capacity": 57 },
+      { "carriageId": 11, "capacity": 80 },
+      { "carriageId": 12, "capacity": 80 },
+      { "carriageId": 13, "capacity": 31 }
+    ]
+  }
+]
