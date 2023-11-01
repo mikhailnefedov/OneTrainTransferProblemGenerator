@@ -1,5 +1,0 @@
-Instances,Source,feature_stationCount,feature_directionChangeCount,feature_totalPassengerCount,feature_avgPassengerCount,feature_avgPassengerRouteLength,feature_avgRailCarriageCapacity,feature_stdDevRailCarriageCapacity,feature_avgCongestion,algo_firstAvailableCarriage,algo_greedyPassengerOrder,algo_greedyAllPassenger
-simple_1,SimpleGenerator,5,3,11,2.2,1.8181818181818181,17.0,0.0,0.11764705882352941,399.0,383.0,383.0
-simple_2,SimpleGenerator,5,3,38,7.6,1.605263157894737,17.0,0.0,0.7176470588235294,1519.0,1519.0,1519.0
-realistic_1,RealisticGenerator,23,6,388,16.869565217391305,6.139175257731959,56.25,24.02472684548151,0.11507246376811593,67975.0,19131.0,19131.0
-realistic_2,RealisticGenerator,20,5,688,34.4,5.575581395348837,54.875,18.550185309047453,0.43690205011389527,21081.0,13251.0,12907.0
