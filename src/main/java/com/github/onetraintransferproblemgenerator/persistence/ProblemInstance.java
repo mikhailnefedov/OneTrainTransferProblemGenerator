@@ -52,6 +52,10 @@ public class ProblemInstance {
         });
     }
 
+    /**
+     * Caution! not real deepClone. Used to create copy objects so that original objects are not changed
+     * Method usage in context of evolutionary algorithms
+     */
     public ProblemInstance deepClone() {
         ProblemInstance copy = new ProblemInstance();
         copy.setInstanceId(instanceId);

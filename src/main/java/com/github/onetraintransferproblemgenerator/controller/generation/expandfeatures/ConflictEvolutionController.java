@@ -25,6 +25,7 @@ public class ConflictEvolutionController {
     private final int POPULATION_SIZE = 20;
     private final double MUTATION_RATE = 0.5;
     private final int GENERATION_COUNT = 200;
+    private final int SIGMA = 2;
     private final ConflictEvolutionDataRepository conflictEvolutionDataRepository;
     private List<ConflictCoordinate> targetPoints;
     private ConflictEvolutionMutation mutation;
@@ -52,21 +53,9 @@ public class ConflictEvolutionController {
         }
     }
 
-    /**
-     * private BaseGenerator configureGenerator() {
-     * BaseGenerator generator = new SimpleGenerator();
-     * generator.setMIN_CONGESTION(0.8);
-     * return generator;
-     * }
-     */
-
     private ConflictEvolutionIndividual createStartIndividual(ProblemInstance instance, String experimentId) {
         instance.setExperimentId(experimentId);
         OneTrainTransferProblem problem = instance.getProblem();
-        //InstanceFeatureDescription description = instance.getFeatureDescription();
-
-        //ProblemInstance instance = new ProblemInstance(problem, experimentId, this.getClass(), INSTANCE_ID_PREFIX);
-        //instance.setFeatureDescription(description);
 
         ConflictEvolutionIndividual individual = new ConflictEvolutionIndividual();
         computeMaxPositionOfStations(individual, problem);
@@ -85,10 +74,8 @@ public class ConflictEvolutionController {
         int trainSize = problem.getTrain().getRailCarriages().size();
         List<StationTuple> stations = problem.getTrain().getStations();
 
-        int threshold = 2;
-
         Map<Integer, Integer> maxPositionOfStation = stations.stream()
-            .collect(Collectors.toMap(StationTuple::getStationId, station -> station.getStationOperation().getPosition() + trainSize + threshold));
+            .collect(Collectors.toMap(StationTuple::getStationId, station -> station.getStationOperation().getPosition() + trainSize + SIGMA));
 
         individual.setMaxPositionOfStation(maxPositionOfStation);
     }
@@ -146,16 +133,7 @@ public class ConflictEvolutionController {
                 if (bestIndividual.getFitness() < currentBestFitness) {
                     data.addCoordinate(bestIndividual);
                     currentBestFitness = bestIndividual.getFitness();
-                    System.out.println("Found better individual");
                 }
-            }
-
-            ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-            try {
-                String json = ow.writeValueAsString(getBestIndividual(population));
-                System.out.println(json);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
             }
         }
 

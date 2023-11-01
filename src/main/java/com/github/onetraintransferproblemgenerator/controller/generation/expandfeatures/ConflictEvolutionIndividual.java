@@ -49,13 +49,6 @@ public class ConflictEvolutionIndividual {
         );
     }
 
-    /**
-    public void setOriginalCoordinate(double blockedPassengerRatio, double conflictFreePassengerSeatingRatio) {
-        originalCoordinate.setBlockedPassengerRatio(blockedPassengerRatio);
-        originalCoordinate.setConflictFreePassengerSeatingRatio(conflictFreePassengerSeatingRatio);
-    }
-     */
-
     public double computeAndSetFitness(ConflictCoordinate targetPoint) {
         double blockedPassengerRatio = problemInstance.getFeatureDescription().getBlockedPassengerRatio();
         double conflictFreePassengerSeatingRatio = problemInstance.getFeatureDescription().getConflictFreePassengerSeatingRatio();
@@ -71,7 +64,7 @@ public class ConflictEvolutionIndividual {
 
         double penalty = 0;
         if (distanceToOrigin > maxDistanceOriginTarget) {
-            penalty = 42;   //Infinity penalty, is okay here because instances are all in square 1.0 x 1.0
+            penalty = 42;   //represents infinity penalty, 42 is okay because instances are all in square 1.0 x 1.0
         }
 
         double maxOriginRatio = -0.5;
