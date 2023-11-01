@@ -8,7 +8,7 @@ import com.github.onetraintransferproblemgenerator.solvers.RailCarriagePositionH
 import java.util.List;
 import java.util.Random;
 
-public class ChangeOptimalRailCarriageMutation implements ConflictEvolutionMutation {
+public class MoveOptimalRailCarriageMutation implements ConflictEvolutionMutation {
 
     @Override
     public void mutate(ConflictEvolutionIndividual individual) {

@@ -1,12 +1,14 @@
 package com.github.onetraintransferproblemgenerator.controller.generation.expandfeatures;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.github.onetraintransferproblemgenerator.features.FeatureExtractor;
 import com.github.onetraintransferproblemgenerator.features.InstanceFeatureDescription;
 import com.github.onetraintransferproblemgenerator.models.OneTrainTransferProblem;
 import com.github.onetraintransferproblemgenerator.models.StationTuple;
 import com.github.onetraintransferproblemgenerator.persistence.ConflictEvolutionDataRepository;
 import com.github.onetraintransferproblemgenerator.persistence.ProblemInstance;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,7 +48,7 @@ public class ConflictEvolutionController {
         if (mutationName.equals("MoveInOrOutPositionMutation")) {
             mutation = new MoveInOrOutPositionMutation();
         } else {
-            mutation = new ChangeOptimalRailCarriageMutation();
+            mutation = new MoveOptimalRailCarriageMutation();
         }
     }
 
@@ -72,7 +74,7 @@ public class ConflictEvolutionController {
 
         double blockedPassengerRatio = individual.getProblemInstance().getFeatureDescription().getBlockedPassengerRatio();
         double conflictFreePassengerSeatingRatio = individual.getProblemInstance().getFeatureDescription().getConflictFreePassengerSeatingRatio();
-        individual.setOriginalCoordinates(new ArrayList<>(List.of(blockedPassengerRatio, conflictFreePassengerSeatingRatio)));
+        individual.setOriginalCoordinate(new OriginalCoordinate(blockedPassengerRatio, conflictFreePassengerSeatingRatio));
 
         individual.computePossibleToCreateConflicts();
 
@@ -146,6 +148,14 @@ public class ConflictEvolutionController {
                     currentBestFitness = bestIndividual.getFitness();
                     System.out.println("Found better individual");
                 }
+            }
+
+            ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+            try {
+                String json = ow.writeValueAsString(getBestIndividual(population));
+                System.out.println(json);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
             }
         }
 
