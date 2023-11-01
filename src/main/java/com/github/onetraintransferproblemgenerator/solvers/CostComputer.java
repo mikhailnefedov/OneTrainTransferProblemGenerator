@@ -42,19 +42,6 @@ public class CostComputer {
             .map(entry -> costOfUsingRailCarriageByPassenger.get(entry.getKey()).get(entry.getValue()))
             .reduce(0.0, Double::sum);
 
-        /*
-        return passengerRailCarriageMapping.entrySet().stream()
-            .map(entry -> {
-                RailCarriageDistance distances =
-                    railCarriagePositions.getDistanceOfRailCarriage(entry.getKey(), entry.getValue());
-
-                double inDistance = computeCost(distances.getInDistance());
-                double outDistance = computeCost(distances.getOutDistance());
-                return inDistance + outDistance;
-            })
-            .reduce(0.0, Double::sum);
-            */
-
     }
 
     private boolean isExactSolution(HashMap<Passenger, Integer> solutionMapping) {
